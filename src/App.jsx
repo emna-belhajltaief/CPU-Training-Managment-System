@@ -1,5 +1,4 @@
-import HomePage from '@components/HomePage/HomePage'
-import Root from '@routes/root'
+import HomePage from '@components/HomePage/HomePage';
 import './App.css'
 
 function App() {
@@ -7,7 +6,6 @@ function App() {
 
   return (
     <>
-      <Root />
       <HomePage />
     </>
   )

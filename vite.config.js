@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
@@ -7,10 +8,10 @@ export default defineConfig({
   resolve: {
     alias: {
       '@src': '/src',
-      '@Components': '/src/Components',
-      '@routes': '/routes',
-      '@data': '/data',
-      '@hooks': '/hooks',
+      '@components': '/src/Components',
+      '@routes': '/src/routes',
+      '@data': '/src/data',
+      '@hooks': '/src/hooks',
     }
   }
 })
