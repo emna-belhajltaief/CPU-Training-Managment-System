@@ -1,4 +1,4 @@
-const root = () => {
+const Root = () => {
     return (
         <>
             <div id="sidebar">
@@ -42,4 +42,4 @@ const root = () => {
     )
 }
 
-export default root:
+export default Root;

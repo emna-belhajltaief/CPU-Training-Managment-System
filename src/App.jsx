@@ -1,11 +1,13 @@
-import HomePage from './Components/HomePage/HomePage'
+import HomePage from '@components/HomePage/HomePage'
+import Root from '@routes/root'
 import './App.css'
 
 function App() {
 
-  
+
   return (
     <>
+      <Root />
       <HomePage />
     </>
   )
