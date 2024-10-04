@@ -1,11 +1,10 @@
-import React from 'react'
 import './HomePage.css'
 
 const HomePage = () => {
   return (
 
-      <h1>CPU-ISIMM</h1>
-   
+    <h1>CPU-ISIMM</h1>
+
   )
 }
 
