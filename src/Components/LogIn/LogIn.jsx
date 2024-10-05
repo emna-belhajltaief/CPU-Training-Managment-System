@@ -1,4 +1,4 @@
-import React , {useState} from 'react'
+import  {useState} from 'react'
 import './LogIn.css' 
 
 const LogIn = () => {
@@ -23,12 +23,12 @@ const handleSubmit = (e) =>
         <h2>Log In</h2>
         <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label htmlFor="username">Username:</label>
-          <input type="text" id="username" name="username" value={formData.username} onChange={handleChange} required />
+          <label className='forum_label' htmlFor="username">Username:</label>
+          <input className='input_forum' type="text" id="username" name="username" value={formData.username} onChange={handleChange} required />
         </div>
         <div className="form-group">
-          <label htmlFor="password">Password:</label>
-          <input type="password"  id="password" name="password" value={formData.password} onChange={handleChange} required />
+          <label className='forum_label' htmlFor="password">Password:</label>
+          <input className='input_forum' type="password"  id="password" name="password" value={formData.password} onChange={handleChange} required />
         </div>
         <button type="submit">Log In</button>
       </form>

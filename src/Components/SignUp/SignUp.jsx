@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import  { useState } from 'react'
 import './SignUp.css'
 
 const SignUp = () => {
@@ -21,13 +21,13 @@ const SignUp = () => {
         <h2>Sign Up</h2>
         <form onSubmit={handleSubmit}>
             <div className="form-group">
-                <label htmlFor="username">Username</label>
-                <input type="text" id="username" name="username"  value={FormData.username} onChange={handleChange} required />
+                <label className='forum_label' htmlFor="username">Username</label>
+                <input className='input_forum' type="text" id="username" name="username"  value={FormData.username} onChange={handleChange} required />
             </div>
             <div className="form-group">
-                <label htmlFor='password'>Password</label>
-                <input type="password" id="password" name="password" value={FormData.password} onChange={handleChange} required />               
-            </div>
+                <label className='forum_label' htmlFor='password'>Password</label>
+                <input className='input_forum' type="password" id="password" name="password" value={FormData.password} onChange={handleChange} required />               
+            </div> 
             <button type="submit">Sign Up</button>
         </form>
     </div>

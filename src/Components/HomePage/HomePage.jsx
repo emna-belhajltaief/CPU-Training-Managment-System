@@ -17,7 +17,7 @@ const HomePage = () => {
                 </Link>
             </div>
         </nav>
-        <h1>CPU Trainings Managment System </h1>
+        <h1 className='CPU_Management '>CPU Trainings Managment System </h1>
         </>
 
   )
