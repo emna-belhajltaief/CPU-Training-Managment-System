@@ -22,10 +22,8 @@ const Members = () => {
     return members.filter(member => {
       return filters.every(({ criteria, mode, arg }) => {
         const value = member[criteria];
-
-        // Check if value is undefined
         if (value === undefined) return false;
-        if (arg === "") return true; // If filter argument is empty, include all records
+        if (arg === "") return true;
 
         switch (mode) {
           case "Ends with":
@@ -33,7 +31,6 @@ const Members = () => {
           case "Starts with":
             return value.toString().startsWith(arg);
           case "Equals":
-            // Handle boolean comparison
             if (typeof value === 'boolean') {
               return value === (arg === 'true');
             }
@@ -41,7 +38,7 @@ const Members = () => {
           case "Contains":
             return value.toString().includes(arg);
           default:
-            return true; // If mode doesn't match, keep all members
+            return true;
         }
       });
     });
@@ -70,7 +67,7 @@ const Members = () => {
   }, [filters, members, sortConfig]);
 
   const handleAddFilter = () => {
-    setFilters([...filters, { criteria: "Nom", mode: "Equals", arg: "" }]); // Add a new filter
+    setFilters([...filters, { criteria: "Nom", mode: "Equals", arg: "" }]);
   };
 
   const handleFilterChange = (index, field, value) => {
@@ -93,8 +90,8 @@ const Members = () => {
   };
 
   const handleResetFilters = () => {
-    setFilters([{ criteria: "Nom", mode: "Equals", arg: "" }]); // Reset filters to default
-    setSortConfig({ key: null, direction: 'ascending' }); // Reset sorting to default
+    setFilters([{ criteria: "Nom", mode: "Equals", arg: "" }]);
+    setSortConfig({ key: null, direction: 'ascending' });
   };
 
   return (
@@ -104,61 +101,53 @@ const Members = () => {
           <IoFilter />
           Filtrer
         </button>
- 
       </div>
-      <div>
-        {showfilter && (
-          <div>
-            <div>
-              <p>in this view show records</p> <hr />
-              {filters.map((filter, index) => (
-                <div key={index}>
-                  <select
-                    value={filter.criteria}
-                    onChange={(e) => handleFilterChange(index, 'criteria', e.target.value)}
-                    title="Select an option"
-                  >
-                    <option value="Nom">Nom</option>
-                    <option value="Prénom">Prénom</option>
-                    <option value="Email">Email</option>
-                    <option value="Phone">Phone</option>
-                    <option value="Adherent">Adherent</option>
-                    <option value="Nivau d'étude">{"Nivau d'étude"}</option>
-                    <option value="Skills">Skills</option>
-                  </select>
-                  <select
-                    value={filter.mode}
-                    onChange={(e) => handleFilterChange(index, 'mode', e.target.value)}
-                    title="Select an option"
-                  >
-                    <option value="Equals">Equals</option>
-                    <option value="Contains">Contains</option>
-                    <option value="Starts with">Starts with</option>
-                    <option value="Ends with">Ends with</option>
-                  </select>
-                  <input
-                    value={filter.arg}
-                    onChange={(e) => handleFilterChange(index, 'arg', e.target.value)}
-                  />
-                  <button onClick={() => handleRemoveFilter(index)}>
-                    <FaRegTrashAlt />
-                  </button>
-                </div>
-              ))}
-              <button onClick={handleAddFilter}>Add Filter</button>
-              <button onClick={handleResetFilters}>
-          Reset Filters
-        </button>
+      <div className={`filter-menu ${showfilter ? 'open' : ''}`}>
+        <div>
+          {filters.map((filter, index) => (
+            <div className="filter-row" key={index}>
+              <select
+                value={filter.criteria}
+                onChange={(e) => handleFilterChange(index, 'criteria', e.target.value)}
+                title="Select an option"
+              >
+                <option value="Nom">Nom</option>
+                <option value="Prénom">Prénom</option>
+                <option value="Email">Email</option>
+                <option value="Phone">Phone</option>
+                <option value="Adherent">Adherent</option>
+                <option value="Nivau d'étude">{"Nivau d'étude"}</option>
+                <option value="Skills">Skills</option>
+              </select>
+              <select
+                value={filter.mode}
+                onChange={(e) => handleFilterChange(index, 'mode', e.target.value)}
+                title="Select an option"
+              >
+                <option value="Equals">Equals</option>
+                <option value="Contains">Contains</option>
+                <option value="Starts with">Starts with</option>
+                <option value="Ends with">Ends with</option>
+              </select>
+              <input
+                value={filter.arg}
+                onChange={(e) => handleFilterChange(index, 'arg', e.target.value)}
+              />
+              <button onClick={() => handleRemoveFilter(index)}>
+                <FaRegTrashAlt />
+              </button>
             </div>
-          </div>
-        )}
+          ))}
+          <button onClick={handleAddFilter}>Add Filter</button>
+          <button onClick={handleResetFilters}>Reset Filters</button>
+        </div>
       </div>
       <table className="table table-responsive">
         <thead>
           <tr>
             {Filtredmembers.length > 0 &&
               Object.keys(members[0]).map((key, index) => (
-                <th key={index} onClick={() => handleSort(key)} style={{ cursor: 'pointer' }}>
+                <th key={index} onClick={() => handleSort(key)}>
                   {key} {sortConfig.key === key ? (sortConfig.direction === 'ascending' ? <FaSortAmountUp /> : <FaSortAmountDownAlt />) : ''}
                 </th>
               ))}
