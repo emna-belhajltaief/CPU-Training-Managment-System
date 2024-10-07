@@ -142,7 +142,7 @@ const Members = () => {
           <button onClick={handleResetFilters}>Reset Filters</button>
         </div>
       </div>
-      <table className="table table-responsive">
+      <table className="custom-table table-responsive">
         <thead>
           <tr>
             {Filtredmembers.length > 0 &&
