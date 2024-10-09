@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import membersData from "@data/Inscription-CPU 2024.json";
 import "./members.css";
 import { IoFilter } from "react-icons/io5";
@@ -7,6 +8,8 @@ import { FaSortAmountDownAlt } from "react-icons/fa";
 import { FaSortAmountUp } from "react-icons/fa";
 
 const Members = () => {
+  const navigate = useNavigate();
+
   const [showfilter, setshowfilter] = useState(false);
   const [filters, setFilters] = useState([{ criteria: "Nom", mode: "Equals", arg: "" }]);
   const [members, setMembers] = useState([]);
@@ -17,6 +20,13 @@ const Members = () => {
     setMembers(membersData);
     setFiltredMembers(membersData);
   }, []);
+
+  const handleDisplayMember = (member) => {
+
+    // Navigate to the member detail page, passing the member's information via state
+    navigate(`/members/show_details`, { state: { member: member } });
+
+  };
 
   const filter = (members) => {
     return members.filter(member => {
@@ -155,9 +165,9 @@ const Members = () => {
         </thead>
         <tbody>
           {Filtredmembers.map((member, index) => (
-            <tr key={index}>
+            <tr key={index} onClick={() => handleDisplayMember(member)} >
               {Object.keys(member).map((key, index) => (
-                <td key={index}>{member[key]}</td>
+                <td key={index} >{member[key]}</td>
               ))}
             </tr>
           ))}
