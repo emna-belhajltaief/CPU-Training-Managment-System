@@ -7,6 +7,7 @@ import HomePage from './Components/HomePage/HomePage.jsx'; // Assuming this is t
 import SignUp from './Components/SignUp/SignUp.jsx';
 import LogIn from './Components/LogIn/LogIn.jsx';
 import FicheMembre from './Components/FicheMembre/FicheMembre.jsx';
+import FormulaireFormation from './Components/FormulaireFormation/FormulaireFormation.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const router = createBrowserRouter([
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
   {
     path: 'members', // Render Members
     element: <Members />,
+  },
+  {
+    path: 'FormulaireFormation', // Render Members
+    element: <FormulaireFormation />,
   },
   {
     path: '/*',
