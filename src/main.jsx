@@ -9,7 +9,9 @@ import LogIn from './Components/LogIn/LogIn.jsx';
 import FicheMembre from './Components/FicheMembre/FicheMembre.jsx';
 import FormulaireFormation from './Components/FormulaireFormation/FormulaireFormation.jsx';
 import MemberDetailForm from '@components/members/memberDetailForm.jsx';
+import Formation from './Components/Formation/Formation.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 const router = createBrowserRouter([
   {
@@ -44,6 +46,11 @@ const router = createBrowserRouter([
     path: '/members/show_details', // Render Members
     element: <MemberDetailForm />,
   },
+  {
+    path: '/Formation', // Render Members
+    element: <Formation />,
+  },
+  
   {
     path: '/*',
     element: <Navigate to="/" />, // Fallback for any undefined paths
