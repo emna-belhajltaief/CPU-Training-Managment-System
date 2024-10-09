@@ -1,7 +1,7 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom';
-import App from './App.jsx';
+// import App from './App.jsx';
 import Members from './Components/members/members.jsx';
 import HomePage from './Components/HomePage/HomePage.jsx'; // Assuming this is the correct path
 import SignUp from './Components/SignUp/SignUp.jsx';
@@ -16,10 +16,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />,
-  },
-  {
-    path: '/', // This will render HomePage for the root
     element: <HomePage />,
   },
   {
@@ -39,7 +35,7 @@ const router = createBrowserRouter([
     element: <Members />,
   },
   {
-    path: 'FormulaireFormation', // Render Members
+    path: '/FormulaireFormation', // Render Members
     element: <FormulaireFormation />,
   },
   {
@@ -50,7 +46,7 @@ const router = createBrowserRouter([
     path: '/Formation', // Render Members
     element: <Formation />,
   },
-  
+
   {
     path: '/*',
     element: <Navigate to="/" />, // Fallback for any undefined paths
