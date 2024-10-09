@@ -11,7 +11,13 @@ import { FaCoffee } from "react-icons/fa";
 import { GrTechnology } from "react-icons/gr";
 import { useState } from "react";
 import { IoPersonRemove } from "react-icons/io5";
+import { FaCode } from "react-icons/fa";
+import { RiRobot2Fill } from "react-icons/ri";
 function FormulaireFormation() {
+  const [Titre,setTitre] =useState ("")
+  const [Domaine,setDomaine] =useState ("")
+  const [Local, setLocal] = useState("")
+  const [Date, setDate] =useState("")
   const [formateurs, setFormateurs] = useState([{ id: 1, value: "" }]);
   const [assistants, setAssistants] = useState([{ id: 1, value: "" }]);
   const [receptionists, setReceptionists] = useState([{ id: 1, value: "" }]);
@@ -23,6 +29,41 @@ function FormulaireFormation() {
     const newFields = [...fields];
     newFields[index].value = e.target.value;
     setFieldFunc(newFields);
+  };
+
+const handleSubmit =(e)=>{
+    e.preventDefault(); // Prevent the default form submission
+  
+    // Create a string to hold all the information
+    const formData = `
+      Formation: ${Titre}
+      Domaine: ${Domaine}
+      Local: ${Local}
+      Date: ${Date}
+      Formateurs: ${formateurs.map((f) => f.value).join(', ')}
+      Assistants: ${assistants.map((a) => a.value).join(', ')}
+      Receptionists: ${receptionists.map((r) => r.value).join(', ')}
+      Coffee Breaks: ${coffeeBreaks.map((cb) => cb.value).join(', ')}
+    `;
+  
+    alert(formData); // Show all the information in an alert
+}
+
+ // Handlers for single value inputs
+ const handleTitleChange = (e) => {
+    setTitre(e.target.value);
+  };
+
+  const handleDomainChange = (e) => {
+    setDomaine(e.target.value);
+  };
+
+  const handleLocalChange = (e) => {
+    setLocal(e.target.value);
+  };
+
+  const handleDateChange = (e) => {
+    setDate(e.target.value);
   };
   const handleImageChange = (event) => {
     const file = event.target.files[0]; // Get the first selected file
@@ -48,22 +89,40 @@ function FormulaireFormation() {
   return (
     <>
       <div className="Formulaire ">
-        <form>
+        <form onSubmit={handleSubmit}>
           <h1 className="Formation-title">Formulaire Du Formation</h1>
 
           <div className="Field">
             <label>Titre de formation {<GrWorkshop />} :</label>
-            <input placeholder="exemple : introduction C++"></input>
+            <input placeholder="exemple : introduction C++" onChange={handleTitleChange}></input>
+          </div>
+
+          <div className="Field">
+            <label>Domaine de formation:</label>
+            <div style={{ display: "flex", gap: "5%" }}>
+              <div>
+                <label>
+                  <input type="radio" name="Domaine" value="Developement"  onChange={handleDomainChange} />
+                  Developement {<FaCode />}
+                </label>
+              </div>
+              <div>
+                <label>
+                  <input type="radio" name="Domaine" value="Robotique"  onChange={handleDomainChange} />
+                  Robotique {<RiRobot2Fill />}
+                </label>
+              </div>
+            </div>
           </div>
 
           <div className="Field">
             <label>Local {<FaHouse />} :</label>
-            <input placeholder="exemple : ISIMM C-01"></input>
+            <input placeholder="exemple : ISIMM C-01"  onChange={handleLocalChange}></input>
           </div>
 
           <div className="Field">
             <label>Date {<CiCalendarDate />} :</label>
-            <input type="date"></input>
+            <input type="date"  onChange={handleDateChange}></input>
           </div>
 
           {/* Formateur Section */}
@@ -229,8 +288,8 @@ function FormulaireFormation() {
           </div>
 
           <div className="Field">
-            <button className="btn btn-success mb-2">Submit</button>
-            <button className="btn btn-danger">Cancel</button>
+            <button type="submit" className="btn btn-success mb-2">Submit</button>
+            <button type="button" className="btn btn-danger">Cancel</button>
           </div>
         </form>
       </div>
