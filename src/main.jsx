@@ -8,6 +8,7 @@ import SignUp from './Components/SignUp/SignUp.jsx';
 import LogIn from './Components/LogIn/LogIn.jsx';
 import FicheMembre from './Components/FicheMembre/FicheMembre.jsx';
 import FormulaireFormation from './Components/FormulaireFormation/FormulaireFormation.jsx';
+import MemberDetailForm from '@components/members/memberDetailForm.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const router = createBrowserRouter([
@@ -20,24 +21,28 @@ const router = createBrowserRouter([
     element: <HomePage />,
   },
   {
-    path: 'signup', // Render SignUp
+    path: '/signup', // Render SignUp
     element: <SignUp />,
   },
   {
-    path: 'login', // Render LogIn
+    path: '/login', // Render LogIn
     element: <LogIn />,
   },
   {
-    path: 'membreProfile', // Render FicheMembre
+    path: '/membreProfile', // Render FicheMembre
     element: <FicheMembre />,
   },
   {
-    path: 'members', // Render Members
+    path: '/members', // Render Members
     element: <Members />,
   },
   {
     path: 'FormulaireFormation', // Render Members
     element: <FormulaireFormation />,
+  },
+  {
+    path: '/members/show_details', // Render Members
+    element: <MemberDetailForm />,
   },
   {
     path: '/*',
