@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import supabase from '../../../superbaseClient';
 
 import "./memberDetailForm.css"
 const MemberDetailForm = () => {
@@ -18,10 +19,27 @@ const MemberDetailForm = () => {
         Skills: ''
     });
 
-    const handleSave = () => {
-        // Handle saving the updated information
-        // You could send a PUT request to your API to update the member data
-        navigate('/members'); // Navigate back to members list after saving
+    const handleSave = async () => {
+        const { data, error } = await supabase
+            .from('club_members')
+            .insert([
+                {
+                    firstname: "firstname",
+                    lastname: "lastname",
+                    email: "email",
+                    phone_num: "51861346",
+                    member_type: "actif",
+                    is_active: true,
+                },
+            ]);
+        console.log(data);
+
+        if (error) {
+            console.error('Error fetching trainings:', error);
+        }
+        else {
+            navigate('/members'); // Navigate back to members list after saving
+        }
     };
 
     const handleCancel = () => {
@@ -73,7 +91,7 @@ const MemberDetailForm = () => {
                     />
                 </div>
                 <div className="form-group">
-                    <label>Niveau d'études:</label>
+                    <label>Niveau d&apos;études:</label>
                     <input
                         type="text"
                         value={memberData["Niveau d'études"]}
