@@ -1,0 +1,49 @@
+.Formulaire {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(219, 231, 240);
+    align-self: auto;
+    width: 80%;
+    margin: auto;
+    position: relative; /* Ensure the container is positioned for the pseudo-element */
+    z-index: 1; /* This keeps the content above the background image */
+    border-radius: 32px;
+}
+
+.Formulaire::before {
+    content: "";
+    background-image: url("./images/CpuBlack.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    opacity: 0.2; /* Adjust the background image opacity here */
+    position: absolute;
+    top: 5;
+    left: 5;
+    width: 100%;
+    height: 80%;
+    z-index: -1; /* Ensure the image stays behind the content */
+}
+
+.Formation-title{
+    margin-top: 8%;
+}
+
+.Field{
+    margin-top:7%;
+    margin-bottom: 7%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* styles.css or your relevant CSS file */
+.disabled-button {
+    cursor: not-allowed; /* Change cursor to not-allowed */
+    opacity: 0.65; /* Optional: Make it look disabled */
+    pointer-events: none; /* Prevent interaction */
+  }
+  button:disabled {
+    cursor: not-allowed;
+    pointer-events: all !important;
+  }
