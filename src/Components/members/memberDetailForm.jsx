@@ -10,14 +10,67 @@ const MemberDetailForm = () => {
     const { state } = location;
 
     const [memberData, setMemberData] = useState(state?.member || {
-        Nom: '',
-        Prénom: '',
-        Email: '',
-        Phone: '',
-        Adherent: false,
-        "Niveau d'études": '',
-        Skills: ''
+        lastname: '',
+        fistname: '',
+        email: '',
+        phone_num: '',
+        member_type: false,
+        study_lvl: '',
+        skills: ''
     });
+    const formFields = [
+        {
+            "name": "firstname",
+            "placeholder": "Nom",
+            "value": "memberData.firstname"
+        },
+        {
+            "name": "lastname",
+            "placeholder": "Prénom",
+            "value": "memberData.lastname"
+        },
+        {
+            "name": "email",
+            "placeholder": "Email",
+            "value": "memberData.email"
+        },
+        {
+            "name": "phone_num",
+            "placeholder": "Phone",
+            "value": "memberData.phone_num"
+        },
+        {
+            "name": "member_type",
+            "placeholder": "Type de Membre",
+            "value": "memberData.member_type",
+            "type": "select",
+            "options": [
+                {
+                    name: "externe",
+                    value: 0
+                },
+                {
+                    name: "actif",
+                    value: 1
+                },
+                {
+                    name: "adherent",
+                    value: 2
+                },
+            ]
+        },
+        {
+            "name": "study_lvl",
+            "placeholder": "Niveau d'études",
+            "value": "memberData.study_lvl"
+        },
+        {
+            "name": "skills",
+            "placeholder": "Skills",
+            "value": "memberData.skills"
+        }
+    ]
+
 
     const handleSave = async () => {
         const { data, error } = await supabase
@@ -29,7 +82,8 @@ const MemberDetailForm = () => {
                     email: "email",
                     phone_num: "51861346",
                     member_type: "actif",
-                    is_active: true,
+                    study_lvl: true,
+                    skills: "skills",
                 },
             ]);
         console.log(data);
@@ -50,70 +104,29 @@ const MemberDetailForm = () => {
         <div className="member-detail-container">
             <h2>Member Information</h2>
             <form className="member-form">
-                <div className="form-group">
-                    <label>Nom:</label>
-                    <input
-                        type="text"
-                        value={memberData.Nom}
-                        onChange={(e) => setMemberData({ ...memberData, Nom: e.target.value })}
-                    />
-                </div>
-                <div className="form-group">
-                    <label>Prénom:</label>
-                    <input
-                        type="text"
-                        value={memberData.Prénom}
-                        onChange={(e) => setMemberData({ ...memberData, Prénom: e.target.value })}
-                    />
-                </div>
-                <div className="form-group">
-                    <label>Email:</label>
-                    <input
-                        type="email"
-                        value={memberData.Email}
-                        onChange={(e) => setMemberData({ ...memberData, Email: e.target.value })}
-                    />
-                </div>
-                <div className="form-group">
-                    <label>Phone:</label>
-                    <input
-                        type="tel"
-                        value={memberData.Phone}
-                        onChange={(e) => setMemberData({ ...memberData, Phone: e.target.value })}
-                    />
-                </div>
-                <div className="form-group">
-                    <label>Adherent:</label>
-                    <input
-                        type="checkbox"
-                        checked={memberData.Adherent}
-                        onChange={(e) => setMemberData({ ...memberData, Adherent: e.target.checked })}
-                    />
-                </div>
-                <div className="form-group">
-                    <label>Niveau d&apos;études:</label>
-                    <input
-                        type="text"
-                        value={memberData["Niveau d'études"]}
-                        onChange={(e) => setMemberData({ ...memberData, "Niveau d'études": e.target.value })}
-                    />
-                </div>
-                <div className="form-group">
-                    <label>Skills:</label>
-                    <input
-                        type="text"
-                        value={memberData.Skills}
-                        onChange={(e) => setMemberData({ ...memberData, Skills: e.target.value })}
-                    />
-                </div>
-                <div className="form-group">
-                    <label>Payed:</label>
-                    <input
-                        type="checkbox"
-                        checked={memberData?.Paied || false}
-                        onChange={(e) => setMemberData({ ...memberData, Paied: e.target.checked })}
-                    />
-                </div>
+                {formFields.map((field, index) => (
+                    <div key={index} className="form-group">
+                        <label htmlFor={field.name}>{field.placeholder}</label>
+                        {field.type === "select" ? (
+                            <select
+                                id={field.name}
+                                name={field.name}
+                                defaultValue={eval(field.value)}>
+                                {field.options.map((option, index) => (
+                                    <option key={index} value={option.value}>{option.name}</option>
+                                ))}
+                            </select>
+                        ) :
+                            <input
+                                id={field.name}
+                                name={field.name}
+                                placeholder={field.placeholder}
+                                defaultValue={eval(field.value)} // Use memberData to set the default value
+                            />}
+
+                    </div>
+
+                ))}
                 <div className="form-actions">
                     <button type="button" className="save-button" onClick={handleSave}>Save</button>
                     <button type="button" className="cancel-button" onClick={handleCancel}>Cancel</button>

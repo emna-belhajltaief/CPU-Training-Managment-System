@@ -1,57 +1,92 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import membersData from "@data/Inscription-CPU 2024.json";
+// import membersData from "@data/Inscription-CPU 2024.json";
+// import membersData from "@data/Inscription-CPU 2024-updated.json";
 import "./members.css";
 import { IoFilter } from "react-icons/io5";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { FaSortAmountDownAlt } from "react-icons/fa";
 import { FaSortAmountUp } from "react-icons/fa";
+import supabase from "../../../superbaseClient";
 
 const Members = () => {
   const navigate = useNavigate();
 
   const [showfilter, setshowfilter] = useState(false);
-  const [filters, setFilters] = useState([{ criteria: "Nom", mode: "Equals", arg: "" }]);
+  const [filters, setFilters] = useState([{ criteria: "lastname", mode: "Contains", arg: "" }]);
   const [members, setMembers] = useState([]);
   const [Filtredmembers, setFiltredMembers] = useState([]);
   const [sortConfig, setSortConfig] = useState({ key: null, direction: 'ascending' });
 
   useEffect(() => {
-    setMembers(membersData);
-    setFiltredMembers(membersData);
+    async function fetchMembersData() {
+      try {
+        let { data: club_members, error } = await supabase
+          .from('club_members')
+          .select('*');
+
+        if (error) {
+          console.error('Error fetching club_members:', error);
+          return [];
+        }
+
+        return club_members;
+      } catch (err) {
+        console.error('Error fetching data:', err);
+        return [{}];
+      }
+    }
+
+    async function getData() {
+      const membersData = await fetchMembersData();
+      setMembers(membersData);
+      setFiltredMembers(membersData);
+    }
+
+    getData();
   }, []);
+
+
+  // useEffect(() => {
+  //   setMembers(membersData);
+  //   setFiltredMembers(membersData);
+  // }, []);
 
   const handleDisplayMember = (member) => {
 
     // Navigate to the member detail page, passing the member's information via state
-    navigate(`/members/show_details`, { state: { member: member } });
+    navigate(`/members/${member.id}`, { state: { member: member } });
 
   };
 
   const filter = (members) => {
-    return members.filter(member => {
-      return filters.every(({ criteria, mode, arg }) => {
-        const value = member[criteria];
-        if (value === undefined) return false;
-        if (arg === "") return true;
+    try {
+      return members.filter(member => {
+        return filters.every(({ criteria, mode, arg }) => {
+          const value = member[criteria];
+          if (value === undefined) return false;
+          if (arg === "") return true;
 
-        switch (mode) {
-          case "Ends with":
-            return value.toString().endsWith(arg);
-          case "Starts with":
-            return value.toString().startsWith(arg);
-          case "Equals":
-            if (typeof value === 'boolean') {
-              return value === (arg === 'true');
-            }
-            return value.toString() === arg;
-          case "Contains":
-            return value.toString().includes(arg);
-          default:
-            return true;
-        }
+          switch (mode) {
+            case "Ends with":
+              return value.toString().endsWith(arg);
+            case "Starts with":
+              return value.toString().startsWith(arg);
+            case "Equals":
+              if (typeof value === 'boolean') {
+                return value === (arg === 'true');
+              }
+              return value.toString() === arg;
+            case "Contains":
+              return value.toString().includes(arg);
+            default:
+              return true;
+          }
+        });
       });
-    });
+    } catch {
+      return members;
+    }
   };
 
   const sortMembers = (members) => {
@@ -77,7 +112,7 @@ const Members = () => {
   }, [filters, members, sortConfig]);
 
   const handleAddFilter = () => {
-    setFilters([...filters, { criteria: "Nom", mode: "Equals", arg: "" }]);
+    setFilters([...filters, { criteria: "lastname", mode: "Contains", arg: "" }]);
   };
 
   const handleFilterChange = (index, field, value) => {
@@ -100,7 +135,7 @@ const Members = () => {
   };
 
   const handleResetFilters = () => {
-    setFilters([{ criteria: "Nom", mode: "Equals", arg: "" }]);
+    setFilters([{ criteria: "lastname", mode: "Contains", arg: "" }]);
     setSortConfig({ key: null, direction: 'ascending' });
   };
 
@@ -121,13 +156,13 @@ const Members = () => {
                 onChange={(e) => handleFilterChange(index, 'criteria', e.target.value)}
                 title="Select an option"
               >
-                <option value="Nom">Nom</option>
-                <option value="Prénom">Prénom</option>
-                <option value="Email">Email</option>
-                <option value="Phone">Phone</option>
-                <option value="Adherent">Adherent</option>
-                <option value="Nivau d'étude">{"Nivau d'étude"}</option>
-                <option value="Skills">Skills</option>
+                <option value="lastname">Nom</option>
+                <option value="fistname">Prénom</option>
+                <option value="email">Email</option>
+                <option value="phone_num">Phone</option>
+                <option value="member_type">Adherent</option>
+                <option value="study_lvl">{"Nivau d'étude"}</option>
+                <option value="skills">Skills</option>
               </select>
               <select
                 value={filter.mode}
