@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, useParams } from "react-router-dom";
 import supabase from '../../../superbaseClient';
 
 import "./memberDetailForm.css"
 const MemberDetailForm = () => {
     const navigate = useNavigate();
+    const { id } = useParams();
 
     const location = useLocation();
     const { state } = location;
@@ -76,19 +77,13 @@ const MemberDetailForm = () => {
         setMemberData({ ...memberData, [field.name]: e.target.value });
     }
     const handleSave = async () => {
+
         const { data, error } = await supabase
             .from('club_members')
-            .insert([
-                {
-                    firstname: "firstname",
-                    lastname: "lastname",
-                    email: "email",
-                    phone_num: "51861346",
-                    member_type: "actif",
-                    study_lvl: true,
-                    skills: "skills",
-                },
-            ]);
+            .update(memberData)
+            .eq('id', id)
+            .select()
+
         console.log(data);
 
         if (error) {
