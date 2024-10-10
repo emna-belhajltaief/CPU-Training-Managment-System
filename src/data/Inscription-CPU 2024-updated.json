@@ -1,0 +1,3179 @@
+[
+  {
+    "lastname": "Mansour",
+    "firstname": "Nour",
+    "email": "nourmansouabc@gmail.com",
+    "phone_num": "278845050",
+    "member_type": 1,
+    "study_lvl": "l1eea",
+    "skills": ".."
+  },
+  {
+    "lastname": "Mohamed yassine",
+    "firstname": "Sellaouti",
+    "email": "sellaoutiyassine196@gmail.com",
+    "phone_num": "94760677",
+    "member_type": 2,
+    "study_lvl": "l1eea",
+    "skills": "Jeux développement"
+  },
+  {
+    "lastname": "HADJ AMOR",
+    "firstname": "SIWAR",
+    "email": "SIWARHAJAMOR519@GMAIL.COM",
+    "phone_num": "52564909",
+    "member_type": 1,
+    "study_lvl": "l3tic",
+    "skills": "ACTIVEZ"
+  },
+  {
+    "lastname": "Yosr touzi",
+    "firstname": "Touzi",
+    "email": "yosrtouzi23@gmail.com",
+    "phone_num": "25813822",
+    "member_type": 2,
+    "study_lvl": "l1eea",
+    "skills": "Drawing"
+  },
+  {
+    "lastname": "Aziz",
+    "firstname": "Soula",
+    "email": "azizsoula07@gmail.con",
+    "phone_num": "99904070",
+    "member_type": 2,
+    "study_lvl": "cpi1",
+    "skills": "CPI"
+  },
+  {
+    "lastname": "Achraf",
+    "firstname": "Lamari",
+    "email": "achraaflaamari@gmail.com",
+    "phone_num": "99105523",
+    "member_type": 2,
+    "study_lvl": "ing1info",
+    "skills": "Développement and problem solving"
+  },
+  {
+    "lastname": "ben youssef",
+    "firstname": "fedi",
+    "email": "attigfedi01@gmail.com",
+    "phone_num": "50542501",
+    "member_type": 1,
+    "study_lvl": "l1info",
+    "skills": "a lot"
+  },
+  {
+    "lastname": "simaa",
+    "firstname": "ben abdallah",
+    "email": "simaabenabdallah@gmail.com",
+    "phone_num": "24649495",
+    "member_type": 2,
+    "study_lvl": "l1tic",
+    "skills": "sociabl"
+  },
+  {
+    "lastname": "Letaif",
+    "firstname": "Rochdi",
+    "email": "rochdijr001@gmail.com",
+    "phone_num": "29844575",
+    "member_type": 2,
+    "study_lvl": "l1tic",
+    "skills": "html css java jcript"
+  },
+  {
+    "lastname": "aya",
+    "firstname": "lazrag",
+    "email": "ayalaz4911@gmail.com",
+    "phone_num": "50863190",
+    "member_type": 2,
+    "study_lvl": "l2se",
+    "skills": "sociable"
+  },
+  {
+    "lastname": "Ahmed",
+    "firstname": "Adel",
+    "email": "ahmed3del2003@gmail.com",
+    "phone_num": "56505960",
+    "member_type": 1,
+    "study_lvl": "ing2info",
+    "skills": "DEV"
+  },
+  {
+    "lastname": "Amira",
+    "firstname": "Ben hssin",
+    "email": "benhaissne@gmail.com",
+    "phone_num": "55088561",
+    "member_type": 1,
+    "study_lvl": "l1info",
+    "skills": "."
+  },
+  {
+    "lastname": "bissen",
+    "firstname": "ayed",
+    "email": "bissen.ayed@gmail.com",
+    "phone_num": "52359927",
+    "member_type": 2,
+    "study_lvl": "l3tic",
+    "skills": "."
+  },
+  {
+    "lastname": "youcef",
+    "firstname": "dghaies",
+    "email": "youssef21dghais@gmail.com",
+    "phone_num": "53474783",
+    "member_type": 1,
+    "study_lvl": "l1info",
+    "skills": "."
+  },
+  {
+    "lastname": "Malek",
+    "firstname": "Fekih",
+    "email": "malekfekih01@gmail.com",
+    "phone_num": "28692495",
+    "member_type": 2,
+    "study_lvl": "l3info",
+    "skills": ".."
+  },
+  {
+    "lastname": "Amna",
+    "firstname": "Mahjoub",
+    "email": "amnamahjoub170305@gmail.com",
+    "phone_num": "25826828",
+    "member_type": 2,
+    "study_lvl": "cpi2",
+    "skills": "Sociable"
+  },
+  {
+    "lastname": "khlifi",
+    "firstname": "midani",
+    "email": "midanikhlifi47@gmail.com",
+    "phone_num": "27792377",
+    "member_type": 1,
+    "study_lvl": "ing2info",
+    "skills": "web dev"
+  },
+  {
+    "lastname": "Rania",
+    "firstname": "Aoun",
+    "email": "raniaoun3@gmail.com",
+    "phone_num": "95836335",
+    "member_type": 2,
+    "study_lvl": "l1info",
+    "skills": "."
+  },
+  {
+    "lastname": "Baha",
+    "firstname": "Hamdi",
+    "email": "bahahamdi9473@gmail.com",
+    "phone_num": "94451171",
+    "member_type": 1,
+    "study_lvl": "cpi1",
+    "skills": "Dev-pianist-writing"
+  },
+  {
+    "lastname": "ata allah",
+    "firstname": "ammar",
+    "email": "ammarata21@gmail.com",
+    "phone_num": "21301355",
+    "member_type": 2,
+    "study_lvl": "cpi1",
+    "skills": "."
+  },
+  {
+    "lastname": "Nabil",
+    "firstname": "Lajili",
+    "email": "nabillajili17@gmail.com",
+    "phone_num": "24742098",
+    "member_type": 1,
+    "study_lvl": "l1info",
+    "skills": "Autre"
+  },
+  {
+    "lastname": "kaouther",
+    "firstname": "ammouri",
+    "email": "ammourikaouther210@gmail.com",
+    "phone_num": "22066492",
+    "member_type": 2,
+    "study_lvl": "l2mim",
+    "skills": "."
+  },
+  {
+    "lastname": "Yassmine",
+    "firstname": "Abeid",
+    "email": "yassmineabeid789@gmail.c",
+    "phone_num": "52351989",
+    "member_type": 1,
+    "study_lvl": "l1info",
+    "skills": "Programmation"
+  },
+  {
+    "lastname": "Dchicha",
+    "firstname": "Abdessatar",
+    "email": "abdessatarff26@gmail.com",
+    "phone_num": "93527171",
+    "member_type": 1,
+    "study_lvl": "l3tic",
+    "skills": "***"
+  },
+  {
+    "lastname": "balsam",
+    "firstname": "khedri",
+    "email": "kkbalsam@gmail.com",
+    "phone_num": "23628677",
+    "member_type": 2,
+    "study_lvl": "cpi2",
+    "skills": "team works + communication"
+  },
+  {
+    "lastname": "Raslen",
+    "firstname": "Gzam",
+    "email": "7raslen@gmail.com",
+    "phone_num": "21103931",
+    "member_type": 2,
+    "study_lvl": "l1info",
+    "skills": "Bac info"
+  },
+  {
+    "lastname": "Mestaoui",
+    "firstname": "Oussama",
+    "email": "mestaoui.oussama69@gmail.com",
+    "phone_num": "51588120",
+    "member_type": 1,
+    "study_lvl": "l1info",
+    "skills": "graphique designer and web devolopper"
+  },
+  {
+    "lastname": "fares",
+    "firstname": "bouchoucha",
+    "email": "faresbouch599@gmail.com",
+    "phone_num": "20114292",
+    "member_type": 1,
+    "study_lvl": "l2info",
+    "skills": "Robotique"
+  },
+  {
+    "lastname": "siwar",
+    "firstname": "kassabi",
+    "email": "kassabisiwar17@gmail.com",
+    "phone_num": "55961310",
+    "member_type": 2,
+    "study_lvl": "l1info",
+    "skills": "****"
+  },
+  {
+    "lastname": "ilyes",
+    "firstname": "khessiba",
+    "email": "khessibailyes33@gmail.com",
+    "phone_num": "23742567",
+    "member_type": 2,
+    "study_lvl": "l2se",
+    "skills": "robotique"
+  },
+  {
+    "lastname": "skhiri",
+    "firstname": "eya",
+    "email": "eyaskhiri14@gmail.com",
+    "phone_num": "56424958",
+    "member_type": 1,
+    "study_lvl": "cpi1",
+    "skills": "."
+  },
+  {
+    "lastname": "Maram",
+    "firstname": "Mejri",
+    "email": "salhimaram359@gmail.com",
+    "phone_num": "29381556",
+    "member_type": 1,
+    "study_lvl": "l1info",
+    "skills": "Singing"
+  },
+  {
+    "lastname": "Ezzar",
+    "firstname": "Abedelhamid",
+    "email": "abedelhamidzar@gmail.com",
+    "phone_num": "46292949",
+    "member_type": 1,
+    "study_lvl": "l1tic",
+    "skills": "."
+  },
+  {
+    "lastname": "Mohamed Amine",
+    "firstname": "Baccar",
+    "email": "mohamedbaccar727@gmail.com",
+    "phone_num": "95781238",
+    "member_type": 1,
+    "study_lvl": "cpi1",
+    "skills": "game developemenyt , coding , fullstack , paint , sound editor"
+  },
+  {
+    "lastname": "bouminjel",
+    "firstname": "mouhamed alaa",
+    "email": "alaabouminjel@gamil.com",
+    "phone_num": "56120933",
+    "member_type": 2,
+    "study_lvl": "l2info",
+    "skills": "pygame coding"
+  },
+  {
+    "lastname": "Youneb",
+    "firstname": "Aroussia",
+    "email": "aroussiayouneb14@gmail.com",
+    "phone_num": "53138807",
+    "member_type": 2,
+    "study_lvl": "ing1el",
+    "skills": "."
+  },
+  {
+    "lastname": "Alaa ",
+    "firstname": "Otay",
+    "email": "alaaotay8@gmail.com",
+    "phone_num": "54056747",
+    "member_type": 1,
+    "study_lvl": "ing2info",
+    "skills": "web dev"
+  },
+  {
+    "lastname": "mouhib ",
+    "firstname": "hermi",
+    "email": "hermi.mouhib1@gmail.com",
+    "phone_num": "50895250",
+    "member_type": 1,
+    "study_lvl": "ing2info",
+    "skills": "full stuck developper , communication"
+  },
+  {
+    "lastname": "MOLKA",
+    "firstname": "JENDOUBI",
+    "email": "molkajandoubi365@gmail.com",
+    "phone_num": "98988520",
+    "member_type": 2,
+    "study_lvl": "l1info",
+    "skills": "***"
+  },
+  {
+    "lastname": "Aymen",
+    "firstname": "Bousselmi",
+    "email": "abousselmi07@gmail.com",
+    "phone_num": "58709728",
+    "member_type": 1,
+    "study_lvl": "l2tic",
+    "skills": "Communiqation/dev"
+  },
+  {
+    "lastname": "Omar",
+    "firstname": "Mabrouk ",
+    "email": "mabroukomar@gmail.com",
+    "phone_num": "50667910",
+    "member_type": 1,
+    "study_lvl": "l1eea",
+    "skills": "Génie électrique"
+  },
+  {
+    "lastname": "khalil",
+    "firstname": "gharrad",
+    "email": "khalilgamer26@gmail.com",
+    "phone_num": "92451485",
+    "member_type": 2,
+    "study_lvl": "l1tic",
+    "skills": "gaming"
+  },
+  {
+    "lastname": "Nour",
+    "firstname": "Maaloul",
+    "email": "maaloul195@gmail.com",
+    "phone_num": "54261072",
+    "member_type": 2,
+    "study_lvl": "l1tic",
+    "skills": "software develpment"
+  },
+  {
+    "lastname": "Ahmed",
+    "firstname": "Hamed",
+    "email": "ahmedhamed6122001@gmail.com",
+    "phone_num": "94570017",
+    "member_type": 1,
+    "study_lvl": "ing2info",
+    "skills": "angular / react"
+  },
+  {
+    "lastname": "Mohamed Adem",
+    "firstname": "Etteyeb",
+    "email": "ademmetteyeb@gmail.com",
+    "phone_num": "28213284",
+    "member_type": 2,
+    "study_lvl": "l1info",
+    "skills": "python-c-java-html-css-php"
+  },
+  {
+    "lastname": "Samar",
+    "firstname": "Borjini",
+    "email": "samarborjini5@gmail.com",
+    "phone_num": "50255981",
+    "member_type": 2,
+    "study_lvl": "l1eea",
+    "skills": "Painting"
+  },
+  {
+    "lastname": "gader",
+    "firstname": "oussama",
+    "email": "oussamagader2023@gmail.com",
+    "phone_num": "237153364",
+    "member_type": 2,
+    "study_lvl": "l3info",
+    "skills": "web"
+  },
+  {
+    "lastname": "yasmine",
+    "firstname": "mtimet",
+    "email": "yasminemtimet2@gmail.com",
+    "phone_num": "23888416",
+    "member_type": 1,
+    "study_lvl": "cpi2",
+    "skills": "programming"
+  },
+  {
+    "lastname": "Rayen",
+    "firstname": "Mtar",
+    "email": "rayanemtar2@gmail.com",
+    "phone_num": "26542961",
+    "member_type": 2,
+    "study_lvl": "l1info",
+    "skills": "Cooding"
+  },
+  {
+    "lastname": "zeineb",
+    "firstname": "sbai",
+    "email": "zeinebsbai123@gmail.com",
+    "phone_num": "29261892",
+    "member_type": 2,
+    "study_lvl": "l1info",
+    "skills": "enjoy learning"
+  },
+  {
+    "lastname": "ghada",
+    "firstname": "ghorghar",
+    "email": "ghorgharghada066@gmail.com",
+    "phone_num": "46998500",
+    "member_type": 2,
+    "study_lvl": "l1eea",
+    "skills": "sport"
+  },
+  {
+    "lastname": "aya",
+    "firstname": "boujmil",
+    "email": "boujmileya23@gmail.com",
+    "phone_num": "21994561",
+    "member_type": 2,
+    "study_lvl": "ing1el",
+    "skills": "robotique"
+  },
+  {
+    "lastname": "Hiba allah ",
+    "firstname": "Haddad",
+    "email": "hibahaddad71@gmail.com",
+    "phone_num": "55378247",
+    "member_type": 2,
+    "study_lvl": "l3tic",
+    "skills": "Communication , hard skills"
+  },
+  {
+    "lastname": "Jrad",
+    "firstname": "Nour",
+    "email": "nourelhoudajradd@gmail.com",
+    "phone_num": "55245222",
+    "member_type": 1,
+    "study_lvl": "l1eea",
+    "skills": "Robotique"
+  },
+  {
+    "lastname": "Lhabib ",
+    "firstname": "Mohamed yessine",
+    "email": "yassinemed341@gmail.com",
+    "phone_num": "23212739",
+    "member_type": 2,
+    "study_lvl": "l1info",
+    "skills": "html/css/js/php/mysQl"
+  },
+  {
+    "lastname": "aicha",
+    "firstname": "denden",
+    "email": "dendenaicha2006@gmail.com",
+    "phone_num": "54572926",
+    "member_type": 2,
+    "study_lvl": "l1tic",
+    "skills": "****"
+  },
+  {
+    "lastname": "Yassine ",
+    "firstname": "Cherni",
+    "email": "cherniyassine395@gmail.com",
+    "phone_num": "25843687",
+    "member_type": 2,
+    "study_lvl": "ing1el",
+    "skills": "Robotics & Ai"
+  },
+  {
+    "lastname": "nadine",
+    "firstname": "mighri",
+    "email": "mighrinadine8@gmail.com",
+    "phone_num": "99038930",
+    "member_type": 2,
+    "study_lvl": "cpi1",
+    "skills": "reading"
+  },
+  {
+    "lastname": "yassine",
+    "firstname": "haddar",
+    "email": "yassineusa3@gmail.com",
+    "phone_num": "28106711",
+    "member_type": 2,
+    "study_lvl": "cpi1",
+    "skills": "****"
+  },
+  {
+    "lastname": "Wafa",
+    "firstname": "Hassine",
+    "email": "wafahassine0@gmail.com",
+    "phone_num": "93230352",
+    "member_type": 2,
+    "study_lvl": "l1info",
+    "skills": "Bases html and css"
+  },
+  {
+    "lastname": "iyed",
+    "firstname": "maatallah",
+    "email": "maatallahiyed@gmail.com",
+    "phone_num": "22303947",
+    "member_type": 2,
+    "study_lvl": "l1eea",
+    "skills": "robotique"
+  },
+  {
+    "lastname": "salma ",
+    "firstname": "khayat",
+    "email": "khayatsalma63@gmail.com",
+    "phone_num": "51032759",
+    "member_type": 2,
+    "study_lvl": "l2se",
+    "skills": "sociable"
+  },
+  {
+    "lastname": "Yosr",
+    "firstname": "Chatti",
+    "email": "yosserchatti807@gmail.com",
+    "phone_num": "95693794",
+    "member_type": 2,
+    "study_lvl": "l1eea",
+    "skills": "🌸"
+  },
+  {
+    "lastname": "mohamed aziz",
+    "firstname": "abidi",
+    "email": "medazizabidi720@gmail.com",
+    "phone_num": "29150558",
+    "member_type": 1,
+    "study_lvl": "l1info",
+    "skills": "**"
+  },
+  {
+    "lastname": "Mohamed aziz",
+    "firstname": "Mejbri",
+    "email": "guyunkown185@gmail.com",
+    "phone_num": "23960323",
+    "member_type": 2,
+    "study_lvl": "cpi2",
+    "skills": "Progrmaming"
+  },
+  {
+    "lastname": "Seif",
+    "firstname": "Ghazouani",
+    "email": "seifghazouani19@gmail.com",
+    "phone_num": "24653977",
+    "member_type": 2,
+    "study_lvl": "l1tic",
+    "skills": "Talented"
+  },
+  {
+    "lastname": "Tessnim",
+    "firstname": "Sellami",
+    "email": "tesnimsellemi779@gmail.com",
+    "phone_num": "53530766",
+    "member_type": 2,
+    "study_lvl": "ing1info",
+    "skills": "écriture et dessin"
+  },
+  {
+    "lastname": "Oussama",
+    "firstname": "Bouguila",
+    "email": "oussamabouguila12@gmail.com",
+    "phone_num": "29539509",
+    "member_type": 1,
+    "study_lvl": "ing1el",
+    "skills": "Arduino,langageC"
+  },
+  {
+    "lastname": "Mohamed",
+    "firstname": "Khalifa",
+    "email": "medkhalifa015@gmail.com",
+    "phone_num": "55522875",
+    "member_type": 2,
+    "study_lvl": "cpi1",
+    "skills": "Coding gaming comunication skills"
+  },
+  {
+    "lastname": "Elghali",
+    "firstname": "Mouhamed el hedi",
+    "email": "elghalimedhedi7@gmail.com",
+    "phone_num": "53531572",
+    "member_type": 2,
+    "study_lvl": "l2mim",
+    "skills": "."
+  },
+  {
+    "lastname": "molka",
+    "firstname": "medimagh",
+    "email": "molkamedimagh6@gmail.com",
+    "phone_num": "97071876",
+    "member_type": 2,
+    "study_lvl": "l1eea",
+    "skills": "."
+  },
+  {
+    "lastname": "selmene",
+    "firstname": "haddad",
+    "email": "selmenhaddad2005@gmail.com",
+    "phone_num": "92078885",
+    "member_type": 2,
+    "study_lvl": "cpi1",
+    "skills": "a lot"
+  },
+  {
+    "lastname": "Abbassi",
+    "firstname": "Mohamed kassem",
+    "email": "kassemabbassi5@gmail.com",
+    "phone_num": "20259607",
+    "member_type": 2,
+    "study_lvl": "ing1info",
+    "skills": "Devolepping desktop applications and a little bit of problem solving"
+  },
+  {
+    "lastname": "Nadine",
+    "firstname": "Mlayeh",
+    "email": "nadine.mlayah@gmail.com",
+    "phone_num": "96424436",
+    "member_type": 1,
+    "study_lvl": "ing2info",
+    "skills": "Web developement  Front end"
+  },
+  {
+    "lastname": "Nour",
+    "firstname": "Kamel",
+    "email": "nourkaml2005@gmail.com",
+    "phone_num": "97908412",
+    "member_type": 2,
+    "study_lvl": "l1eea",
+    "skills": "Programmation \nÉlectronique"
+  },
+  {
+    "lastname": "Fatma",
+    "firstname": "Bakir",
+    "email": "fbakir816@gmail.com",
+    "phone_num": "51351530",
+    "member_type": 2,
+    "study_lvl": "l1tic",
+    "skills": "."
+  },
+  {
+    "lastname": "yosra",
+    "firstname": "terchella",
+    "email": "yosraterchella78@gmail.com",
+    "phone_num": "56208582",
+    "member_type": 2,
+    "study_lvl": "ing1el",
+    "skills": "not"
+  },
+  {
+    "lastname": "rihem",
+    "firstname": "eloued",
+    "email": "rihemeloued2004@gmail.com",
+    "phone_num": "99695067",
+    "member_type": 2,
+    "study_lvl": "l2se",
+    "skills": "sociable"
+  },
+  {
+    "lastname": "Taki Eddine",
+    "firstname": "Hmaid",
+    "email": "takiedinne1234@gmail.com",
+    "phone_num": "52530198",
+    "member_type": 2,
+    "study_lvl": "l1info",
+    "skills": "problem solving"
+  },
+  {
+    "lastname": "Nadine ",
+    "firstname": "Labidi",
+    "email": "labidinadine32@gmail.com",
+    "phone_num": "50227878",
+    "member_type": 1,
+    "study_lvl": "l1info",
+    "skills": "."
+  },
+  {
+    "lastname": "sonia",
+    "firstname": "bouazizi",
+    "email": "soniabouazizi297@gmail.com",
+    "phone_num": "52629335",
+    "member_type": 1,
+    "study_lvl": "ing2el",
+    "skills": "communiaction"
+  },
+  {
+    "lastname": "motez ",
+    "firstname": "ben aicha",
+    "email": "motezbrnaicha900@gmail.com",
+    "phone_num": "51108037",
+    "member_type": 2,
+    "study_lvl": "l1eea",
+    "skills": "robotique"
+  },
+  {
+    "lastname": "Nesrine",
+    "firstname": "Zouari",
+    "email": "zouarinesrine@12gmail.com",
+    "phone_num": "93945041",
+    "member_type": 1,
+    "study_lvl": "cpi1",
+    "skills": "Cooking ,social media"
+  },
+  {
+    "lastname": "Nourhen",
+    "firstname": "Hajlewi",
+    "email": "nourhenhajlewi06@gmail.com",
+    "phone_num": "52610795",
+    "member_type": 2,
+    "study_lvl": "l1tic",
+    "skills": "*"
+  },
+  {
+    "lastname": "Mohamed aziz",
+    "firstname": "Kadei",
+    "email": "azouzzkadrii@gmail.com",
+    "phone_num": "52258269",
+    "member_type": 1,
+    "study_lvl": "l1eea",
+    "skills": "je suis capable de fabriquer un robot"
+  },
+  {
+    "lastname": "safwen ",
+    "firstname": "akrimi",
+    "email": "safouaneakrimi@gmail.com",
+    "phone_num": "99752694",
+    "member_type": 1,
+    "study_lvl": "ing2info",
+    "skills": "ml ai dl problem solvi,ng"
+  },
+  {
+    "lastname": "Yassine",
+    "firstname": "Saidane",
+    "email": "yassinesaidane003@gmail.com",
+    "phone_num": "54537365",
+    "member_type": 1,
+    "study_lvl": "ing3info",
+    "skills": "React, Next, Nest, Node,, AWS, React Native, Langchain"
+  },
+  {
+    "lastname": "rayen",
+    "firstname": "braiek",
+    "email": "braiekrayen5@gmail.com",
+    "phone_num": "29856831",
+    "member_type": 2,
+    "study_lvl": "ing1info",
+    "skills": "cp"
+  },
+  {
+    "lastname": "ranim",
+    "firstname": "boughanmi",
+    "email": "boughanmi225.ranim@gmail.com",
+    "phone_num": "51752244",
+    "member_type": 1,
+    "study_lvl": "l1info",
+    "skills": "sociable"
+  },
+  {
+    "lastname": "Nader",
+    "firstname": "Ben Hadj messaoud",
+    "email": "bhmnader@gmail.com",
+    "phone_num": "93178356",
+    "member_type": 2,
+    "study_lvl": "l1info",
+    "skills": ".."
+  },
+  {
+    "lastname": "ranim ",
+    "firstname": "ben amor",
+    "email": "ranimbenamor148@gmail.com",
+    "phone_num": "52344643",
+    "member_type": 1,
+    "study_lvl": "l1tic",
+    "skills": "."
+  },
+  {
+    "lastname": "tasnim",
+    "firstname": "lafi",
+    "email": "tasnimlafi89@gmail.com",
+    "phone_num": "28048944",
+    "member_type": 2,
+    "study_lvl": "cpi2",
+    "skills": "developement"
+  },
+  {
+    "lastname": "hamlaoui",
+    "firstname": "fathi",
+    "email": "jlassifathi1234@gmail.com",
+    "phone_num": "93051012",
+    "member_type": 1,
+    "study_lvl": "cpi1",
+    "skills": "."
+  },
+  {
+    "lastname": "ali",
+    "firstname": "arfaoui",
+    "email": "aliarfaoui0194@gmail.com",
+    "phone_num": "54707893",
+    "member_type": 2,
+    "study_lvl": "cpi2",
+    "skills": "dev"
+  },
+  {
+    "lastname": "rihem",
+    "firstname": "khmila",
+    "email": "rihem.khmila47@gmail.com",
+    "phone_num": "95020229",
+    "member_type": 2,
+    "study_lvl": "l1info",
+    "skills": "fast learner"
+  },
+  {
+    "lastname": "Yomna",
+    "firstname": "Hamouda",
+    "email": "yomnahamouda29@gmail.com",
+    "phone_num": "29478598",
+    "member_type": 2,
+    "study_lvl": "l1tic",
+    "skills": "Theatre,natation,communication skills,gym"
+  },
+  {
+    "lastname": "mouheb",
+    "firstname": "hadj ahmed ",
+    "email": "hadjahmedmouheb@gmail.com",
+    "phone_num": "53024670",
+    "member_type": 2,
+    "study_lvl": "l1eea",
+    "skills": "."
+  },
+  {
+    "lastname": "nour el imen",
+    "firstname": "aissa",
+    "email": "nourimen367@gmail.com",
+    "phone_num": "92919116",
+    "member_type": 1,
+    "study_lvl": "l1info",
+    "skills": "..."
+  },
+  {
+    "lastname": "Firas",
+    "firstname": "Hamdi",
+    "email": "hamdifiras3000@gmail.com",
+    "phone_num": "99610079",
+    "member_type": 2,
+    "study_lvl": "l1info",
+    "skills": "social skills: communicating, make negociations/creativity/solving problems"
+  },
+  {
+    "lastname": "aydi",
+    "firstname": "mariem",
+    "email": "aydimariem96@gmail.com",
+    "phone_num": "50433702",
+    "member_type": 2,
+    "study_lvl": "cpi1",
+    "skills": "."
+  },
+  {
+    "lastname": "hamzawi",
+    "firstname": "malak",
+    "email": "hamzawimalak5@gmail.com",
+    "phone_num": "93549308",
+    "member_type": 1,
+    "study_lvl": "l1info",
+    "skills": "developpment"
+  },
+  {
+    "lastname": "ben mehrez",
+    "firstname": "aya",
+    "email": "ayabenmehrez550@gmail.com",
+    "phone_num": "56085316",
+    "member_type": 2,
+    "study_lvl": "cpi1",
+    "skills": "reading"
+  },
+  {
+    "lastname": "Nada",
+    "firstname": "Dhaw",
+    "email": "nadadhaw4@gmail.com",
+    "phone_num": "54206379",
+    "member_type": 2,
+    "study_lvl": "l1tic",
+    "skills": "🌸"
+  },
+  {
+    "lastname": "Jihed",
+    "firstname": "Bouwazra",
+    "email": "jihedbwz05@gmail.cop",
+    "phone_num": "56924859",
+    "member_type": 1,
+    "study_lvl": "l1eea",
+    "skills": "Alot"
+  },
+  {
+    "lastname": "Ella",
+    "firstname": "El Hadj Rhouma",
+    "email": "hajrhoumaella@gmail.com",
+    "phone_num": "99995270",
+    "member_type": 2,
+    "study_lvl": "l1tic",
+    "skills": "Montage vidéo"
+  },
+  {
+    "lastname": "ben amor",
+    "firstname": "yosri",
+    "email": "yosribenamor2001@gmail.com",
+    "phone_num": "55561859",
+    "member_type": 2,
+    "study_lvl": "l1eea",
+    "skills": "gfafic design"
+  },
+  {
+    "lastname": "Mohammed Yahya",
+    "firstname": "Jarray",
+    "email": "jarrayyahya6@gmail.com",
+    "phone_num": "29744806",
+    "member_type": 2,
+    "study_lvl": "cpi1",
+    "skills": "****"
+  },
+  {
+    "lastname": "Maryem",
+    "firstname": "Chakroun",
+    "email": "chakrounmeryem23@gmail.com",
+    "phone_num": "55132130",
+    "member_type": 2,
+    "study_lvl": "ing2info",
+    "skills": "web dev ML"
+  },
+  {
+    "lastname": "Eya",
+    "firstname": "Bziouch",
+    "email": "ebziouch@gmail.com",
+    "phone_num": "27001447",
+    "member_type": 1,
+    "study_lvl": "cpi2",
+    "skills": "Autres"
+  },
+  {
+    "lastname": "achref",
+    "firstname": "bouguila",
+    "email": "achrefbouguila4@gmail.com",
+    "phone_num": "29585119",
+    "member_type": 1,
+    "study_lvl": "l3tic",
+    "skills": "electronique"
+  },
+  {
+    "lastname": "farah",
+    "firstname": "naguez",
+    "email": "farahnaguez2005@gamil.com",
+    "phone_num": "52330616",
+    "member_type": 2,
+    "study_lvl": "l1eea",
+    "skills": "#"
+  },
+  {
+    "lastname": "zini",
+    "firstname": "nadhem",
+    "email": "zininadhem159@gmail.com",
+    "phone_num": "93384231",
+    "member_type": 1,
+    "study_lvl": "ing1info",
+    "skills": "html css react typescript php laravel"
+  },
+  {
+    "lastname": "aziz",
+    "firstname": "kraiem",
+    "email": "azizkraiem898@gmail.com",
+    "phone_num": "21240034",
+    "member_type": 1,
+    "study_lvl": "l1tic",
+    "skills": "programmation"
+  },
+  {
+    "lastname": "Razy",
+    "firstname": "Mesboub",
+    "email": "mesboubrazi@gmail.com",
+    "phone_num": "53139702",
+    "member_type": 1,
+    "study_lvl": "l3tic",
+    "skills": "Tou"
+  },
+  {
+    "lastname": "Oussema",
+    "firstname": "Sahli",
+    "email": "oussamasahli06@gmail.com",
+    "phone_num": "52858572",
+    "member_type": 1,
+    "study_lvl": "cpi2",
+    "skills": "Manaaref naamel chy\nNaaref ken chwaya design\nAma raw net3alem fisa3"
+  },
+  {
+    "lastname": "safia",
+    "firstname": "yahyaoui",
+    "email": "safsefsafsef3@gmail.com",
+    "phone_num": "22358008",
+    "member_type": 1,
+    "study_lvl": "l1info",
+    "skills": "editing"
+  },
+  {
+    "lastname": "melek",
+    "firstname": "bahroun",
+    "email": "bhrmelek1@gmail.com",
+    "phone_num": "5582.943",
+    "member_type": 2,
+    "study_lvl": "l1info",
+    "skills": "developpment"
+  },
+  {
+    "lastname": "Ahmed",
+    "firstname": "Metaoua",
+    "email": "ahmedmtawahg@gmail.com",
+    "phone_num": "28587388",
+    "member_type": 1,
+    "study_lvl": "ing1info",
+    "skills": "Ing info"
+  },
+  {
+    "lastname": "Azer",
+    "firstname": "Debbabi",
+    "email": "azerdebbabi0@gmail.com",
+    "phone_num": "54283803",
+    "member_type": 1,
+    "study_lvl": "l1info",
+    "skills": "Autre"
+  },
+  {
+    "lastname": "omar",
+    "firstname": "elghali",
+    "email": "elghaliomar239@gmail.com",
+    "phone_num": "55326782",
+    "member_type": 2,
+    "study_lvl": "l1eea",
+    "skills": "."
+  },
+  {
+    "lastname": "Mouayed",
+    "firstname": "Najjar",
+    "email": "najjarmouayed048@gmail.com",
+    "phone_num": "90549665",
+    "member_type": 2,
+    "study_lvl": "cpi1",
+    "skills": "Coding communication skills"
+  },
+  {
+    "lastname": "mohamed hedi",
+    "firstname": "trimech",
+    "email": "polyenergie3@gmail.com",
+    "phone_num": "53076161",
+    "member_type": 2,
+    "study_lvl": "l1eea",
+    "skills": "."
+  },
+  {
+    "lastname": "Mohamed Amine",
+    "firstname": "Bouchoucha",
+    "email": "mbouchoucha88@gmail.com",
+    "phone_num": "50433359",
+    "member_type": 1,
+    "study_lvl": "cpi2",
+    "skills": "Robotiqur"
+  },
+  {
+    "lastname": "Ayoub",
+    "firstname": "Thaalbi",
+    "email": "kaabiyobo@gmail.com",
+    "phone_num": "23687714",
+    "member_type": 1,
+    "study_lvl": "cpi1",
+    "skills": "Coding basketball"
+  },
+  {
+    "lastname": "Sarra",
+    "firstname": "Alimi",
+    "email": "sarraalimi23655@gmail.com",
+    "phone_num": "54828916",
+    "member_type": 2,
+    "study_lvl": "l1tic",
+    "skills": "C cc+ python"
+  },
+  {
+    "lastname": "ahmed",
+    "firstname": "elmahjouub",
+    "email": "ahmedmahjoub659@gmail.com",
+    "phone_num": "55665010",
+    "member_type": 2,
+    "study_lvl": "l3tic",
+    "skills": "Arduino"
+  },
+  {
+    "lastname": "Ladib",
+    "firstname": "Sarra",
+    "email": "sarraladib1@gmail.com",
+    "phone_num": "51117688",
+    "member_type": 1,
+    "study_lvl": "l1eea",
+    "skills": ".."
+  },
+  {
+    "lastname": "Roua",
+    "firstname": "Mili",
+    "email": "miliroua2004@gmail.com",
+    "phone_num": "42421006",
+    "member_type": 2,
+    "study_lvl": "l2se",
+    "skills": "Creativity"
+  },
+  {
+    "lastname": "houssem eddine ",
+    "firstname": "alouane",
+    "email": "halo44119@gmail.com",
+    "phone_num": "93941142",
+    "member_type": 2,
+    "study_lvl": "cpi1",
+    "skills": "team work"
+  },
+  {
+    "lastname": "rayene",
+    "firstname": "chiba",
+    "email": "chiamedrayene@gmail.com",
+    "phone_num": "99063694",
+    "member_type": 2,
+    "study_lvl": "l1tic",
+    "skills": "gaming"
+  },
+  {
+    "lastname": "Rania",
+    "firstname": "Oueslati",
+    "email": "oueslatirania74@gmail.com",
+    "phone_num": "21842700",
+    "member_type": 2,
+    "study_lvl": "ing1info",
+    "skills": "problem solving"
+  },
+  {
+    "lastname": "zinab",
+    "firstname": "touil",
+    "email": "touilzinab1@gmail.com",
+    "phone_num": "27042715",
+    "member_type": 2,
+    "study_lvl": "l1eea",
+    "skills": "language C"
+  },
+  {
+    "lastname": "Mootaz",
+    "firstname": "Chebbi ",
+    "email": "mootezchebbi42@gmail.com",
+    "phone_num": "24688588",
+    "member_type": 2,
+    "study_lvl": "ing1info",
+    "skills": "C/c++/java/django/music"
+  },
+  {
+    "lastname": "Adem",
+    "firstname": "TALBI ",
+    "email": "ademt2303@gmail.com",
+    "phone_num": "94385911",
+    "member_type": 2,
+    "study_lvl": "l1tic",
+    "skills": "photoshop"
+  },
+  {
+    "lastname": "Hiba",
+    "firstname": "Ayadi",
+    "email": "hibaa2oo518@gmail.com",
+    "phone_num": "23656537",
+    "member_type": 1,
+    "study_lvl": "l1info",
+    "skills": "Python"
+  },
+  {
+    "lastname": "Ayhem",
+    "firstname": "Nouiri",
+    "email": "ayhemnouiri@gmail.com",
+    "phone_num": "94380999",
+    "member_type": 2,
+    "study_lvl": "l1math",
+    "skills": "Math"
+  },
+  {
+    "lastname": "saafi",
+    "firstname": "yassine",
+    "email": "yassinesa3fi.232@gmail.com",
+    "phone_num": "26308952",
+    "member_type": 1,
+    "study_lvl": "cpi1",
+    "skills": "c et python"
+  },
+  {
+    "lastname": "Bader Eddin",
+    "firstname": "Bregui",
+    "email": "baderbregui44@gmail.com",
+    "phone_num": "40786699",
+    "member_type": 1,
+    "study_lvl": "l1info",
+    "skills": "Programmation"
+  },
+  {
+    "lastname": "souilem",
+    "firstname": "safa",
+    "email": "safarsouilem@gmail.com",
+    "phone_num": "20894612",
+    "member_type": 2,
+    "study_lvl": "cpi1",
+    "skills": "communication,public speaking.."
+  },
+  {
+    "lastname": "Yahia",
+    "firstname": "Achouri",
+    "email": "yachouri995@gmail.com",
+    "phone_num": "92457120",
+    "member_type": 1,
+    "study_lvl": "cpi2",
+    "skills": "problem solving and web dev"
+  },
+  {
+    "lastname": "firas",
+    "firstname": "lamouchi",
+    "email": "firaslamouchi@gmail.com",
+    "phone_num": "99889330",
+    "member_type": 1,
+    "study_lvl": "l1info",
+    "skills": "."
+  },
+  {
+    "lastname": "mohamed naim",
+    "firstname": "belgacem",
+    "email": "naimbelgacem26@gmail.com",
+    "phone_num": "25177215",
+    "member_type": 1,
+    "study_lvl": "l3tic",
+    "skills": "..."
+  },
+  {
+    "lastname": "mariem",
+    "firstname": "zaidi",
+    "email": "mariemzaidi777@gmail.com",
+    "phone_num": "27641166",
+    "member_type": 2,
+    "study_lvl": "l2se",
+    "skills": "sociable"
+  },
+  {
+    "lastname": "Gouider",
+    "firstname": "Emma allah",
+    "email": "emmaammouma9@icloud.com",
+    "phone_num": "95142327",
+    "member_type": 2,
+    "study_lvl": "cpi1",
+    "skills": "READING"
+  },
+  {
+    "lastname": "Mohamed Yahia",
+    "firstname": "Belaid",
+    "email": "yahyabelaid303@gmail.com",
+    "phone_num": "99867010",
+    "member_type": 2,
+    "study_lvl": "l2info",
+    "skills": "Java Script python sql Html CSS"
+  },
+  {
+    "lastname": "zanned",
+    "firstname": "Rayene",
+    "email": "rayene.zanned1@gmail.com",
+    "phone_num": "22423652",
+    "member_type": 2,
+    "study_lvl": "cpi1",
+    "skills": "a lot"
+  },
+  {
+    "lastname": "sirine",
+    "firstname": "idoudi",
+    "email": "sirineidoudi10@gmail.com",
+    "phone_num": "52999911",
+    "member_type": 2,
+    "study_lvl": "l2info",
+    "skills": "coding"
+  },
+  {
+    "lastname": "mohamed",
+    "firstname": "nafti",
+    "email": "naftimouhamed2802@gmail.com",
+    "phone_num": "53307842",
+    "member_type": 2,
+    "study_lvl": "ing1el",
+    "skills": "communication"
+  },
+  {
+    "lastname": "hassen",
+    "firstname": "haifa",
+    "email": "hssanhaifa64@gmail.com",
+    "phone_num": "54195066",
+    "member_type": 2,
+    "study_lvl": "l2se",
+    "skills": "."
+  },
+  {
+    "lastname": "amal",
+    "firstname": "ben yaakoub",
+    "email": "amoulabenyagoub2002@gmail.com",
+    "phone_num": "95311946",
+    "member_type": 1,
+    "study_lvl": "mr1gl",
+    "skills": "React-node-express-mongoDB"
+  },
+  {
+    "lastname": "Aymen",
+    "firstname": "Horchani",
+    "email": "sayanzzz2004@gmail.com",
+    "phone_num": "92001397",
+    "member_type": 2,
+    "study_lvl": "l2info",
+    "skills": "Problem solving god"
+  },
+  {
+    "lastname": "Erij",
+    "firstname": "Mahjoub",
+    "email": "arijmahjoub009@gmail.com",
+    "phone_num": "9927599",
+    "member_type": 2,
+    "study_lvl": "l1info",
+    "skills": "Coding"
+  },
+  {
+    "lastname": "khairi",
+    "firstname": "mlika",
+    "email": "versuskhairi@gmail.com",
+    "phone_num": "9509247",
+    "member_type": 2,
+    "study_lvl": "cpi1",
+    "skills": "dev,design,sociable"
+  },
+  {
+    "lastname": "douaa",
+    "firstname": "salah",
+    "email": "douaasalah286@gmail.com",
+    "phone_num": "93062728",
+    "member_type": 2,
+    "study_lvl": "l1info",
+    "skills": "learning"
+  },
+  {
+    "lastname": "nour",
+    "firstname": "thabet",
+    "email": "nourthabet565@gmail.com",
+    "phone_num": "51086800",
+    "member_type": 2,
+    "study_lvl": "cpi2",
+    "skills": "good talker and good in teem work"
+  },
+  {
+    "lastname": "Chahrazed",
+    "firstname": "Cherif ",
+    "email": "chahrazedcherif444@gmail.com",
+    "phone_num": "56925444",
+    "member_type": 1,
+    "study_lvl": "l1eea",
+    "skills": "Reading books"
+  },
+  {
+    "lastname": "Maissa",
+    "firstname": "Amara",
+    "email": "maissaamara361@gmail.com",
+    "phone_num": "24431502",
+    "member_type": 1,
+    "study_lvl": "l1eea",
+    "skills": "Sociable créative"
+  },
+  {
+    "lastname": "anis",
+    "firstname": "othman",
+    "email": "oanis052@gmail.com",
+    "phone_num": "28893766",
+    "member_type": 2,
+    "study_lvl": "l1info",
+    "skills": "development"
+  },
+  {
+    "lastname": "Koussay",
+    "firstname": "Boussida",
+    "email": "boussidakoussay@gmail.com",
+    "phone_num": "28617530",
+    "member_type": 2,
+    "study_lvl": "l1info",
+    "skills": "parties and i can drink 8 shots in 1 night"
+  },
+  {
+    "lastname": "loujayn",
+    "firstname": "bekir",
+    "email": "bakirloujayn@gmail.com",
+    "phone_num": "95950808",
+    "member_type": 2,
+    "study_lvl": "l1tic",
+    "skills": "***"
+  },
+  {
+    "lastname": "Raed",
+    "firstname": "Aroua",
+    "email": "aroua.raed3000@gmail.com",
+    "phone_num": "29738420",
+    "member_type": 1,
+    "study_lvl": "cpi2",
+    "skills": "Problem solving"
+  },
+  {
+    "lastname": "Mounib",
+    "firstname": "Khalladi",
+    "email": "mounibkhalladi11@gmail.com",
+    "phone_num": "25462157",
+    "member_type": 2,
+    "study_lvl": "cpi1",
+    "skills": "Développement"
+  },
+  {
+    "lastname": "mortadha",
+    "firstname": "azanni",
+    "email": "mortadha2485@gmail.com",
+    "phone_num": "99572112",
+    "member_type": 1,
+    "study_lvl": "l1info",
+    "skills": "developping carte arduino and programming skills and actif"
+  },
+  {
+    "lastname": "chadha ",
+    "firstname": "rached",
+    "email": "rachedchadha1@gmail.com",
+    "phone_num": "25362683",
+    "member_type": 1,
+    "study_lvl": "l2tic",
+    "skills": "tw neerf maakom"
+  },
+  {
+    "lastname": "AMIRI",
+    "firstname": "HAMZA",
+    "email": "MAROCHANNEL90@GMAIL.COM",
+    "phone_num": "52818934",
+    "member_type": 2,
+    "study_lvl": "l1info",
+    "skills": "."
+  },
+  {
+    "lastname": "esra",
+    "firstname": "ben amor",
+    "email": "bnressra@gmail.com",
+    "phone_num": "27930390",
+    "member_type": 1,
+    "study_lvl": "l1eea",
+    "skills": "robotique"
+  },
+  {
+    "lastname": "Louay",
+    "firstname": "Boukthir",
+    "email": "louay.boukthir@gmail.com",
+    "phone_num": "93187353",
+    "member_type": 2,
+    "study_lvl": "l1eea",
+    "skills": "Robotique/gaming"
+  },
+  {
+    "lastname": "asma",
+    "firstname": "jomaa",
+    "email": "asmajomaa07@gmail.com",
+    "phone_num": "93637365",
+    "member_type": 1,
+    "study_lvl": "l2info",
+    "skills": "communication"
+  },
+  {
+    "lastname": "Ahmed",
+    "firstname": "Mouine",
+    "email": "ahmedmouine12@gmail.com",
+    "phone_num": "20718746",
+    "member_type": 1,
+    "study_lvl": "l2tic",
+    "skills": "Développement"
+  },
+  {
+    "lastname": "Mohamed Raef",
+    "firstname": "Sai",
+    "email": "raefsai5@gmail.com",
+    "phone_num": "29861460",
+    "member_type": 2,
+    "study_lvl": "l1info",
+    "skills": "develpment"
+  },
+  {
+    "lastname": "Skander",
+    "firstname": "Debbabi",
+    "email": "debabiskander8@gmail.com",
+    "phone_num": "99853201",
+    "member_type": 2,
+    "study_lvl": "ing1info",
+    "skills": "Html CSS js react angular .."
+  },
+  {
+    "lastname": "Mohamed ChrifS",
+    "firstname": "Sboui",
+    "email": "mohamedchrifsboui57@gmail.com",
+    "phone_num": "99772311",
+    "member_type": 1,
+    "study_lvl": "cpi1",
+    "skills": "arduino\nassemblage"
+  },
+  {
+    "lastname": "ghada",
+    "firstname": "ben kahla",
+    "email": "benkahlaghada59@gmail.com",
+    "phone_num": "96408412",
+    "member_type": 1,
+    "study_lvl": "l1info",
+    "skills": "."
+  },
+  {
+    "lastname": "Elyatim",
+    "firstname": "Molka",
+    "email": "litimmolka310@gmail.com",
+    "phone_num": "97021858",
+    "member_type": 1,
+    "study_lvl": "l1info",
+    "skills": "Autre"
+  },
+  {
+    "lastname": "nour ",
+    "firstname": "mani",
+    "email": "maninour81@gmail.com",
+    "phone_num": "58541423",
+    "member_type": 2,
+    "study_lvl": "l1tic",
+    "skills": "*"
+  },
+  {
+    "lastname": "Aoun",
+    "firstname": "Siwar",
+    "email": "siwaroun54@gmail.com",
+    "phone_num": "56952195",
+    "member_type": 2,
+    "study_lvl": "l2se",
+    "skills": "Good englich \nGood team work \nCommunication skills"
+  },
+  {
+    "lastname": "Mohamed amine",
+    "firstname": "Talbi",
+    "email": "talbimohamedamine666@gmail.com",
+    "phone_num": "29968503",
+    "member_type": 1,
+    "study_lvl": "cpi2",
+    "skills": "Développement"
+  },
+  {
+    "lastname": "Youssef",
+    "firstname": "Bouafif",
+    "email": "youssefbouqfif296@gmail.co",
+    "phone_num": "95398042y",
+    "member_type": 2,
+    "study_lvl": "l1tic",
+    "skills": "3ndi fekra 3al arduino , n3rf pyhton , java script"
+  },
+  {
+    "lastname": "ichrak",
+    "firstname": "abessi",
+    "email": "ichrakabessi0@gmail.com",
+    "phone_num": "50531646",
+    "member_type": 2,
+    "study_lvl": "l1eea",
+    "skills": "no"
+  },
+  {
+    "lastname": "wadiaa",
+    "firstname": "klai",
+    "email": "gwadia8983@gmail.com",
+    "phone_num": "24112146",
+    "member_type": 2,
+    "study_lvl": "l1tic",
+    "skills": "frontend\\python backend:js"
+  },
+  {
+    "lastname": "Ons",
+    "firstname": "Hasni",
+    "email": "onshasni12@gmail.com",
+    "phone_num": "24986683",
+    "member_type": 1,
+    "study_lvl": "l1info",
+    "skills": "Communication"
+  },
+  {
+    "lastname": "Aziz",
+    "firstname": "Khlify",
+    "email": "azizkhlify@gmail.com",
+    "phone_num": "99928354",
+    "member_type": 1,
+    "study_lvl": "cpi2",
+    "skills": "Competitive programming"
+  },
+  {
+    "lastname": "lina",
+    "firstname": "krid",
+    "email": "linakrid89@gmail.com",
+    "phone_num": "24749789",
+    "member_type": 2,
+    "study_lvl": "l1eea",
+    "skills": "language c"
+  },
+  {
+    "lastname": "mohamed aziz",
+    "firstname": "boujnah",
+    "email": "azizboujnah145@gmail.com",
+    "phone_num": "28224511",
+    "member_type": 1,
+    "study_lvl": "l1info",
+    "skills": "."
+  },
+  {
+    "lastname": "Syrine",
+    "firstname": "Mejri",
+    "email": "sirinemejri902@gmail.com",
+    "phone_num": "94256794",
+    "member_type": 2,
+    "study_lvl": "cpi2",
+    "skills": "Python c java good in communication skills ,group management,leadership"
+  },
+  {
+    "lastname": "med raed",
+    "firstname": "hlel",
+    "email": "hlelraed72@gmail.com",
+    "phone_num": "94172510",
+    "member_type": 2,
+    "study_lvl": "l1info",
+    "skills": "a lot"
+  },
+  {
+    "lastname": "Mohamed Ali ",
+    "firstname": "Baloumi",
+    "email": "mahamedalyballoumi369@gmail.com",
+    "phone_num": "21319476",
+    "member_type": 2,
+    "study_lvl": "l1eea",
+    "skills": "Robotique/photoshop"
+  },
+  {
+    "lastname": "anas ",
+    "firstname": "boulabiar",
+    "email": "anasboulabiar56@gmail.com",
+    "phone_num": "20256195",
+    "member_type": 2,
+    "study_lvl": "l1info",
+    "skills": "informatique"
+  },
+  {
+    "lastname": "aziz",
+    "firstname": "doss",
+    "email": "azizdoss218@gmail.com",
+    "phone_num": "96807204",
+    "member_type": 2,
+    "study_lvl": "l1tic",
+    "skills": "basketball"
+  },
+  {
+    "lastname": "Med Aziz",
+    "firstname": "Aloui",
+    "email": "azizaloui987@gmail.com",
+    "phone_num": "93716134",
+    "member_type": 2,
+    "study_lvl": "l1tic",
+    "skills": "Front end web development (html - css -js react js) - problem solving (python - java script)"
+  },
+  {
+    "lastname": "boudokhane",
+    "firstname": "hajer",
+    "email": "hajerboudokhane82@gmail.com",
+    "phone_num": "52236343",
+    "member_type": 2,
+    "study_lvl": "l1tic",
+    "skills": "electrique"
+  },
+  {
+    "lastname": "Fekih",
+    "firstname": "Heithem",
+    "email": "heithem.fekih@gmail.com",
+    "phone_num": "24984192",
+    "member_type": 1,
+    "study_lvl": "l3tic",
+    "skills": "."
+  },
+  {
+    "lastname": "dbara",
+    "firstname": "marwa",
+    "email": "marwadbara0@gmail.com",
+    "phone_num": "26887877",
+    "member_type": 2,
+    "study_lvl": "l1info",
+    "skills": "sociable"
+  },
+  {
+    "lastname": "Safa",
+    "firstname": "Rokbani",
+    "email": "safarokbani@gmail.com",
+    "phone_num": "99506864",
+    "member_type": 2,
+    "study_lvl": "l1eea",
+    "skills": "Électronique et lunguage c"
+  },
+  {
+    "lastname": "mohamed aziz",
+    "firstname": "sbai",
+    "email": "sbaiaziz84@gmail.com",
+    "phone_num": "44618610",
+    "member_type": 1,
+    "study_lvl": "cpi1",
+    "skills": "informatique"
+  },
+  {
+    "lastname": "Alae",
+    "firstname": "Farjallah",
+    "email": "farjallahala37@gmail.com",
+    "phone_num": "96747248",
+    "member_type": 2,
+    "study_lvl": "l3tic",
+    "skills": "Logistique , dev"
+  },
+  {
+    "lastname": "Khalifa",
+    "firstname": "Boujnah",
+    "email": "kalifaboujnah36@gmail.com",
+    "phone_num": "48198876",
+    "member_type": 2,
+    "study_lvl": "mp1iii",
+    "skills": "Arduino python électronique"
+  },
+  {
+    "lastname": "sirine",
+    "firstname": "kaabia",
+    "email": "sirinekaabia108@gmail.com",
+    "phone_num": "94277766",
+    "member_type": 1,
+    "study_lvl": "l1info",
+    "skills": "***"
+  },
+  {
+    "lastname": "Ahmed amine",
+    "firstname": "Mahdhi",
+    "email": "ahmedmahdhi45@gmail.com",
+    "phone_num": "92766722",
+    "member_type": 1,
+    "study_lvl": "cpi1",
+    "skills": "Web dev"
+  },
+  {
+    "lastname": "Fadi",
+    "firstname": "Bellalah",
+    "email": "fadi.bellalah1008@gmail.com",
+    "phone_num": "28035247",
+    "member_type": 1,
+    "study_lvl": "l2info",
+    "skills": "A lot"
+  },
+  {
+    "lastname": "mohamed aziz ",
+    "firstname": "meddeb",
+    "email": "med3aziz69@gmail.com",
+    "phone_num": "96403413",
+    "member_type": 2,
+    "study_lvl": "l1info",
+    "skills": "cybersecurity intermediate"
+  },
+  {
+    "lastname": "Assia",
+    "firstname": "Boudokhane",
+    "email": "assiaboudokhane568@gmail.com",
+    "phone_num": "54481757",
+    "member_type": 2,
+    "study_lvl": "l3tic",
+    "skills": "Trvaill en group"
+  },
+  {
+    "lastname": "Eya",
+    "firstname": "Saoudi",
+    "email": "ayasaoudi706@gmail.com",
+    "phone_num": "20244211",
+    "member_type": 1,
+    "study_lvl": "l1info",
+    "skills": "Sociable"
+  },
+  {
+    "lastname": "saadaoui ",
+    "firstname": "mahdi",
+    "email": "mahdisaadaoui60@gmail.com",
+    "phone_num": "96234316",
+    "member_type": 1,
+    "study_lvl": "l1info",
+    "skills": "dev"
+  },
+  {
+    "lastname": "Youssr",
+    "firstname": "Chouaya",
+    "email": "cyoussr@gmail.com",
+    "phone_num": "29605697",
+    "member_type": 2,
+    "study_lvl": "l2info",
+    "skills": "Dev web(wordpress/html/css/js/react) data science(python) video editing"
+  },
+  {
+    "lastname": "Rayen",
+    "firstname": "Bouchrika",
+    "email": "trmp1919@gmail.com",
+    "phone_num": "90415739",
+    "member_type": 2,
+    "study_lvl": "l1info",
+    "skills": "Web Dev, Problem Solving"
+  },
+  {
+    "lastname": "Mohamed firas",
+    "firstname": "Tarchoun",
+    "email": "tarchounmedfiras@gmail.com",
+    "phone_num": "53887150",
+    "member_type": 1,
+    "study_lvl": "l2info",
+    "skills": "Fastapi sql"
+  },
+  {
+    "lastname": "chayma",
+    "firstname": "trimech",
+    "email": "chaymatrimech100@gmail.com",
+    "phone_num": "26070073",
+    "member_type": 1,
+    "study_lvl": "l1tic",
+    "skills": "*"
+  },
+  {
+    "lastname": "Wela",
+    "firstname": "Guilouchi",
+    "email": "walaguilouchi@gmail.com",
+    "phone_num": "55309575",
+    "member_type": 2,
+    "study_lvl": "l1eea",
+    "skills": "❤️"
+  },
+  {
+    "lastname": "rguez",
+    "firstname": "doua",
+    "email": "rguezdoua6@gmail.com",
+    "phone_num": "29220486",
+    "member_type": 2,
+    "study_lvl": "l2info",
+    "skills": "."
+  },
+  {
+    "lastname": "Salma",
+    "firstname": "karchoud",
+    "email": "salmakarchoudsk@gmail.com",
+    "phone_num": "50185491",
+    "member_type": 2,
+    "study_lvl": "ing1el",
+    "skills": "software embarquées"
+  },
+  {
+    "lastname": "Fatma",
+    "firstname": "Ben hfaiedh",
+    "email": "fatmabenhfaydh@gmail.con",
+    "phone_num": "93145018",
+    "member_type": 2,
+    "study_lvl": "l1tic",
+    "skills": "Theater , communication skills,"
+  },
+  {
+    "lastname": "rayen",
+    "firstname": "mandhour",
+    "email": "rounatoumi@gmail.com",
+    "phone_num": "26135575",
+    "member_type": 1,
+    "study_lvl": "l1eea",
+    "skills": "robotique , électrique , programmation"
+  },
+  {
+    "lastname": "hayder",
+    "firstname": "boukhris",
+    "email": "hayder.boukhris4444@gmail.com",
+    "phone_num": "29210498",
+    "member_type": 2,
+    "study_lvl": "l1eea",
+    "skills": "i am a good gamer and programmer"
+  },
+  {
+    "lastname": "Amani",
+    "firstname": "Rais",
+    "email": "amanirais2005@gmail.com",
+    "phone_num": "96946097",
+    "member_type": 1,
+    "study_lvl": "l1info",
+    "skills": "."
+  },
+  {
+    "lastname": "raed",
+    "firstname": "mabrouk",
+    "email": "raedmabrouk460@gmail.com",
+    "phone_num": "52823722",
+    "member_type": 2,
+    "study_lvl": "l1tic",
+    "skills": "*"
+  },
+  {
+    "lastname": "Maram",
+    "firstname": "Ben mahmoud",
+    "email": "marambenmahmoud5@gmail.com",
+    "phone_num": "26484720",
+    "member_type": 1,
+    "study_lvl": "l3info",
+    "skills": "Développement web"
+  },
+  {
+    "lastname": "manef",
+    "firstname": "yaakoubi",
+    "email": "manefyaakoubi42@gmail.com",
+    "phone_num": "96209111",
+    "member_type": 2,
+    "study_lvl": "cpi1",
+    "skills": "football player"
+  },
+  {
+    "lastname": "Mohamed Amine",
+    "firstname": "benismail",
+    "email": "hamma90393@gmail.com",
+    "phone_num": "90393541",
+    "member_type": 1,
+    "study_lvl": "ing1el",
+    "skills": "."
+  },
+  {
+    "lastname": "Amen",
+    "firstname": "Sahli",
+    "email": "amensahli381@gmail.com",
+    "phone_num": "95207667",
+    "member_type": 2,
+    "study_lvl": "l1info",
+    "skills": "Coding"
+  },
+  {
+    "lastname": "salma",
+    "firstname": "meddeb",
+    "email": "salmameddeb02@gmail.com",
+    "phone_num": "53776792",
+    "member_type": 2,
+    "study_lvl": "ing1el",
+    "skills": "peinture"
+  },
+  {
+    "lastname": "Syrine",
+    "firstname": "Ouerhani",
+    "email": "sirinesemia@gmail.com",
+    "phone_num": "58017270",
+    "member_type": 1,
+    "study_lvl": "cpi1",
+    "skills": "python"
+  },
+  {
+    "lastname": "islem",
+    "firstname": "hamouda",
+    "email": "islem3hmouda@gmail.com",
+    "phone_num": "28001296",
+    "member_type": 2,
+    "study_lvl": "cpi2",
+    "skills": "team work"
+  },
+  {
+    "lastname": "khalifa",
+    "firstname": "zellama",
+    "email": "khalifazellamaa@gmail.com",
+    "phone_num": "55483526",
+    "member_type": 2,
+    "study_lvl": "cpi1",
+    "skills": "info"
+  },
+  {
+    "lastname": "benamor",
+    "firstname": "bilel",
+    "email": "bilelbenamor2005@gmail.com",
+    "phone_num": "25543108",
+    "member_type": 1,
+    "study_lvl": "l1tic",
+    "skills": "web sites developping ,programming and coding"
+  },
+  {
+    "lastname": "ayoub",
+    "firstname": "nejm",
+    "email": "ayoubnejma42@gmail.com",
+    "phone_num": "99687412",
+    "member_type": 2,
+    "study_lvl": "l1info",
+    "skills": "."
+  },
+  {
+    "lastname": "omar",
+    "firstname": "ayedi",
+    "email": "omarayedi423@gmail.com",
+    "phone_num": "52217730",
+    "member_type": 1,
+    "study_lvl": "ing1info",
+    "skills": "jehfbjskf"
+  },
+  {
+    "lastname": "Mounib",
+    "firstname": "Nasr",
+    "email": "mounibnasr123@gmail.com",
+    "phone_num": "50239112",
+    "member_type": 1,
+    "study_lvl": "ing2info",
+    "skills": "leadership"
+  },
+  {
+    "lastname": "Oussama",
+    "firstname": "Chakroun",
+    "email": "chakroun.oussama003@gmail.com",
+    "phone_num": "25586522",
+    "member_type": 2,
+    "study_lvl": "ing1info",
+    "skills": "Html CSS js flash angular java"
+  },
+  {
+    "lastname": "Mohamed",
+    "firstname": "Hfayedh",
+    "email": "hfa.mo13@gmail.com",
+    "phone_num": "21758499",
+    "member_type": 1,
+    "study_lvl": "cpi1",
+    "skills": "Dev, communication , coding"
+  },
+  {
+    "lastname": "Mariem",
+    "firstname": "Rayechi",
+    "email": "mariemrayechi314@gmail.com",
+    "phone_num": "90268441",
+    "member_type": 2,
+    "study_lvl": "l1info",
+    "skills": "C,python ..."
+  },
+  {
+    "lastname": "Meriem",
+    "firstname": "Ben aicha",
+    "email": "benaichameriem693@gmail.com",
+    "phone_num": "29283796",
+    "member_type": 1,
+    "study_lvl": "l3info",
+    "skills": "Développement web"
+  },
+  {
+    "lastname": "mohamed ",
+    "firstname": "ben hlima",
+    "email": "mohamedbenhalima@gmail.com",
+    "phone_num": "53552517",
+    "member_type": 2,
+    "study_lvl": "l1eea",
+    "skills": "."
+  },
+  {
+    "lastname": "ben dhaou",
+    "firstname": "ibtihel",
+    "email": "ibtyheldh@gmail.com",
+    "phone_num": "21564475",
+    "member_type": 1,
+    "study_lvl": "l2tic",
+    "skills": ".."
+  },
+  {
+    "lastname": "Roua",
+    "firstname": "Fkih",
+    "email": "rouafkih02@gmail.com",
+    "phone_num": "22031046",
+    "member_type": 2,
+    "study_lvl": "l1tic",
+    "skills": "."
+  },
+  {
+    "lastname": "Souid ",
+    "firstname": "Ritej",
+    "email": "ritej.souid2017@gmail.com",
+    "phone_num": "99165776",
+    "member_type": 1,
+    "study_lvl": "l1tic",
+    "skills": "***"
+  },
+  {
+    "lastname": "Khmayess",
+    "firstname": "Ghannouchi",
+    "email": "khmayessghannouchi0@gmail.com",
+    "phone_num": "99330616",
+    "member_type": 2,
+    "study_lvl": "l2se",
+    "skills": "D"
+  },
+  {
+    "lastname": "Hedhili",
+    "firstname": "Nadine",
+    "email": "hedhilinadine2@gmail.col",
+    "phone_num": "26589603",
+    "member_type": 2,
+    "study_lvl": "l1info",
+    "skills": "Autre"
+  },
+  {
+    "lastname": "Mohamed Amine",
+    "firstname": "Hizem",
+    "email": "hizemmohamedamine@gmail.com",
+    "phone_num": "58422955",
+    "member_type": 1,
+    "study_lvl": "l1info",
+    "skills": "**"
+  },
+  {
+    "lastname": "Miniar",
+    "firstname": "Guizeni",
+    "email": "miniarguizeni@gmail.com",
+    "phone_num": "52533081",
+    "member_type": 1,
+    "study_lvl": "l1info",
+    "skills": "Speach"
+  },
+  {
+    "lastname": "Mariem",
+    "firstname": "Ben nasr ",
+    "email": "Mariembennasr090@gmail.com",
+    "phone_num": "99188326",
+    "member_type": 2,
+    "study_lvl": "l1info",
+    "skills": "Dancing"
+  },
+  {
+    "lastname": "chaabeni ",
+    "firstname": "Mouheb",
+    "email": "chaabeni.mouheb@ieee.org",
+    "phone_num": "24028315",
+    "member_type": 1,
+    "study_lvl": "l1tic",
+    "skills": "coding , problem solving, leadership"
+  },
+  {
+    "lastname": "Akrout",
+    "firstname": "Ahmed",
+    "email": "akroutahmed20@gmail.com",
+    "phone_num": "23447553",
+    "member_type": 1,
+    "study_lvl": "cpi1",
+    "skills": "Gaming,development,inventing"
+  },
+  {
+    "lastname": "siwar",
+    "firstname": "hamdi",
+    "email": "siwarh574@gmail.com",
+    "phone_num": "21014977",
+    "member_type": 1,
+    "study_lvl": "ing2el",
+    "skills": "communication"
+  },
+  {
+    "lastname": "senda",
+    "firstname": "ben ammar",
+    "email": "sendabenammar1@gmail.com",
+    "phone_num": "92555611",
+    "member_type": 2,
+    "study_lvl": "l2mim",
+    "skills": "sociable"
+  },
+  {
+    "lastname": "youssef",
+    "firstname": "benatti",
+    "email": "youssefbena874@gmail.com",
+    "phone_num": "51195007",
+    "member_type": 1,
+    "study_lvl": "ing2info",
+    "skills": "I speak arabic very well"
+  },
+  {
+    "lastname": "Eladel",
+    "firstname": "Nourane",
+    "email": "nouranee.elladel@gmail.com",
+    "phone_num": "53153785",
+    "member_type": 1,
+    "study_lvl": "l3tic",
+    "skills": ","
+  },
+  {
+    "lastname": "sayeb",
+    "firstname": "nour el woujoud",
+    "email": "sayeb.wj.nour@gmail.com",
+    "phone_num": "56998915",
+    "member_type": 2,
+    "study_lvl": "l3tic",
+    "skills": ".***"
+  },
+  {
+    "lastname": "mariem",
+    "firstname": "baccouche",
+    "email": "mariem.baccouche2022@gmail.com",
+    "phone_num": "29115583",
+    "member_type": 2,
+    "study_lvl": "l1info",
+    "skills": "."
+  },
+  {
+    "lastname": "Malek",
+    "firstname": "Kooli",
+    "email": "malekkooli11@gmail.com",
+    "phone_num": "26417960",
+    "member_type": 2,
+    "study_lvl": "l2se",
+    "skills": "sociable"
+  },
+  {
+    "lastname": "khalil ",
+    "firstname": "kahri",
+    "email": "kahrikhalil37@gmail.com",
+    "phone_num": "93110583",
+    "member_type": 2,
+    "study_lvl": "l2tic",
+    "skills": "probleme solving"
+  },
+  {
+    "lastname": "mohamed aziz",
+    "firstname": "chemek",
+    "email": "chemekmed02@gmail.com",
+    "phone_num": "29401879",
+    "member_type": 2,
+    "study_lvl": "l1eea",
+    "skills": "travail en groupe"
+  },
+  {
+    "lastname": "mohamed ali ",
+    "firstname": "amor",
+    "email": "amormohamedaliedu@gmail.com",
+    "phone_num": "98777488",
+    "member_type": 1,
+    "study_lvl": "l1tic",
+    "skills": "software dev"
+  },
+  {
+    "lastname": "fatma",
+    "firstname": "moussa",
+    "email": "fatmamoussa1698@gmail.com",
+    "phone_num": "29701414",
+    "member_type": 2,
+    "study_lvl": "cpi1",
+    "skills": "a lot"
+  },
+  {
+    "lastname": "Maraoui",
+    "firstname": "Ahmed",
+    "email": "maraouiahmed812@gmail.com",
+    "phone_num": "55053699",
+    "member_type": 2,
+    "study_lvl": "cpi1",
+    "skills": "Problem solving"
+  },
+  {
+    "lastname": "Doss",
+    "firstname": "Chames eddine",
+    "email": "chamesdoss16@gmail.com",
+    "phone_num": "50727301",
+    "member_type": 1,
+    "study_lvl": "l3tic",
+    "skills": "."
+  },
+  {
+    "lastname": "eya",
+    "firstname": "yahyaoui",
+    "email": "eyayahyaoui26@gmail.com",
+    "phone_num": "99657624",
+    "member_type": 2,
+    "study_lvl": "l1tic",
+    "skills": "art"
+  },
+  {
+    "lastname": "Mohamed Ali",
+    "firstname": "Ezzi",
+    "email": "mohamedaliezzi0@gmail.com",
+    "phone_num": "29548599",
+    "member_type": 1,
+    "study_lvl": "cpi1",
+    "skills": "Coding"
+  },
+  {
+    "lastname": "Malek",
+    "firstname": "Thabet",
+    "email": "mouradthabet78@gmail.com",
+    "phone_num": "53119034",
+    "member_type": 2,
+    "study_lvl": "l1info",
+    "skills": "Autre"
+  },
+  {
+    "lastname": "waad elhaq",
+    "firstname": "slama",
+    "email": "waadelhaqslamaprofessional@gmail.com",
+    "phone_num": "93189888",
+    "member_type": 2,
+    "study_lvl": "cpi1",
+    "skills": "graphic.design/video.editing/english.guru/gaming/robotics/diy"
+  },
+  {
+    "lastname": "Maram",
+    "firstname": "Farhat",
+    "email": "maramfarhat736@gmaul.com",
+    "phone_num": "21230037",
+    "member_type": 2,
+    "study_lvl": "l1info",
+    "skills": "C python"
+  },
+  {
+    "lastname": "mouhamed",
+    "firstname": "hajri",
+    "email": "hajjour1234@gmail.com",
+    "phone_num": "26427431",
+    "member_type": 2,
+    "study_lvl": "cpi1",
+    "skills": "hardworking + good at teamwork"
+  },
+  {
+    "lastname": "Ranim",
+    "firstname": "Mediouni",
+    "email": "ranimmediouni03@gmail.com",
+    "phone_num": "94484513",
+    "member_type": 1,
+    "study_lvl": "l1tic",
+    "skills": "Sociable montage video media"
+  },
+  {
+    "lastname": "mayssa",
+    "firstname": "khay",
+    "email": "mayssakhay23@gmail.com",
+    "phone_num": "95406221",
+    "member_type": 2,
+    "study_lvl": "l1eea",
+    "skills": "instumentation"
+  },
+  {
+    "lastname": "ghabi",
+    "firstname": "nour el houda",
+    "email": "ghabihouda3@gmail.com",
+    "phone_num": "55112660",
+    "member_type": 1,
+    "study_lvl": "ing1el",
+    "skills": "*"
+  },
+  {
+    "lastname": "guiben",
+    "firstname": "mohamed ali",
+    "email": "guibenmohamedali@gmail.com",
+    "phone_num": "55491820",
+    "member_type": 2,
+    "study_lvl": "l2info",
+    "skills": "."
+  },
+  {
+    "lastname": "bilel",
+    "firstname": "salhi",
+    "email": "bilel.salhi380@gmail.com",
+    "phone_num": "20985431",
+    "member_type": 2,
+    "study_lvl": "l1eea",
+    "skills": "*"
+  },
+  {
+    "lastname": "brary",
+    "firstname": "nour",
+    "email": "brarynour@gmail.com",
+    "phone_num": "55085603",
+    "member_type": 1,
+    "study_lvl": "ing1el",
+    "skills": "robotic,programmation"
+  },
+  {
+    "lastname": "ali",
+    "firstname": "laouiti ",
+    "email": "alilaouiti4@gmail.com",
+    "phone_num": "52151017",
+    "member_type": 1,
+    "study_lvl": "l1info",
+    "skills": "chess player"
+  },
+  {
+    "lastname": "farah",
+    "firstname": "gdaim",
+    "email": "farah.gdaim@gmail.com",
+    "phone_num": "53061703",
+    "member_type": 2,
+    "study_lvl": "l3info",
+    "skills": "developpement"
+  },
+  {
+    "lastname": "timoumi",
+    "firstname": "elyes",
+    "email": "elyestimoumi@gmail.com",
+    "phone_num": "96923212",
+    "member_type": 2,
+    "study_lvl": "l1tic",
+    "skills": "sociable"
+  },
+  {
+    "lastname": "elaa",
+    "firstname": "ben messaoud",
+    "email": "elaabenmessaoud@gmail.com",
+    "phone_num": "99553362",
+    "member_type": 1,
+    "study_lvl": "l1info",
+    "skills": "."
+  },
+  {
+    "lastname": "Mohamed Yassin",
+    "firstname": "Bennour",
+    "email": "bennour776@gmail.com",
+    "phone_num": "98650757",
+    "member_type": 1,
+    "study_lvl": "l2info",
+    "skills": "Problem solving"
+  },
+  {
+    "lastname": "Zeineb",
+    "firstname": "Khalfallah",
+    "email": "zeinebkhalfallah16@gmail.com",
+    "phone_num": "54316301",
+    "member_type": 1,
+    "study_lvl": "l1info",
+    "skills": "Autre"
+  },
+  {
+    "lastname": "eya",
+    "firstname": "khmaissa",
+    "email": "eyabaccouch123@icloud.com",
+    "phone_num": "53733808",
+    "member_type": 1,
+    "study_lvl": "l3tic",
+    "skills": "communication"
+  },
+  {
+    "lastname": "rayhane",
+    "firstname": "bounenni",
+    "email": "bounenirayhane@gmail.com",
+    "phone_num": "99814176",
+    "member_type": 2,
+    "study_lvl": "l1eea",
+    "skills": "..."
+  },
+  {
+    "lastname": "Nour",
+    "firstname": "Akrimi",
+    "email": "nrakrimi@gmail.com",
+    "phone_num": "2.857400",
+    "member_type": 2,
+    "study_lvl": "l1info",
+    "skills": "sociable"
+  },
+  {
+    "lastname": "chanaz",
+    "firstname": "jammoussi",
+    "email": "chanazjammoussi@outlook.com",
+    "phone_num": "50768032",
+    "member_type": 2,
+    "study_lvl": "cpi2",
+    "skills": "team work"
+  },
+  {
+    "lastname": "zoubeir",
+    "firstname": "boufrikha",
+    "email": "boufrikhaz@gmail.com",
+    "phone_num": "21415337",
+    "member_type": 2,
+    "study_lvl": "l1eea",
+    "skills": "sport"
+  },
+  {
+    "lastname": "semya",
+    "firstname": "naffety",
+    "email": "semyaneffety@gmail.com",
+    "phone_num": "50495623",
+    "member_type": 1,
+    "study_lvl": "cpi2",
+    "skills": "programming"
+  },
+  {
+    "lastname": "Mohamed",
+    "firstname": "Bouazra",
+    "email": "med.bwz.2005@gmail.com",
+    "phone_num": "2726897",
+    "member_type": 2,
+    "study_lvl": "l2se",
+    "skills": "Robotique \nCommunication skills"
+  },
+  {
+    "lastname": "Yesmyne",
+    "firstname": "Ben henia",
+    "email": "yesmynebenhniaa@gmail.com",
+    "phone_num": "21944705",
+    "member_type": 2,
+    "study_lvl": "l1tic",
+    "skills": "."
+  },
+  {
+    "lastname": "ameri",
+    "firstname": "majd",
+    "email": "amerimajd0@gmail.com",
+    "phone_num": "28459967",
+    "member_type": 1,
+    "study_lvl": "l2info",
+    "skills": "."
+  },
+  {
+    "lastname": "ismail",
+    "firstname": "tasnim",
+    "email": "ismail.tesnime1925@gmail.com",
+    "phone_num": "27057685",
+    "member_type": 2,
+    "study_lvl": "cpi2",
+    "skills": "problem solving skills /communication skills"
+  },
+  {
+    "lastname": "feriel",
+    "firstname": "moualhi",
+    "email": "feryelmoueelhi@gmail.com",
+    "phone_num": "26272161",
+    "member_type": 2,
+    "study_lvl": "l1info",
+    "skills": "."
+  },
+  {
+    "lastname": "houssem",
+    "firstname": "arfaoui",
+    "email": "houssemarfaoui63@gmail.com",
+    "phone_num": "98900028",
+    "member_type": 1,
+    "study_lvl": "l1info",
+    "skills": "football"
+  },
+  {
+    "lastname": "chahd",
+    "firstname": "amarnia",
+    "email": "chahdamarniaa@gmail.com",
+    "phone_num": "24013061",
+    "member_type": 2,
+    "study_lvl": "cpi1",
+    "skills": "..."
+  },
+  {
+    "lastname": "fedi",
+    "firstname": "boiuchoucha",
+    "email": "fadibouch123@gmail.com",
+    "phone_num": "23562598",
+    "member_type": 1,
+    "study_lvl": "l2info",
+    "skills": "Robotique"
+  },
+  {
+    "lastname": "rihem",
+    "firstname": "hamadi",
+    "email": "rihelhammedi2001@gmail.com",
+    "phone_num": "52067701",
+    "member_type": 2,
+    "study_lvl": "l2mim",
+    "skills": "sociable"
+  },
+  {
+    "lastname": "SARRA ",
+    "firstname": "BEN RAHMA",
+    "email": "benrahmasarra@gmail.com",
+    "phone_num": "92893495",
+    "member_type": 2,
+    "study_lvl": "l2se",
+    "skills": "sociable"
+  },
+  {
+    "lastname": "khalil",
+    "firstname": "ben hadj",
+    "email": "khalilbenhadj2005@gmail.com",
+    "phone_num": "94464734",
+    "member_type": 1,
+    "study_lvl": "l1tic",
+    "skills": "system troubleshooting"
+  },
+  {
+    "lastname": "lina",
+    "firstname": "guizani",
+    "email": "linaguizani50@gmail.com",
+    "phone_num": "92120615",
+    "member_type": 1,
+    "study_lvl": "l3info",
+    "skills": "math , physics , web"
+  },
+  {
+    "lastname": "Mouhammed houssem",
+    "firstname": "Awadi",
+    "email": "houssem.awadi2019@gmail.com",
+    "phone_num": "94301140",
+    "member_type": 1,
+    "study_lvl": "cpi2",
+    "skills": "."
+  },
+  {
+    "lastname": "Mohamed Rayen",
+    "firstname": "Mehrez",
+    "email": "rayenmehrez10@gmail.com",
+    "phone_num": "92210489",
+    "member_type": 2,
+    "study_lvl": "l1eea",
+    "skills": "robotique"
+  },
+  {
+    "lastname": "Abderrahmen",
+    "firstname": "zaabi",
+    "email": "abderrahmenzaabi@gmail.com",
+    "phone_num": " ",
+    "member_type": 1,
+    "study_lvl": "L2 info",
+    "skills": "some C and java/ i playsoud"
+  },
+  {
+    "lastname": "siwar",
+    "firstname": "grira",
+    "email": "Khadijagrira143@gmail.com ",
+    "phone_num": "58177663",
+    "member_type": 1,
+    "study_lvl": "L3 info",
+    "skills": "J'ai des compétences en programmation, notamment en Python et C++, que j'ai utilisées pour créer des algorithmes de contrôle pour des projets robotiques. J'ai aussi travaillé avec des microcontrôleurs Arduino pour développer des systèmes automatisés, et j'ai de l'expérience en conception 2D avec AutoCAD."
+  },
+  {
+    "lastname": "taysir",
+    "firstname": "taieb",
+    "email": "teyssirteyeb@gmail.com ",
+    "phone_num": "52114870",
+    "member_type": 1,
+    "study_lvl": "Master GL",
+    "skills": ",,,"
+  },
+  {
+    "lastname": "Khadhri",
+    "firstname": "Aya",
+    "email": "Khadhriaya1511@gmail.com",
+    "phone_num": "97926791",
+    "member_type": 1,
+    "study_lvl": "Cpi1",
+    "skills": ""
+  },
+  {
+    "lastname": "ayed",
+    "firstname": "mohamed amine",
+    "email": "amineayedd2012@gmail.com",
+    "phone_num": "55991256",
+    "member_type": 1,
+    "study_lvl": "l2 tic",
+    "skills": ""
+  },
+  {
+    "lastname": "Doss",
+    "firstname": "Chiraz",
+    "email": "chirazdoss@gmail.com",
+    "phone_num": "55733023",
+    "member_type": 1,
+    "study_lvl": "MP2 GL",
+    "skills": ""
+  },
+  {
+    "lastname": "Srihi",
+    "firstname": "Rahma",
+    "email": "Seihirahma@gmail.com",
+    "phone_num": "21837565",
+    "member_type": 1,
+    "study_lvl": "L3se",
+    "skills": ""
+  },
+  {
+    "lastname": "Meriem",
+    "firstname": "Jouini",
+    "email": "maryemjwini2003@gmail.com",
+    "phone_num": "90414746",
+    "member_type": 1,
+    "study_lvl": "Ing1info",
+    "skills": "Programmation des cartes électroniques (Stm32, Arduino,esp32..)"
+  },
+  {
+    "lastname": "Belhadj Mohammed",
+    "firstname": "Yassine",
+    "email": "yassineinfo800@gmail.com",
+    "phone_num": "25798990",
+    "member_type": 1,
+    "study_lvl": "Lsi1",
+    "skills": ""
+  },
+  {
+    "lastname": "mahfoudh",
+    "firstname": "adem",
+    "email": "mahfoudh.syrine2001@gmail.com",
+    "phone_num": "99517611",
+    "member_type": 1,
+    "study_lvl": "8éme anneé",
+    "skills": "Passionné , créative"
+  },
+  {
+    "lastname": "Farhat",
+    "firstname": "Ghada",
+    "email": "ghadafarhat127@gmail.com",
+    "phone_num": "244772330",
+    "member_type": 1,
+    "study_lvl": "CPI2",
+    "skills": "En tant qu'étudiant en CPI, je possède des compétences solides en programmation, algorithmes et structures de données. Je maîtrise plusieurs langages tels que Java , Python et C"
+  },
+  {
+    "lastname": "Rejeb",
+    "firstname": "Saifeddine",
+    "email": "seifeddinerejeb.sr@gmail.com",
+    "phone_num": "54115866",
+    "member_type": 1,
+    "study_lvl": "ING1 INFO",
+    "skills": "Python - ML - Web dev"
+  },
+  {
+    "lastname": "Chkir",
+    "firstname": "Youssef",
+    "email": "Chkir.youssef2004@gmail.com",
+    "phone_num": "92142684",
+    "member_type": 1,
+    "study_lvl": "L2 SE",
+    "skills": "Editing"
+  },
+  {
+    "lastname": "mohamed",
+    "firstname": "tlili",
+    "email": "muhammed.tlyly@gmail.com",
+    "phone_num": "29152785",
+    "member_type": 1,
+    "study_lvl": "L1 Tic",
+    "skills": "nothing special that i can be proud of, but soon ,also i'm hungry to gain experience"
+  },
+  {
+    "lastname": "chrigui",
+    "firstname": "wejden",
+    "email": "wejdanechrigui@gmail.com",
+    "phone_num": "21827272",
+    "member_type": 1,
+    "study_lvl": "L2 tic",
+    "skills": "communication"
+  },
+  {
+    "lastname": "makhloufi",
+    "firstname": "louay",
+    "email": "louaymakhloufi2006@gmail.com",
+    "phone_num": "24300211",
+    "member_type": 1,
+    "study_lvl": "cpi2",
+    "skills": ""
+  },
+  {
+    "lastname": "Dhia Allah",
+    "firstname": "Bouazra",
+    "email": "Bouazradhiaallah@gmail.com",
+    "phone_num": "94991873",
+    "member_type": 1,
+    "study_lvl": "CPI 1",
+    "skills": "Front end web developer css html js , php ."
+  },
+  {
+    "lastname": "Guirat",
+    "firstname": "Yasmine",
+    "email": "guiratyasmine224@gmail.com",
+    "phone_num": "97156240",
+    "member_type": 1,
+    "study_lvl": "1 er master",
+    "skills": ""
+  },
+  {
+    "lastname": "Ranin",
+    "firstname": "Maghazowa",
+    "email": "raninmagazoi@gmail.com",
+    "phone_num": "22910636",
+    "member_type": 1,
+    "study_lvl": "L1 info",
+    "skills": ""
+  },
+  {
+    "lastname": "Naguez",
+    "firstname": "Ibtissem",
+    "email": "Naguezibtissem@gmail.com",
+    "phone_num": "52290902",
+    "member_type": 1,
+    "study_lvl": "1er ing elec",
+    "skills": ""
+  },
+  {
+    "lastname": "Hibar",
+    "firstname": "Roua",
+    "email": "rouaahibar5013@gmail.com",
+    "phone_num": "58204600",
+    "member_type": 1,
+    "study_lvl": "L2info",
+    "skills": "."
+  },
+  {
+    "lastname": "Manai",
+    "firstname": "Arij",
+    "email": "arijmanai96@gmail.com",
+    "phone_num": "29183847",
+    "member_type": 1,
+    "study_lvl": "L1 SC info",
+    "skills": ""
+  },
+  {
+    "lastname": "Amri",
+    "firstname": "Achref",
+    "email": "Achrefamri@issatm.ucar.tn",
+    "phone_num": "97325704",
+    "member_type": 1,
+    "study_lvl": "L2SE",
+    "skills": ""
+  },
+  {
+    "lastname": "Yassine",
+    "firstname": "Tanabene",
+    "email": "Yassine.tanabene14@gmail.com",
+    "phone_num": "50348989",
+    "member_type": 1,
+    "study_lvl": "ING GL 1",
+    "skills": "Web developping, adobe, communication..."
+  },
+  {
+    "lastname": "Bilel",
+    "firstname": "Essid",
+    "email": "bilelessid666@gmail.com",
+    "phone_num": "95 419 451",
+    "member_type": 1,
+    "study_lvl": "L2 SE",
+    "skills": "leading , good communication skills , searching to figure out new things and solve existing problems ."
+  },
+  {
+    "lastname": "Cherif",
+    "firstname": "Mariem",
+    "email": "Cherifmariem16@gmail.com",
+    "phone_num": "24321067",
+    "member_type": 1,
+    "study_lvl": "L2 TIC",
+    "skills": "Communication, travail en équipe, résolution des problèmes"
+  },
+  {
+    "lastname": "Makhloufi",
+    "firstname": "Mayssoun",
+    "email": "maysounmakhloufi@gmail.com",
+    "phone_num": "23754083",
+    "member_type": 1,
+    "study_lvl": "L3 SE",
+    "skills": "travailleuse, intelligente et motivée"
+  },
+  {
+    "lastname": "ZAAG",
+    "firstname": "Rami",
+    "email": "zaagrami@gmail.com",
+    "phone_num": "96920529",
+    "member_type": 1,
+    "study_lvl": "L1 EEA",
+    "skills": "j'ai une capacité intermédiaire en programmation C et python"
+  },
+  {
+    "lastname": "Bani",
+    "firstname": "Azza",
+    "email": "azza.bani2001@hotmail.com",
+    "phone_num": "55038095",
+    "member_type": 1,
+    "study_lvl": "Ing2 micro",
+    "skills": ""
+  },
+  {
+    "lastname": "Ben younes",
+    "firstname": "Donia",
+    "email": "benyounesdonia1@gmail.com",
+    "phone_num": "29424028",
+    "member_type": 1,
+    "study_lvl": "Ing 2",
+    "skills": ""
+  },
+  {
+    "lastname": "Mlika",
+    "firstname": "Mariem",
+    "email": "Mariemmlika99@gmail.com",
+    "phone_num": "99227673",
+    "member_type": 1,
+    "study_lvl": "L2 SE",
+    "skills": ""
+  },
+  {
+    "lastname": "Amar",
+    "firstname": "Memah",
+    "email": "memahamar12@gmail.com",
+    "phone_num": "54548991",
+    "member_type": 1,
+    "study_lvl": "Cpi1",
+    "skills": ""
+  },
+  {
+    "lastname": "Dhouib",
+    "firstname": "Meryem",
+    "email": "Maryamdhouib4523@gmail.com",
+    "phone_num": "24758444",
+    "member_type": 1,
+    "study_lvl": "Ing2 info",
+    "skills": ""
+  },
+  {
+    "lastname": "Ayadi",
+    "firstname": "Mohamed",
+    "email": "mimokaramela123@gmail.com",
+    "phone_num": "28106366",
+    "member_type": 1,
+    "study_lvl": "L1",
+    "skills": ""
+  },
+  {
+    "lastname": "Abir",
+    "firstname": "Fitouri",
+    "email": "abirfitouri2023@gmail.com",
+    "phone_num": "20 799 172",
+    "member_type": 1,
+    "study_lvl": "L2info",
+    "skills": ""
+  },
+  {
+    "lastname": "Neguez",
+    "firstname": "Hiba",
+    "email": "hibaneguez16@gmail.com",
+    "phone_num": "25606587",
+    "member_type": 1,
+    "study_lvl": "L1 tic",
+    "skills": ""
+  },
+  {
+    "lastname": "Ghofrane",
+    "firstname": "Raboudi",
+    "email": "ghof2212004@gmail.com",
+    "phone_num": "26 257 582",
+    "member_type": 1,
+    "study_lvl": "L2 info",
+    "skills": ""
+  },
+  {
+    "lastname": "Souissi",
+    "firstname": "Hajer",
+    "email": "Hajersouissi2005@gmail.com",
+    "phone_num": "20031339",
+    "member_type": 1,
+    "study_lvl": "L1 TIC",
+    "skills": "sociable"
+  },
+  {
+    "lastname": "Chaaben",
+    "firstname": "Ramez",
+    "email": "ramezchaabane@gmail.com",
+    "phone_num": "93111706",
+    "member_type": 1,
+    "study_lvl": "L2SE",
+    "skills": ""
+  },
+  {
+    "lastname": "Edhahbi",
+    "firstname": "Noureddine",
+    "email": "noureddineedhahbi17@gmail.com",
+    "phone_num": "24309636",
+    "member_type": 1,
+    "study_lvl": "CPI 2",
+    "skills": ""
+  },
+  {
+    "lastname": "Chaabani",
+    "firstname": "Oussama",
+    "email": "chaabanioussama97@gmail.com",
+    "phone_num": "20711230",
+    "member_type": 1,
+    "study_lvl": "L2 info",
+    "skills": ""
+  },
+  {
+    "lastname": "Fezai",
+    "firstname": "Eya",
+    "email": "fezaieya17@gmail.com",
+    "phone_num": "58884131",
+    "member_type": 1,
+    "study_lvl": "CPI 1",
+    "skills": ""
+  },
+  {
+    "lastname": "Mokadem",
+    "firstname": "Ibtihel",
+    "email": "mokademibtihel2@gmail.com",
+    "phone_num": "93447971",
+    "member_type": 1,
+    "study_lvl": "L1 tic",
+    "skills": ""
+  },
+  {
+    "lastname": "BENABDALLAH",
+    "firstname": "Mohamed",
+    "email": "mohamedbenabdallah2973@gmail.com",
+    "phone_num": "97039273",
+    "member_type": 1,
+    "study_lvl": "L2 info",
+    "skills": ""
+  },
+  {
+    "lastname": "Hammami",
+    "firstname": "Ons",
+    "email": "Hammamions70@gmail.com",
+    "phone_num": "26753716",
+    "member_type": 1,
+    "study_lvl": "L2 gl",
+    "skills": ""
+  },
+  {
+    "lastname": "Denguir",
+    "firstname": "Mohamed montassar",
+    "email": "Montassardenguir@gmail.com",
+    "phone_num": "58627728",
+    "member_type": 1,
+    "study_lvl": "L2 SE",
+    "skills": ""
+  },
+  {
+    "lastname": "Abdelkarim",
+    "firstname": "Sassi",
+    "email": "abdelkarim.essassi@isimg.tn",
+    "phone_num": "92551778",
+    "member_type": 1,
+    "study_lvl": "2茅me sc info",
+    "skills": ""
+  },
+  {
+    "lastname": "Adam",
+    "firstname": "Marzougui",
+    "email": "marzouguiadam82@gmail.com",
+    "phone_num": "21214420",
+    "member_type": 1,
+    "study_lvl": "LSI 1",
+    "skills": ""
+  },
+  {
+    "lastname": "zarrouk",
+    "firstname": "iheb",
+    "email": "",
+    "phone_num": "54421231",
+    "member_type": 1,
+    "study_lvl": "l1 info",
+    "skills": ""
+  },
+  {
+    "lastname": "Hidouri",
+    "firstname": "Mohamed",
+    "email": "mohamedhidouri0@gmail.com",
+    "phone_num": "26289105",
+    "member_type": 1,
+    "study_lvl": "L2 math",
+    "skills": ""
+  },
+  {
+    "lastname": "Ben halima",
+    "firstname": "wael",
+    "email": "waelbenhalima1@gmail.com",
+    "phone_num": "25668718",
+    "member_type": 1,
+    "study_lvl": "Ing1",
+    "skills": ""
+  },
+  {
+    "lastname": "Abdallah",
+    "firstname": "Chouchen",
+    "email": "abdallahc525@gmail.com",
+    "phone_num": "22384836",
+    "member_type": 1,
+    "study_lvl": "L2 SE",
+    "skills": ""
+  },
+  {
+    "lastname": "Maalel",
+    "firstname": "Yosr",
+    "email": "yosrmaalel0712@gmail.com",
+    "phone_num": "52117341",
+    "member_type": 1,
+    "study_lvl": "L1 EEA",
+    "skills": ""
+  },
+  {
+    "lastname": "Grira",
+    "firstname": "Sirin",
+    "email": "sirinetae@gmail.com",
+    "phone_num": "51505551",
+    "member_type": 1,
+    "study_lvl": "Ing 1",
+    "skills": ""
+  },
+  {
+    "lastname": "Sellami",
+    "firstname": "Khalil",
+    "email": "sellami.khalil@outlook.fr",
+    "phone_num": "23297460",
+    "member_type": 1,
+    "study_lvl": "L2 se",
+    "skills": ""
+  },
+  {
+    "lastname": "Meniaar",
+    "firstname": "Tka",
+    "email": "meniartka121@gmail.com",
+    "phone_num": "94161698",
+    "member_type": 1,
+    "study_lvl": "EEA",
+    "skills": ""
+  },
+  {
+    "lastname": "Ben hassine",
+    "firstname": "Maram",
+    "email": "marambh2005@gmail.com",
+    "phone_num": "20197439",
+    "member_type": 1,
+    "study_lvl": "L1 tic",
+    "skills": "Développement"
+  },
+  {
+    "lastname": "Ben maouia",
+    "firstname": "Rihem",
+    "email": "Rihembenmaouia@gmail.com",
+    "phone_num": "53594368",
+    "member_type": 1,
+    "study_lvl": "1ér année master professionnel data science",
+    "skills": ""
+  },
+  {
+    "lastname": "Gannoun",
+    "firstname": "Ahmed",
+    "email": "ahm.gannoun@gmail.com",
+    "phone_num": "29640114",
+    "member_type": 1,
+    "study_lvl": "L2 INFO",
+    "skills": ""
+  }
+]
