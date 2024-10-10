@@ -9,6 +9,7 @@ const MemberDetailForm = () => {
     const location = useLocation();
     const { state } = location;
 
+    // eslint-disable-next-line no-unused-vars
     const [memberData, setMemberData] = useState(state?.member || {
         lastname: '',
         fistname: '',
