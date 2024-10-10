@@ -19,7 +19,7 @@ const Members = () => {
   const [filters, setFilters] = useState([{ criteria: "lastname", mode: "Contains", arg: "" }]);
   const [members, setMembers] = useState([]);
   const [Filtredmembers, setFiltredMembers] = useState([]);
-  const [sortConfig, setSortConfig] = useState({ key: null, direction: 'ascending' });
+  const [sortConfig, setSortConfig] = useState({ key: "id", direction: 'ascending' });
 
   useEffect(() => {
     async function fetchMembersData() {
@@ -46,7 +46,7 @@ const Members = () => {
     }
     setFetchingData(true);
     getData();
-    setFetchingData(false);
+    setTimeout(() => setFetchingData(false), 2000);
   }, []);
 
 
@@ -219,9 +219,10 @@ const Members = () => {
           color="#fff"
           loading={fetchingData}
           size={250}
-          speedMultiplier={5}
+          speedMultiplier={3}
         />
-      </div></>
+      </div>
+    </>
 
   );
 };
