@@ -72,7 +72,9 @@ const MemberDetailForm = () => {
         }
     ]
 
-
+    const handleChange = (e, field) => {
+        setMemberData({ ...memberData, [field.name]: e.target.value });
+    }
     const handleSave = async () => {
         const { data, error } = await supabase
             .from('club_members')
@@ -110,6 +112,7 @@ const MemberDetailForm = () => {
                         <label htmlFor={field.name}>{field.placeholder}</label>
                         {field.type === "select" ? (
                             <select
+                                className="select"
                                 id={field.name}
                                 name={field.name}
                                 defaultValue={eval(field.value)}>
@@ -122,6 +125,7 @@ const MemberDetailForm = () => {
                                 id={field.name}
                                 name={field.name}
                                 placeholder={field.placeholder}
+                                onChange={(e) => handleChange(e, field)}
                                 defaultValue={eval(field.value)} // Use memberData to set the default value
                             />}
 
