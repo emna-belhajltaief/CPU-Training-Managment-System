@@ -1,17 +1,20 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import membersData from "@data/Inscription-CPU 2024.json";
-// import membersData from "@data/Inscription-CPU 2024-updated.json";
-import "./members.css";
+import supabase from "../../../superbaseClient";
+import CircleLoader from "react-spinners/CircleLoader";
 import { IoFilter } from "react-icons/io5";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { FaSortAmountDownAlt } from "react-icons/fa";
 import { FaSortAmountUp } from "react-icons/fa";
-import supabase from "../../../superbaseClient";
+// import membersData from "@data/Inscription-CPU 2024.json";
+// import membersData from "@data/Inscription-CPU 2024-updated.json";
+
+import "./members.css";
 
 const Members = () => {
   const navigate = useNavigate();
 
+  const [fetchingData, setFetchingData] = useState(true);
   const [showfilter, setshowfilter] = useState(false);
   const [filters, setFilters] = useState([{ criteria: "lastname", mode: "Contains", arg: "" }]);
   const [members, setMembers] = useState([]);
@@ -29,7 +32,6 @@ const Members = () => {
           console.error('Error fetching club_members:', error);
           return [];
         }
-
         return club_members;
       } catch (err) {
         console.error('Error fetching data:', err);
@@ -42,8 +44,9 @@ const Members = () => {
       setMembers(membersData);
       setFiltredMembers(membersData);
     }
-
+    setFetchingData(true);
     getData();
+    setFetchingData(false);
   }, []);
 
 
@@ -140,75 +143,86 @@ const Members = () => {
   };
 
   return (
-    <div className="members-container">
-      <div>
-        <button onClick={() => setshowfilter(!showfilter)}>
-          <IoFilter />
-          Filtrer
-        </button>
-      </div>
-      <div className={`filter-menu ${showfilter ? 'open' : ''}`}>
+
+    <>
+      <div className="members-container">
         <div>
-          {filters.map((filter, index) => (
-            <div className="filter-row" key={index}>
-              <select
-                value={filter.criteria}
-                onChange={(e) => handleFilterChange(index, 'criteria', e.target.value)}
-                title="Select an option"
-              >
-                <option value="lastname">Nom</option>
-                <option value="fistname">Prénom</option>
-                <option value="email">Email</option>
-                <option value="phone_num">Phone</option>
-                <option value="member_type">Adherent</option>
-                <option value="study_lvl">{"Nivau d'étude"}</option>
-                <option value="skills">Skills</option>
-              </select>
-              <select
-                value={filter.mode}
-                onChange={(e) => handleFilterChange(index, 'mode', e.target.value)}
-                title="Select an option"
-              >
-                <option value="Equals">Equals</option>
-                <option value="Contains">Contains</option>
-                <option value="Starts with">Starts with</option>
-                <option value="Ends with">Ends with</option>
-              </select>
-              <input
-                value={filter.arg}
-                onChange={(e) => handleFilterChange(index, 'arg', e.target.value)}
-              />
-              <button onClick={() => handleRemoveFilter(index)}>
-                <FaRegTrashAlt />
-              </button>
-            </div>
-          ))}
-          <button onClick={handleAddFilter}>Add Filter</button>
-          <button onClick={handleResetFilters}>Reset Filters</button>
+          <button onClick={() => setshowfilter(!showfilter)}>
+            <IoFilter />
+            Filtrer
+          </button>
         </div>
-      </div>
-      <table className="custom-table table-responsive">
-        <thead>
-          <tr>
-            {Filtredmembers.length > 0 &&
-              Object.keys(members[0]).map((key, index) => (
-                <th key={index} onClick={() => handleSort(key)}>
-                  {key} {sortConfig.key === key ? (sortConfig.direction === 'ascending' ? <FaSortAmountUp /> : <FaSortAmountDownAlt />) : ''}
-                </th>
-              ))}
-          </tr>
-        </thead>
-        <tbody>
-          {Filtredmembers.map((member, index) => (
-            <tr key={index} onClick={() => handleDisplayMember(member)} >
-              {Object.keys(member).map((key, index) => (
-                <td key={index} >{member[key]}</td>
-              ))}
+        <div className={`filter-menu ${showfilter ? 'open' : ''}`}>
+          <div>
+            {filters.map((filter, index) => (
+              <div className="filter-row" key={index}>
+                <select
+                  value={filter.criteria}
+                  onChange={(e) => handleFilterChange(index, 'criteria', e.target.value)}
+                  title="Select an option"
+                >
+                  <option value="lastname">Nom</option>
+                  <option value="fistname">Prénom</option>
+                  <option value="email">Email</option>
+                  <option value="phone_num">Phone</option>
+                  <option value="member_type">Adherent</option>
+                  <option value="study_lvl">{"Nivau d'étude"}</option>
+                  <option value="skills">Skills</option>
+                </select>
+                <select
+                  value={filter.mode}
+                  onChange={(e) => handleFilterChange(index, 'mode', e.target.value)}
+                  title="Select an option"
+                >
+                  <option value="Equals">Equals</option>
+                  <option value="Contains">Contains</option>
+                  <option value="Starts with">Starts with</option>
+                  <option value="Ends with">Ends with</option>
+                </select>
+                <input
+                  value={filter.arg}
+                  onChange={(e) => handleFilterChange(index, 'arg', e.target.value)}
+                />
+                <button onClick={() => handleRemoveFilter(index)}>
+                  <FaRegTrashAlt />
+                </button>
+              </div>
+            ))}
+            <button onClick={handleAddFilter}>Add Filter</button>
+            <button onClick={handleResetFilters}>Reset Filters</button>
+          </div>
+        </div>
+        <table className="custom-table table-responsive">
+          <thead>
+            <tr>
+              {Filtredmembers.length > 0 &&
+                Object.keys(members[0]).map((key, index) => (
+                  <th key={index} onClick={() => handleSort(key)}>
+                    {key} {sortConfig.key === key ? (sortConfig.direction === 'ascending' ? <FaSortAmountUp /> : <FaSortAmountDownAlt />) : ''}
+                  </th>
+                ))}
             </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+          </thead>
+          <tbody>
+            {Filtredmembers.map((member, index) => (
+              <tr key={index} onClick={() => handleDisplayMember(member)} >
+                {Object.keys(member).map((key, index) => (
+                  <td key={index} >{member[key]}</td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div className="loading-container">
+        <CircleLoader
+          color="#fff"
+          loading={fetchingData}
+          size={250}
+          speedMultiplier={5}
+        />
+      </div></>
+
   );
 };
 
