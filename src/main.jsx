@@ -35,7 +35,7 @@ const router = createBrowserRouter([
     element: <Members />,
   },
   {
-    path: '/members/*', // Render Members
+    path: '/members/:id', // Render Members
     element: <MemberDetailForm />,
   },
   {
