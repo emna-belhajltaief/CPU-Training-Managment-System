@@ -8,8 +8,9 @@ import { FaSortAmountDownAlt } from "react-icons/fa";
 import { FaSortAmountUp } from "react-icons/fa";
 // import membersData from "@data/Inscription-CPU 2024.json";
 // import membersData from "@data/Inscription-CPU 2024-updated.json";
-
+import {IoMdPersonAdd} from "react-icons/io"
 import "./members.css";
+import NavBar from "../NavBar/NavBar";
 
 const Members = () => {
   const navigate = useNavigate();
@@ -145,11 +146,16 @@ const Members = () => {
   return (
 
     <>
+    <NavBar></NavBar>
       <div className="members-container">
         <div>
           <button onClick={() => setshowfilter(!showfilter)}>
             <IoFilter />
             Filtrer
+          </button>
+          <button >
+          <IoMdPersonAdd />
+            Add Member
           </button>
         </div>
         <div className={`filter-menu ${showfilter ? 'open' : ''}`}>
@@ -211,6 +217,7 @@ const Members = () => {
                 ))}
               </tr>
             ))}
+           
           </tbody>
         </table>
       </div>

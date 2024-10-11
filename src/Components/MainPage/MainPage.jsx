@@ -42,7 +42,8 @@ const MainPage = () => {
             </div>
             
             <div className="edit_button">
-            <button className="edit-btn">Edit</button>
+            <button className="edit-btn">View</button>
+            <button className="edit-btn">Open for check-in</button>
             </div>
           </div>
         ))}

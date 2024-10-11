@@ -134,7 +134,7 @@ function FormulaireFormation() {
             <label>Titre de formation {<GrWorkshop />} :</label>
             <input
               placeholder="exemple : introduction C++"
-              onChange={handleTitleChange}
+              onChange={handleTitleChange} className="input_formulaire_formation"
             ></input>
           </div>
 
@@ -168,12 +168,12 @@ function FormulaireFormation() {
 
           <div className="Field">
             <label>Local {<FaHouse />} :</label>
-            <input placeholder="exemple : ISIMM" onChange={handleLocalChange}></input>
+            <input placeholder="exemple : ISIMM" className="input_formulaire_formation" onChange={handleLocalChange}></input>
           </div>
 
           <div className="Field">
             <label>Date {<CiCalendarDate />} :</label>
-            <input type="date" onChange={handleDateChange}></input>
+            <input type="date" className="input_formulaire_formation" onChange={handleDateChange}></input>
           </div>
 
           {/* Render Field Sections */}
