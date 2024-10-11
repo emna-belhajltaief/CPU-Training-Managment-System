@@ -38,7 +38,7 @@ const router = createBrowserRouter([
     element: <Members />,
   },
   {
-    path: 'FormulaireFormation', // Render Members
+    path: '/FormulaireFormation', // Render Members
     element: <FormulaireFormation />,
   },
   {
