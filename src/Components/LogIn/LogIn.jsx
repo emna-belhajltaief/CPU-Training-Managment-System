@@ -1,34 +1,40 @@
-import  {useState} from 'react'
-import './LogIn.css' 
+import { useState } from 'react'
+import supabase from '../../../superbaseClient';
+import './LogIn.css'
 
 const LogIn = () => {
-    const [formData, setFormData] = useState({
-        username: '',
-        password: '',
-    });
-const handleChange = (e) => {
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+  });
+  const handleChange = (e) => {
     setFormData({
-        ...FormData,
-        [e.target.name]: e.target.value,
+      ...formData,
+      [e.target.name]: e.target.value,
     });
-};
-const handleSubmit = (e) =>
-{
+  };
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Log In Data : ',formData);
-};
+    let { data, error } = await supabase.auth.signInWithPassword({
+      email: formData?.email,
+      password: formData?.password,
+    })
+    console.log('Log In Data : ', formData);
+    console.info('data : ', data);
+    console.error('error : ', error);
+  };
 
   return (
     <div className='login-container'>
-        <h2>Log In</h2>
-        <form onSubmit={handleSubmit}>
+      <h2>Log In</h2>
+      <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label className='forum_label' htmlFor="username">Username:</label>
-          <input className='input_forum' type="text" id="username" name="username" value={formData.username} onChange={handleChange} required />
+          <label className='forum_label' htmlFor="email">Email:</label>
+          <input className='input_forum' type="email" id="email" name="email" value={formData.username} onChange={handleChange} required />
         </div>
         <div className="form-group">
           <label className='forum_label' htmlFor="password">Password:</label>
-          <input className='input_forum' type="password"  id="password" name="password" value={formData.password} onChange={handleChange} required />
+          <input className='input_forum' type="password" id="password" name="password" value={formData.password} onChange={handleChange} required />
         </div>
         <button type="submit">Log In</button>
       </form>
