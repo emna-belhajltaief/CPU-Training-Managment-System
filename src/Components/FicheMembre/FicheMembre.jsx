@@ -1,4 +1,3 @@
-import React from 'react'
 import './FicheMembre.css'
 
 const FicheMembre = () => {
