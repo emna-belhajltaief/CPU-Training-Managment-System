@@ -1,6 +1,7 @@
-import  { useState } from 'react';
-import { Link } from 'react-router-dom';
 import './MainPage.css';
+import NavBar from '../NavBar/NavBar';
+
+//add code to get from the db trainings for this week
 
 const formations = [
   {
@@ -24,41 +25,14 @@ const formations = [
 ];
 
 const MainPage = () => {
-  const [showDropdown, setShowDropdown] = useState(false);
-  const [showFormations, setShowFormations] = useState(false);
-
-  const toggleDropdown = () => {
-    setShowDropdown(!showDropdown);
-  };
-
-  const handleShowFormations = () => {
-    setShowFormations(true);
-  };
+  
 
   return (
     <>
-      <nav className="nav-main">
-        <div className="nav-logo">
-          <img src="./images/cpuwhite.png" alt="Logo" />
-        </div>
-        <div className="nav-items">
-          <div className="nav-item">
-            <Link style={{ color: 'white' }} to="/members">Gestion des membres</Link>
-          </div>
-          <div className="nav-item" onMouseEnter={toggleDropdown} onMouseLeave={toggleDropdown}>
-            <a href="#">Gestion des formations</a>
-            {showDropdown && (
-              <div className="dropdown">
-                <Link to="/FormulaireFormation">Créer Formation</Link>
-                <a href="#" onClick={handleShowFormations}>Liste des Formations</a> 
-              </div>
-            )}
-          </div>
-        </div>
-      </nav>
 
+    <NavBar></NavBar>
       <main className="formation-list">
-        {showFormations && formations.map((formation, index) => (
+        {formations.map((formation, index) => (
           <div key={index} className="formation-item">
             <img src={formation.logo} alt="Formation Logo" className="formation-logo" />
             <div className="formation-details">
@@ -67,7 +41,7 @@ const MainPage = () => {
               <p>Location: {formation.location}</p>
             </div>
             
-            <div className="btn">
+            <div className="edit_button">
             <button className="edit-btn">Edit</button>
             </div>
           </div>

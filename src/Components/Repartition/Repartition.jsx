@@ -1,7 +1,14 @@
+import NavBar from "../NavBar/NavBar";
+import "./Repartition.css"
+
 function Repatition() {
+
+  
+
   return (
     <div>
-      <div className="Formulaire">
+      <NavBar></NavBar>
+      <div className="Repartition_content">
         <div>
           <ul className="pagination">
             <li className="page-item">

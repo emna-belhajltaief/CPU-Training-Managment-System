@@ -13,11 +13,12 @@ import { useState } from "react";
 import { IoPersonRemove } from "react-icons/io5";
 import { FaCode } from "react-icons/fa";
 import { RiRobot2Fill } from "react-icons/ri";
+
 function FormulaireFormation() {
-  const [Titre,setTitre] =useState ("")
-  const [Domaine,setDomaine] =useState ("")
-  const [Local, setLocal] = useState("")
-  const [Date, setDate] =useState("")
+  const [Titre, setTitre] = useState("");
+  const [Domaine, setDomaine] = useState("");
+  const [Local, setLocal] = useState("");
+  const [Date, setDate] = useState("");
   const [formateurs, setFormateurs] = useState([{ id: 1, value: "" }]);
   const [assistants, setAssistants] = useState([{ id: 1, value: "" }]);
   const [receptionists, setReceptionists] = useState([{ id: 1, value: "" }]);
@@ -31,26 +32,26 @@ function FormulaireFormation() {
     setFieldFunc(newFields);
   };
 
-const handleSubmit =(e)=>{
-    e.preventDefault(); // Prevent the default form submission
-  
-    // Create a string to hold all the information
+  const handleSubmit = (e) => {
+    //add to data base code should go here
+    e.preventDefault();
+
     const formData = `
       Formation: ${Titre}
       Domaine: ${Domaine}
       Local: ${Local}
       Date: ${Date}
-      Formateurs: ${formateurs.map((f) => f.value).join(', ')}
-      Assistants: ${assistants.map((a) => a.value).join(', ')}
-      Receptionists: ${receptionists.map((r) => r.value).join(', ')}
-      Coffee Breaks: ${coffeeBreaks.map((cb) => cb.value).join(', ')}
+      Formateurs: ${formateurs.map((f) => f.value).join(", ")}
+      Assistants: ${assistants.map((a) => a.value).join(", ")}
+      Receptionists: ${receptionists.map((r) => r.value).join(", ")}
+      Coffee Breaks: ${coffeeBreaks.map((cb) => cb.value).join(", ")}
     `;
-  
-    alert(formData); // Show all the information in an alert
-}
 
- // Handlers for single value inputs
- const handleTitleChange = (e) => {
+    alert(formData);
+  };
+
+  // Handlers for single value inputs
+  const handleTitleChange = (e) => {
     setTitre(e.target.value);
   };
 
@@ -65,14 +66,15 @@ const handleSubmit =(e)=>{
   const handleDateChange = (e) => {
     setDate(e.target.value);
   };
+
   const handleImageChange = (event) => {
-    const file = event.target.files[0]; // Get the first selected file
+    const file = event.target.files[0];
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        setLogo(reader.result); // Set the image source to the result of FileReader
+        setLogo(reader.result);
       };
-      reader.readAsDataURL(file); // Read the file as a data URL
+      reader.readAsDataURL(file);
     }
   };
 
@@ -80,11 +82,47 @@ const handleSubmit =(e)=>{
   const addField = (setFieldFunc, fields) => {
     setFieldFunc([...fields, { id: fields.length + 1, value: "" }]);
   };
-  const removeField = (setFieldFunc, fields) => {
-    // Create a new array that removes the last element using spread
-    const updatedFields = [...fields].slice(0, -1);
+
+  const removeField = (index, setFieldFunc, fields) => {
+    const updatedFields = fields.filter((_, i) => i !== index);
     setFieldFunc(updatedFields);
   };
+
+  const renderFieldSection = (label, icon, fields, setFieldFunc) => (
+    <div className="Field">
+      <label>{label} {icon}:</label>
+      {fields.map((field, index) => (
+        <div key={field.id} style={{ display: "flex", marginBottom: "1rem" }}>
+          <input
+            placeholder="Nom et prénom"
+            value={field.value}
+            onChange={(e) => handleInputChange(e, index, setFieldFunc, fields)}
+            className="input_formulaire_formation"
+            style={{ flex: 4, marginRight: "1%" }}
+          />
+          <button
+            type="button"
+            className="btn btn-secondary"
+            style={{ flex: 1, marginRight: "1%" }}
+            onClick={() => addField(setFieldFunc, fields)}
+          >
+            <IoMdPersonAdd />
+          </button>
+          <button
+            type="button"
+            className={`btn btn-danger ${
+              fields.length <= 1 ? "disabled-button" : ""
+            }`}
+            disabled={fields.length <= 1}
+            style={{ flex: 1 }}
+            onClick={() => removeField(index, setFieldFunc, fields)}
+          >
+            <IoPersonRemove />
+          </button>
+        </div>
+      ))}
+    </div>
+  );
 
   return (
     <>
@@ -94,7 +132,10 @@ const handleSubmit =(e)=>{
 
           <div className="Field">
             <label>Titre de formation {<GrWorkshop />} :</label>
-            <input placeholder="exemple : introduction C++" onChange={handleTitleChange}></input>
+            <input
+              placeholder="exemple : introduction C++"
+              onChange={handleTitleChange}
+            ></input>
           </div>
 
           <div className="Field">
@@ -102,13 +143,23 @@ const handleSubmit =(e)=>{
             <div style={{ display: "flex", gap: "5%" }}>
               <div>
                 <label>
-                  <input type="radio" name="Domaine" value="Developement"  onChange={handleDomainChange} />
+                  <input
+                    type="radio"
+                    name="Domaine"
+                    value="Developement"
+                    onChange={handleDomainChange}
+                  />
                   Developement {<FaCode />}
                 </label>
               </div>
               <div>
                 <label>
-                  <input type="radio" name="Domaine" value="Robotique"  onChange={handleDomainChange} />
+                  <input
+                    type="radio"
+                    name="Domaine"
+                    value="Robotique"
+                    onChange={handleDomainChange}
+                  />
                   Robotique {<RiRobot2Fill />}
                 </label>
               </div>
@@ -117,157 +168,19 @@ const handleSubmit =(e)=>{
 
           <div className="Field">
             <label>Local {<FaHouse />} :</label>
-            <input placeholder="exemple : ISIMM C-01"  onChange={handleLocalChange}></input>
+            <input placeholder="exemple : ISIMM" onChange={handleLocalChange}></input>
           </div>
 
           <div className="Field">
             <label>Date {<CiCalendarDate />} :</label>
-            <input type="date"  onChange={handleDateChange}></input>
+            <input type="date" onChange={handleDateChange}></input>
           </div>
 
-          {/* Formateur Section */}
-          <div className="Field">
-            <label>Formateur {<GiTeacher />} :</label>
-            {formateurs.map((formateur, index) => (
-              <input
-                key={formateur.id}
-                placeholder="Nom et prénom"
-                value={formateur.value}
-                onChange={(e) =>
-                  handleInputChange(e, index, setFormateurs, formateurs)
-                }
-              />
-            ))}
-            <div style={{ display: "flex" }}>
-              <button
-                type="button"
-                className="btn btn-secondary"
-                style={{ flex: 1 }}
-                onClick={() => addField(setFormateurs, formateurs)}
-              >
-                <IoMdPersonAdd />
-              </button>
-              <button
-                type="button"
-                className={`btn btn-danger ${
-                  formateurs.length <= 1 ? "disabled-button" : ""
-                }`}
-                disabled={formateurs.length <= 1}
-                style={{ flex: 1 }}
-                onClick={() => removeField(setFormateurs, formateurs)}
-              >
-                <IoPersonRemove />
-              </button>
-            </div>
-          </div>
-
-          {/* Assistant Section */}
-          <div className="Field">
-            <label>Assistant {<MdAssistantPhoto />} :</label>
-            {assistants.map((assistant, index) => (
-              <input
-                key={assistant.id}
-                placeholder="Nom et prénom"
-                value={assistant.value}
-                onChange={(e) =>
-                  handleInputChange(e, index, setAssistants, assistants)
-                }
-              />
-            ))}
-            <div style={{ display: "flex" }}>
-              <button
-                type="button"
-                className="btn btn-secondary"
-                style={{ flex: 1 }}
-                onClick={() => addField(setAssistants, assistants)}
-              >
-                <IoMdPersonAdd />
-              </button>
-              <button
-                type="button"
-                className={`btn btn-danger ${
-                  assistants.length <= 1 ? "disabled-button" : ""
-                }`}
-                disabled={assistants.length <= 1}
-                style={{ flex: 1 }}
-                onClick={() => removeField(setAssistants, assistants)}
-              >
-                <IoPersonRemove />
-              </button>
-            </div>
-          </div>
-
-          {/* Reception Section */}
-          <div className="Field">
-            <label>Reception {<FaPersonCircleCheck />} :</label>
-            {receptionists.map((receptionist, index) => (
-              <input
-                key={receptionist.id}
-                placeholder="Nom et prénom"
-                value={receptionist.value}
-                onChange={(e) =>
-                  handleInputChange(e, index, setReceptionists, receptionists)
-                }
-              />
-            ))}
-            <div style={{ display: "flex" }}>
-              <button
-                type="button"
-                className="btn btn-secondary"
-                style={{ flex: 1 }}
-                onClick={() => addField(setReceptionists, receptionists)}
-              >
-                <IoMdPersonAdd />
-              </button>
-              <button
-                type="button"
-                className={`btn btn-danger ${
-                  receptionists.length <= 1 ? "disabled-button" : ""
-                }`}
-                disabled={receptionists.length <= 1}
-                style={{ flex: 1 }}
-                onClick={() => removeField(setReceptionists, receptionists)}
-              >
-                <IoPersonRemove />
-              </button>
-            </div>
-          </div>
-
-          {/* Pause Café Section */}
-          <div className="Field">
-            <label>Pause Café {<FaCoffee />} :</label>
-            {coffeeBreaks.map((coffeeBreak, index) => (
-              <input
-                key={coffeeBreak.id}
-                placeholder="Nom et prénom"
-                value={coffeeBreak.value}
-                onChange={(e) =>
-                  handleInputChange(e, index, setCoffeeBreaks, coffeeBreaks)
-                }
-              />
-            ))}
-            <div style={{ display: "flex" }}>
-              <button
-                type="button"
-                className="btn btn-secondary"
-                style={{ flex: 1 }}
-                onClick={() => addField(setCoffeeBreaks, coffeeBreaks)}
-              >
-                <IoMdPersonAdd />
-              </button>
-              <button
-                type="button"
-                className={`btn btn-danger ${
-                  coffeeBreaks.length <= 1 ? "disabled-button" : ""
-                }`}
-                disabled={coffeeBreaks.length <= 1}
-                style={{ flex: 1 }}
-                onClick={() => removeField(setCoffeeBreaks, coffeeBreaks)}
-              >
-                <IoPersonRemove />
-              </button>
-            </div>
-          </div>
+          {/* Render Field Sections */}
+          {renderFieldSection("Formateur", <GiTeacher />, formateurs, setFormateurs)}
+          {renderFieldSection("Assistant", <MdAssistantPhoto />, assistants, setAssistants)}
+          {renderFieldSection("Reception", <FaPersonCircleCheck />, receptionists, setReceptionists)}
+          {renderFieldSection("Pause Café", <FaCoffee />, coffeeBreaks, setCoffeeBreaks)}
 
           <div className="Field">
             <label className="form-label">
@@ -277,7 +190,7 @@ const handleSubmit =(e)=>{
               accept=".png, .jpg, .jpeg"
               type="file"
               className="form-control"
-              onChange={handleImageChange} // Attach the event handler
+              onChange={handleImageChange}
             />
           </div>
 
@@ -288,8 +201,12 @@ const handleSubmit =(e)=>{
           </div>
 
           <div className="Field">
-            <button type="submit" className="btn btn-success mb-2">Submit</button>
-            <button type="button" className="btn btn-danger">Cancel</button>
+            <button type="submit" className="btn btn-success mb-2">
+              Submit
+            </button>
+            <button type="button" className="btn btn-danger">
+              Cancel
+            </button>
           </div>
         </form>
       </div>
