@@ -1,0 +1,47 @@
+club_members:
+- id int8 PK
+- firstname text
+- lastname text
+- email text
+- phone_num text
+- member_type int2
+- study_lvl text
+- skills text
+
+senior_members:
+- id int8 PK
+- firstname text
+- lastname text
+- role text
+- email text
+- phone_num text
+- study_lvl text
+- skills text
+
+trainings:
+- id int8 PK
+- tutor_id int8 FK (senior_members)
+- training_branch text
+- name text
+- description text // description about the training
+- date date // When the training will take place
+- type text // either robotics or dev training
+- address text // where the training will take place
+- logo_url text
+
+training_participation:
+- id int8 PK
+- training_id int8 FK (training)
+- member_id int8 FK (club_members)
+- level_in_subject text
+- group_number int2
+- training_room text
+- has_paid bool
+
+training_tutor_assignments:
+-id int8 PK
+-training_id int8 FK
+-tutor_id int8 FK
+-tutor_assistant_ids int8[]
+-reception_assistant_ids int8[]
+-pausecafe_assistant_ids int8[]
