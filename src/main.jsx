@@ -40,7 +40,8 @@ const router = createBrowserRouter([
     element: <Members />,
   },
   {
-    path: '/FormulaireFormation', // Formulaire de creation d'une formation (admin privilage)
+    path: '/FormulaireFormation', // Render Members
+
     element: <FormulaireFormation />,
   },
   {
