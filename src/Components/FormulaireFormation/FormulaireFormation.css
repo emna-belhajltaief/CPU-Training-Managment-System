@@ -53,4 +53,16 @@
 button:disabled {
     cursor: not-allowed;
     pointer-events: all !important;
+
+  }
+.input_formulaire_formation{
+     margin-right: 2%;
+     
+     border-radius: 8px;
+}
+
+.orgenizer_input{
+    margin-bottom: 1%;
+    margin-top: 1%;
+
 }
