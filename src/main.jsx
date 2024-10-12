@@ -10,7 +10,7 @@ import FicheMembre from './Components/FicheMembre/FicheMembre.jsx';
 import FormulaireFormation from './Components/FormulaireFormation/FormulaireFormation.jsx';
 import MemberDetailForm from '@components/members/memberDetailForm.jsx';
 import Formation from './Components/Formation/Formation.jsx';
-import Repatition from './Components/Repartition/Repartition.jsx';
+import Repartition from './Components/Repartition/Repartition.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import CheckIn from './Components/CheckIn/CheckIn.jsx';
 import MainPage from './Components/MainPage/MainPage.jsx';
@@ -54,8 +54,8 @@ const router = createBrowserRouter([
   },
   
   {
-    path: '/Repatition',
-    element: <Repatition />, // show repartitin page (admin privilage)
+    path: '/Repartition',
+    element: <Repartition />, // show repartitin page (admin privilage)
   },
   {
     path: '/CheckIn',
