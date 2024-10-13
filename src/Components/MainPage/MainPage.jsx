@@ -34,7 +34,7 @@ const MainPage = () => {
   const navigate = useNavigate(); // Initialize the navigate function
 
   const handleView = () => {
-    navigate('/FormulaireFormation'); // Navigate to the specified path
+    navigate('/Formation'); // Navigate to the specified path
   };
 
   const handleCheckIn = () => {

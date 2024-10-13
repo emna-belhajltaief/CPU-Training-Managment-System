@@ -1,4 +1,4 @@
-import React from 'react'
+
 import NavBar from '../NavBar/NavBar';
 import { Link } from 'react-router-dom';
 const ListerFormations = () => {
@@ -37,7 +37,7 @@ const ListerFormations = () => {
             
             <div className="edit_button">
             <Link to="/FormulaireFormation"><button className="edit-btn">Edit</button></Link>
-            <Link to="/Repatition"> <button className="edit-btn">Répartir</button></Link>
+            <Link to="/Repartition"> <button className="edit-btn">Répartir</button></Link>
             </div>
           </div>
         ))}
