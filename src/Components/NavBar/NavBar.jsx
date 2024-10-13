@@ -23,7 +23,7 @@ function NavBar(){
             {showDropdown && (
               <div className="dropdown">
                 <Link to="/FormulaireFormation">Créer Formation</Link>
-                <a href="/Lister_Formations" >Liste des Formations</a> 
+                <Link to="/Lister_Formations" >Liste des Formations</Link> 
               </div>
             )}
           </div>
