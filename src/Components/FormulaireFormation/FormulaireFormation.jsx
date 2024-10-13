@@ -70,18 +70,18 @@ function FormulaireFormation() {
     //add to data base code should go here
     e.preventDefault();
 
-    const formDataString = `
-      name: ${formData?.name}
-      training_branch: ${formData?.training_branch}
-      description: ${formData?.description}
-      date: ${formData?.date}
-      address: ${formData?.address}
-      tutor_id: ${formData?.tutor_assistants_ids.join(", ")}
-      tutor_assistants_ids: ${formData?.tutor_assistants_ids.join(", ")}
-      receptionists_ids: ${formData?.receptionists_ids.join(", ")}
-      coffeeBreaks_assistants_ids: ${formData?.coffeeBreaks_assistants_ids.join(", ")}
-      logo_url: ${formData?.logo_url}
-    `;
+    // const formDataString = `
+    //   name: ${formData?.name}
+    //   training_branch: ${formData?.training_branch}
+    //   description: ${formData?.description}
+    //   date: ${formData?.date}
+    //   address: ${formData?.address}
+    //   tutor_id: ${formData?.tutor_assistants_ids.join(", ")}
+    //   tutor_assistants_ids: ${formData?.tutor_assistants_ids.join(", ")}
+    //   receptionists_ids: ${formData?.receptionists_ids.join(", ")}
+    //   coffeeBreaks_assistants_ids: ${formData?.coffeeBreaks_assistants_ids.join(", ")}
+    //   logo_url: ${formData?.logo_url}
+    // `;
     try {
       const { data, error } = await supabase
         .from("trainings")
