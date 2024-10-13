@@ -26,7 +26,7 @@ function FormulaireFormation() {
     description: "",
     date: "",
     address: "",
-    tutor_id: 0,
+    tutor_ids: [0],
     tutor_assistants_ids: [0],
     receptionists_ids: [0],
     coffeeBreaks_assistants_ids: [0],
@@ -59,13 +59,10 @@ function FormulaireFormation() {
     getFormateurs();
   }, []);
 
-  const handleTutorChange = (e) => {
-    setFormData({ ...formData, tutor_id: e.target.value });
-  }
   // Function to handle input change
   const handleInputChange = (e, index, label, fields) => {
     const newFields = [...fields];
-    newFields[index].value = e.target.value;
+    newFields[index] = parseInt(e.target.value);
     setFormData({ ...formData, [label]: newFields });
   };
 
@@ -79,7 +76,7 @@ function FormulaireFormation() {
       description: ${formData?.description}
       date: ${formData?.date}
       address: ${formData?.address}
-      tutor_id: ${formData?.tutor_id}
+      tutor_id: ${formData?.tutor_assistants_ids.join(", ")}
       tutor_assistants_ids: ${formData?.tutor_assistants_ids.join(", ")}
       receptionists_ids: ${formData?.receptionists_ids.join(", ")}
       coffeeBreaks_assistants_ids: ${formData?.coffeeBreaks_assistants_ids.join(", ")}
@@ -95,7 +92,7 @@ function FormulaireFormation() {
             description: formData.description,
             date: formData.date,
             address: formData.address,
-            tutor_id: formData.tutor_id,
+            tutor_ids: formData.tutor_ids,
             tutor_assistants_ids: formData.tutor_assistants_ids,
             receptionists_ids: formData.receptionists_ids,
             coffeeBreaks_assistants_ids: formData.coffeeBreaks_assistants_ids,
@@ -150,18 +147,21 @@ function FormulaireFormation() {
 
   // Function to add a new field in the respective section
   const addField = (label, fields) => {
-    console.log("addfield fiedls: ", fields);
-    console.log("...formData: ", formData);
     setFormData({
       ...formData,
       [label]: [...fields, 0]
     });
   };
 
-  const removeField = (index, fields) => {
-    const updatedFields = fields.filter((_, i) => i !== index);
-    setFormData(...formData, {
-      fields: updatedFields
+  const removeField = (index, label, fields) => {
+    const updatedFields = fields.filter((_, i) => index !== i);
+    console.log("index: ", index);
+
+    console.log("old fields: ", fields);
+    console.log("new fields: ", updatedFields);
+    setFormData({
+      ...formData,
+      [label]: updatedFields
     });
   };
 
@@ -169,7 +169,7 @@ function FormulaireFormation() {
     <div className="Field">
       <label>{label} {icon}:</label>
       {fields.map((field, index) => (
-        <div key={field} style={{ display: "flex", marginBottom: "1rem" }}>
+        <div key={index} style={{ display: "flex", marginBottom: "1rem" }}>
           {/* <input
             placeholder="Nom et prénom"
             value={field.value}
@@ -181,6 +181,7 @@ function FormulaireFormation() {
             className="form-select"
             aria-label="Default select example"
             onChange={(e) => handleInputChange(e, index, label, fields)}
+            value={field}
           >
             <option value={0}>Select {label}</option>
             {seniorMembers.map((member) => (
@@ -201,7 +202,7 @@ function FormulaireFormation() {
               }`}
             disabled={fields.length <= 1}
             style={{ flex: 1 }}
-            onClick={() => removeField(index, fields)}
+            onClick={() => removeField(index, label, fields)}
           >
             <IoPersonRemove />
           </button>
@@ -272,29 +273,8 @@ function FormulaireFormation() {
           </div>
 
           {/* Render Field Sections */}
-          <div className="Field">
-            <label>Formateur {<GiTeacher />}:</label>
 
-            <div style={{ display: "flex", marginBottom: "1rem" }}>
-              {/* <input
-                    placeholder="Nom et prénom"
-                    value={field.value}
-                    onChange={(e) => handleInputChange(e, index, setFieldFunc, fields)}
-                    className="input_formulaire_formation"
-                    style={{ flex: 4, marginRight: "1%" }}
-              /> */}
-              <select
-                className="form-select"
-                aria-label="Default select example"
-                onChange={(e) => handleTutorChange(e)}
-              >
-                <option value={0}>Select Formateur</option>
-                {seniorMembers.map((member) => (
-                  <option key={member.id} value={member.id}>{member.firstname} {member.lastname}</option>
-                ))}
-              </select>
-            </div>
-          </div>
+          {renderFieldSection("tutor_ids", <GiTeacher />, formData.tutor_ids)}
           {renderFieldSection("tutor_assistants_ids", <MdAssistantPhoto />, formData.tutor_assistants_ids)}
           {renderFieldSection("receptionists_ids", <FaPersonCircleCheck />, formData.receptionists_ids)}
           {renderFieldSection("coffeeBreaks_assistants_ids", <FaCoffee />, formData.coffeeBreaks_assistants_ids)}
