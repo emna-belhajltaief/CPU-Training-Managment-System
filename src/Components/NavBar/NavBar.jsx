@@ -1,8 +1,13 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import  { useState } from 'react';
+import "./NavBar.css"
 function NavBar(){
-
+  const navigate = useNavigate();
     const [showDropdown, setShowDropdown] = useState(false);
+
+    const gotomain =()=>{
+      navigate("/Home")
+    }
     const toggleDropdown = () => {
         setShowDropdown(!showDropdown);
       };
@@ -11,8 +16,8 @@ function NavBar(){
 
     return(<>      
     <nav className="nav-main">
-        <div className="nav-logo">
-          <img src="./images/cpuwhite.png" alt="Logo" />
+        <div onClick={gotomain}  className="nav-logo">
+          <img  src="./images/cpuwhite.png" className="point" alt="Logo" />
         </div>
         <div className="nav-items">
           <div className="nav-item">
