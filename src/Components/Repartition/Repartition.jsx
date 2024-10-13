@@ -1,108 +1,159 @@
-import  { useState } from "react";
+import { useState } from "react";
 import NavBar from "../NavBar/NavBar";
 import "./Repartition.css";
+import { FaPrint } from "react-icons/fa";
 
 function Repartition() {
   const [activeTab, setActiveTab] = useState("salle");
 
-  // Data for each tab
-  const salleData = [
-    { id: 1, prenom: "yaakoub", nom: "Otto", salle: "" },
-    { id: 2, prenom: "hassen", nom: "Thornton", salle: "" },
-    { id: 3, prenom: "salem", nom: "the Bird", salle: "" },
+  // State to store participant inputs
+  const [participantsInputs, setParticipantsInputs] = useState({
+    salle: {},
+    group: {},
+    groupSalle: {},
+  });
+
+  const personnelData = [
+    { id: 1, prenom: "Mark", nom: "Otto", role: "Formateur" },
+    { id: 2, prenom: "Jacob", nom: "Thornton", role: "Formateur" },
+    { id: 3, prenom: "Larry", nom: "Smith", role: "Assistant" },
+    { id: 4, prenom: "Larry", nom: "the Bird", role: "Assistant" },
   ];
 
-  const groupData = [
-    { id: 1, prenom: "Mark", nom: "Otto", groupe: "" },
-    { id: 2, prenom: "Jacob", nom: "Thornton", groupe: "" },
-    { id: 3, prenom: "Larry", nom: "Smith", groupe: "" },
+  const participantsSalle = [
+    { id: 1, prenom: "Yaakoub", nom: "9amar eddin" },
+    { id: 2, prenom: "5aled", nom: "Kachmiri" }
   ];
 
-  const groupSalleData = [
-    { id: 1, prenom: "Mark", nom: "Otto", groupe: "", salle: "" },
-    { id: 2, prenom: "Jacob", nom: "Thornton", groupe: "", salle: "" },
-    { id: 3, prenom: "Larry", nom: "Smith", groupe: "", salle: "" },
+  const participantsGroup = [
+    { id: 1, prenom: "Yaakoub", nom: "9amar eddin", groupe: "" },
+    { id: 2, prenom: "5aled", nom: "Kachmiri", groupe: "" }
   ];
 
-  // Handler for changing active tab
+  const participantsGroupSalle = [
+    { id: 1, prenom: "Yaakoub", nom: "9amar eddin", groupe: "", salle: "" },
+    { id: 2, prenom: "5aled", nom: "Kachmiri", groupe: "", salle: "" }
+  ];
+
   const handleTabChange = (tab) => {
     setActiveTab(tab);
   };
 
-  // Render data based on active tab
-  const renderTable = () => {
-    if (activeTab === "salle") {
-      return (
-        <table className="table table-striped">
+  const handleInputChange = (id, field, value) => {
+    setParticipantsInputs((prevInputs) => ({
+      ...prevInputs,
+      [activeTab]: {
+        ...prevInputs[activeTab],
+        [id]: {
+          ...prevInputs[activeTab][id],
+          [field]: value,
+        },
+      },
+    }));
+  };
+
+  const printElement = (elementId) => {
+    const printContents = document.getElementById(elementId).innerHTML;
+    const newWindow = window.open('', '', 'width=600,height=400');
+    newWindow.document.write(`
+      <html>
+        <head>
+          <title>Print</title>
+          <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        </head>
+        <body>
+          <table class="table table-striped">
+            ${printContents}
+          </table>
+        </body>
+      </html>
+    `);
+    newWindow.document.close();
+    newWindow.print();
+  };
+
+  const renderParticipantsTable = () => {
+    const participants = activeTab === "salle" ? participantsSalle :
+      activeTab === "group" ? participantsGroup :
+      participantsGroupSalle;
+
+    return (
+      <>
+        <table className="table table-striped" id="participantsTable">
           <thead>
             <tr>
-              <th scope="col">#</th>
-              <th scope="col">Prenom</th>
-              <th scope="col">Nom</th>
-              <th scope="col">Salle</th>
+              <th>#</th>
+              <th>Prenom</th>
+              <th>Nom</th>
+              {activeTab === "salle" && <th>Salle</th>}
+              {activeTab === "group" && <th>Groupe</th>}
+              {activeTab === "groupSalle" && (
+                <>
+                  <th>Groupe</th>
+                  <th>Salle</th>
+                </>
+              )}
             </tr>
           </thead>
           <tbody>
-            {salleData.map((row) => (
+            {participants.map((row) => (
               <tr key={row.id}>
-                <th scope="row">{row.id}</th>
+                <th>{row.id}</th>
                 <td>{row.prenom}</td>
                 <td>{row.nom}</td>
-                <td><input placeholder="Salle"></input></td>
+                {activeTab === "salle" && (
+                  <td>
+                    <input
+                      placeholder="Salle"
+                      value={participantsInputs.salle[row.id]?.salle || ""}
+                      onChange={(e) =>
+                        handleInputChange(row.id, "salle", e.target.value)
+                      }
+                    />
+                  </td>
+                )}
+                {activeTab === "group" && (
+                  <td>
+                    <input
+                      placeholder="Groupe"
+                      value={participantsInputs.group[row.id]?.groupe || ""}
+                      onChange={(e) =>
+                        handleInputChange(row.id, "groupe", e.target.value)
+                      }
+                    />
+                  </td>
+                )}
+                {activeTab === "groupSalle" && (
+                  <>
+                    <td>
+                      <input
+                        placeholder="Groupe"
+                        value={participantsInputs.groupSalle[row.id]?.groupe || ""}
+                        onChange={(e) =>
+                          handleInputChange(row.id, "groupe", e.target.value)
+                        }
+                      />
+                    </td>
+                    <td>
+                      <input
+                        placeholder="Salle"
+                        value={participantsInputs.groupSalle[row.id]?.salle || ""}
+                        onChange={(e) =>
+                          handleInputChange(row.id, "salle", e.target.value)
+                        }
+                      />
+                    </td>
+                  </>
+                )}
               </tr>
             ))}
           </tbody>
         </table>
-      );
-    } else if (activeTab === "group") {
-      return (
-        <table className="table table-striped">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Prenom</th>
-              <th scope="col">Nom</th>
-              <th scope="col">Groupe</th>
-            </tr>
-          </thead>
-          <tbody>
-            {groupData.map((row) => (
-              <tr key={row.id}>
-                <th scope="row">{row.id}</th>
-                <td>{row.prenom}</td>
-                <td>{row.nom}</td>
-                <td><input placeholder="Groupe"></input></td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      );
-    } else if (activeTab === "groupSalle") {
-      return (
-        <table className="table table-striped">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Prenom</th>
-              <th scope="col">Nom</th>
-              <th scope="col">Groupe</th>
-              <th scope="col">Salle</th>
-            </tr>
-          </thead>
-          <tbody>
-            {groupSalleData.map((row) => (
-              <tr key={row.id}>
-                <th scope="row">{row.id}</th>
-                <td>{row.prenom}</td>
-                <td>{row.nom}</td>
-                <td><input placeholder="Groupe"></input></td>
-                <td><input placeholder="Salle"></input></td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      );
-    }
+        <button className="btn btn-warning" onClick={() => printElement("participantsTable")}>
+          <FaPrint /> Print
+        </button>
+      </>
+    );
   };
 
   return (
@@ -128,54 +179,35 @@ function Repartition() {
             </li>
           </ul>
         </div>
-        <h3 style={{color:"white"}}>Resources Humaines Sinior </h3>
 
-<table className="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Prenom</th>
-      <th scope="col">Nom</th>
-      <th scope="col">Role</th>
-      <th scope="col">Salle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>Formateur</td>
-      <td><input></input></td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>formateur</td>
-      <td><input></input></td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>Smith</td>
-      <td>assistant</td>
-      <td><input></input></td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>assistant</td>
-      <td><input></input></td>
-    </tr>
-  </tbody>
-</table>
-        <h3 style={{color:"white"}}>Repartition</h3>
-        {/* Render the correct table based on activeTab */}
-        {renderTable()}
+        <h3 style={{ color: "white" }}>Resources Humaines Senior</h3>
+        {/* Static Personnel Table */}
+        <table className="table table-striped">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Prenom</th>
+              <th>Nom</th>
+              <th>Role</th>
+              <th>Salle</th>
+            </tr>
+          </thead>
+          <tbody>
+            {personnelData.map((person) => (
+              <tr key={person.id}>
+                <th>{person.id}</th>
+                <td>{person.prenom}</td>
+                <td>{person.nom}</td>
+                <td>{person.role}</td>
+                <td><input placeholder="Salle" /></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
 
-        <button className="btn btn-warning">Print</button>
+        <h3 style={{ color: "white" }}>Repartition</h3>
+        {/* Dynamic Participant Table */}
+        {renderParticipantsTable()}
       </div>
     </div>
   );
