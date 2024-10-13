@@ -84,18 +84,22 @@ body {
     
     .formation-item{
       margin: 10px;
+      margin-left: 10px;
       display: flex;
       gap: 20px;
-      padding-right: 30px;
+      padding-right: 40px;
       width: 80%;
   
     }
     .edit_button{
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
       position: absolute;
-      padding-left: 600px;
-      margin-top: 30px;
+      padding-left: 640px;
+      margin-top: 12px;
     }
-.edit-btn {
+  .edit-btn {
   align-items: center;
   appearance: none;
   background-color: #fff;
@@ -124,7 +128,7 @@ body {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  width: auto;
+  width: 70px;
   will-change: transform,opacity;
   z-index: 0;
   

@@ -9,7 +9,8 @@ function NavBar(){
     
 
 
-    return(<>      <nav className="nav-main">
+    return(<>      
+    <nav className="nav-main">
         <div className="nav-logo">
           <img src="./images/cpuwhite.png" alt="Logo" />
         </div>
@@ -22,7 +23,7 @@ function NavBar(){
             {showDropdown && (
               <div className="dropdown">
                 <Link to="/FormulaireFormation">Créer Formation</Link>
-                <a href="#" >Liste des Formations</a> 
+                <a href="/Lister_Formations" >Liste des Formations</a> 
               </div>
             )}
           </div>
