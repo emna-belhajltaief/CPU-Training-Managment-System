@@ -8,19 +8,19 @@ const formations = [
     title: "Formation Dev : introduction HTML, CSS",
     date: "22/10/2024",
     location: "Spring Land",
-    logo: "./images/HTMLCSS.png",
+    logo: "./images/HTML&CSS.png",
   },
   {
     title: "Formation Robotic : introduction stem32",
     date: "29/10/2024",
     location: "ISIMM-C11",
-    logo: "./images/stm32.jpg",
+    logo: "./images/STM32.png",
   },
   {
     title: "Formation Dev : C++ for beginners",
     date: "9/11/2024",
     location: "Les Jumelles",
-    logo: "./images/c++logo.png",
+    logo: "./images/C++_logo.png",
   },
 ];
 
