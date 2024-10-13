@@ -11,7 +11,6 @@ import { FaCoffee } from "react-icons/fa";
 import { FaCode } from "react-icons/fa";
 import { RiRobot2Fill } from "react-icons/ri";
 
-import "./Formation.css";
 
 function Formation() {
   const [seniorMembers, setSeniorMembers] = useState([{}]);
@@ -215,7 +214,7 @@ function Formation() {
               value={formData.tutor}
               onChange={handleTutorChange}
             >
-              <option value="default">Select Formateur</option>
+              <option value={0}>Select Formateur</option>
               {seniorMembers.map((seniorMember) => (
                 <option key={seniorMember.id} value={seniorMember.id}>
                   {seniorMember?.firstname} {seniorMember?.lastname}
