@@ -9,7 +9,8 @@ function NavBar(){
     
 
 
-    return(<>      <nav className="nav-main">
+    return(<>      
+    <nav className="nav-main">
         <div className="nav-logo">
           <img src="./images/cpuwhite.png" alt="Logo" />
         </div>
