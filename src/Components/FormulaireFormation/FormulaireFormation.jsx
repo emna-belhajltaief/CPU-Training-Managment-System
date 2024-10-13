@@ -101,16 +101,29 @@ function FormulaireFormation() {
         ]);
 
       if (error) {
+        alert("Error adding training!");
         console.error("Error adding training:", error.message);
       } else {
         alert("Training added successfully!");
         console.log("Training added successfully!", data);
+        setFormData({
+          name: "",
+          training_branch: "",
+          description: "",
+          date: "",
+          address: "",
+          tutor_ids: [0],
+          tutor_assistants_ids: [0],
+          receptionists_ids: [0],
+          coffeeBreaks_assistants_ids: [0],
+          logo_url: "./images/CpuBlack.png",
+        }); // Clear the form
       }
     } catch (err) {
+      alert("Error adding training!");
       console.error("Error adding training:", err);
     }
 
-    alert(formDataString);
   };
 
   // Handlers for single value inputs
