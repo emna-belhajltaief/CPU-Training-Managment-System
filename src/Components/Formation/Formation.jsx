@@ -10,6 +10,8 @@ import { FaCoffee } from "react-icons/fa";
 import { useState } from "react";
 import { FaCode } from "react-icons/fa";
 import { RiRobot2Fill } from "react-icons/ri";
+
+
 function Formation() {
   const [Titre] = useState("introduction C++");
   const [Domaine] = useState("Développement"); // Set default value if needed
@@ -86,14 +88,19 @@ function Formation() {
         {/* Formateur Section */}
         <div className="Field">
           <label>Formateur {<GiTeacher />} :</label>
-          {formateurs.map((formateur, index) => (
-            <input
-              key={index}
-              placeholder="Nom et prénom"
-              value={formateur.value}
-              readOnly
-            />
-          ))}
+          <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+            <select
+              value={formData.tutor}
+              onChange={handleTutorChange}
+            >
+              <option value={0}>Select Formateur</option>
+              {seniorMembers.map((seniorMember) => (
+                <option key={seniorMember.id} value={seniorMember.id}>
+                  {seniorMember?.firstname} {seniorMember?.lastname}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
         {/* Assistant Section */}
         <div className="Field">

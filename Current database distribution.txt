@@ -21,6 +21,9 @@ senior_members:
 trainings:
 - id int8 PK
 - tutor_id int8 FK (senior_members)
+- tutor_assistants_ids int8[] // id from senior_member
+- receptionists_ids int8[] // id from senior_member
+- coffeeBreaks_assistants_ids int8[] // id from senior_member
 - training_branch text
 - name text
 - description text // description about the training
