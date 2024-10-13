@@ -1,45 +1,93 @@
-import { useState } from 'react'
+import { useState } from 'react';
+import { Navigate } from 'react-router-dom';
 import supabase from '../../../superbaseClient';
-import './LogIn.css'
+import './LogIn.css';
 
 const LogIn = () => {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
   });
+  const [redirect, setRedirect] = useState(false); // State for redirection
+  const [errorMessage, setErrorMessage] = useState(''); // State for error messages
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const { email, password } = formData;
+    
     let { data, error } = await supabase.auth.signInWithPassword({
-      email: formData?.email,
-      password: formData?.password,
-    })
-    console.log('Log In Data : ', formData);
+      email,
+      password,
+    });
+
     console.info('data : ', data);
-    console.error('error : ', error);
+    
+    // Check for user and session
+    if (data) {
+      const { user, session } = data;
+      console.info('user : ', user);
+      console.info('session : ', session);
+
+      if (user && session) {
+        setRedirect(true); // Set redirect to true
+      } else {
+        console.log("Denied");
+        setErrorMessage("Login failed. Please try again.");
+      }
+    }
+
+    // Handle any errors returned from Supabase
+    if (error) {
+      console.error('error : ', error);
+      setErrorMessage(error.message);
+    }
   };
+
+  // Redirect when redirect state is true
+  if (redirect) {
+    return <Navigate to="/Home" />;
+  }
 
   return (
     <div className='login-container'>
       <h2>Log In</h2>
+      {errorMessage && <p className="error">{errorMessage}</p>} {/* Display error message */}
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label className='forum_label' htmlFor="email">Email:</label>
-          <input className='input_forum' type="email" id="email" name="email" value={formData.username} onChange={handleChange} required />
+          <input 
+            className='input_forum' 
+            type="email" 
+            id="email" 
+            name="email" 
+            value={formData.email} 
+            onChange={handleChange} 
+            required 
+          />
         </div>
         <div className="form-group">
           <label className='forum_label' htmlFor="password">Password:</label>
-          <input className='input_forum' type="password" id="password" name="password" value={formData.password} onChange={handleChange} required />
+          <input 
+            className='input_forum' 
+            type="password" 
+            id="password" 
+            name="password" 
+            value={formData.password} 
+            onChange={handleChange} 
+            required 
+          />
         </div>
         <button type="submit">Log In</button>
       </form>
     </div>
-  )
+  );
 }
 
-export default LogIn
+export default LogIn;
