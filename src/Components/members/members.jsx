@@ -160,11 +160,16 @@ const Members = () => {
           <IoMdPersonAdd />
             Add Member
           </button>
+          
+        </div>
+        <div>
+        
         </div>
         <div className={`filter-menu ${showfilter ? 'open' : ''}`}>
           <div>
             {filters.map((filter, index) => (
               <div className="filter-row" key={index}>
+                
                 <select
                   value={filter.criteria}
                   onChange={(e) => handleFilterChange(index, 'criteria', e.target.value)}
@@ -195,6 +200,8 @@ const Members = () => {
                 <button onClick={() => handleRemoveFilter(index)}>
                   <FaRegTrashAlt />
                 </button>
+                <small color="white">({Filtredmembers.length} results found)</small>
+                
               </div>
             ))}
             <button onClick={handleAddFilter}>Add Filter</button>
