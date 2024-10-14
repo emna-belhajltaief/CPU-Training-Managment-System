@@ -1,0 +1,82 @@
+[
+    {
+       "Nom &Prénom":"Emna Belhaj Ltaief", 
+      "adherent": true,
+      "paid": true,
+      "present": true,
+      "fee": 50,
+      "section": "ING2 INFO"
+    },
+    {
+      "Nom &Prénom":"Ahmed Chebbi",
+      "adherent": false,
+      "paid": true,
+      "present": true,
+      "fee": 60,
+      "section": "ING2 INFO"
+    },
+    {
+        "Nom &Prénom":"Dhia Ben Hammouda",
+        "adherent": false,
+        "paid": false,
+        "present": false,
+        "fee": 0,
+        "section": "ING2 INFO"
+      },
+      {
+        "Nom &Prénom":"Mazen Tora",
+        "adherent": true,
+        "paid": false,
+        "present": true,
+        "fee": 0,
+        "section": "ING1 INFO"
+      },
+      {
+        "Nom &Prénom":"Asma Sebei",
+        "adherent": true,
+        "paid": true,
+        "present": true,
+        "fee": 0,
+        "section": "ING1 INFO"
+      },
+      {
+        "Nom &Prénom":"etudiant1",
+        "adherent": true,
+        "paid": true,
+        "present": true,
+        "fee": 0,
+        "section": "Cpi1"
+      },
+      {
+        "Nom &Prénom":"etudiant2",
+        "adherent": false,
+        "paid": true,
+        "present": true,
+        "fee": 60,
+        "section": "Cpi2"
+      },
+      {
+        "Nom &Prénom":"etudiant1",
+        "adherent": true,
+        "paid": true,
+        "present": true,
+        "fee": 50,
+        "section": "Tic1"
+      },
+      {
+        "Nom &Prénom":"etudiant2",
+        "adherent": true,
+        "paid": true,
+        "present": true,
+        "fee": 0,
+        "section": "Cpi2"
+      },
+      {
+        "Nom &Prénom":"etudiant3",
+        "adherent": true,
+        "paid": true,
+        "present": true,
+        "fee": 0,
+        "section": "Cpi2"
+      }
+  ]
