@@ -1,9 +1,11 @@
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import supabase from '../../../superbaseClient';
 import './MainPage.css';
 import NavBar from '../NavBar/NavBar';
 
 // Sample formations data
-const formations = [
+const trainings = [
   {
     title: "Formation Dev : introduction HTML, CSS",
     date: "22/10/2024",
@@ -32,37 +34,63 @@ const formations = [
 
 const MainPage = () => {
   const navigate = useNavigate(); // Initialize the navigate function
+  const [trainings, setTrainings] = useState([]);
 
-  const handleView = () => {
-    navigate('/Formation'); // Navigate to the specified path
+  useEffect(() => {
+    const fetchTrainings = async () => {
+      try {
+        const { data: trainings, error } = await supabase
+          .from("trainings")
+          .select("*");
+
+        if (error) {
+          console.log("Error fetching formateurs", error.message);
+          return [];
+        }
+        return trainings;
+      } catch (err) {
+        console.error('Error fetching data:', err);
+        return [{}];
+      }
+    };
+    async function getTrainings() {
+      const trainings = await fetchTrainings();
+      setTrainings(trainings);
+    }
+
+    getTrainings();
+  }, []);
+
+  const handleView = (training) => {
+    navigate('/Formation', { state: { training } }); // Navigate to the specified path
   };
 
-  const handleCheckIn = () => {
-    navigate("/CheckIn"); // Navigate to the check-in path
+  const handleCheckIn = (training) => {
+    navigate("/CheckIn", { state: { training } }); // Navigate to the check-in path
   };
 
   return (
     <>
       <NavBar />
       <main className="formation-list">
-        {formations.map((formation, index) => (
+        {trainings.map((training, index) => (
           <div key={index} className="formation-item">
-            <img src={formation.logo} alt="Formation Logo" className="formation-logo" />
+            <img src={training.logo_url} alt="Formation Logo" className="formation-logo" />
             <div className="formation-details">
-              <h3>{formation.title}</h3>
-              <p>Date: {formation.date}</p>
-              <p>Location: {formation.location}</p>
+              <h3>{training.name}</h3>
+              <p>Date: {training.date}</p>
+              <p>Location: {training.address}</p>
             </div>
             <div className="edit_button">
-              <button 
-                className="edit-btn" 
-                onClick={() => handleView()}
+              <button
+                className="edit-btn"
+                onClick={() => handleView(training)}
               >
                 View
               </button>
-              <button 
-                className="edit-btn" 
-                onClick={() => handleCheckIn()}
+              <button
+                className="edit-btn"
+                onClick={() => handleCheckIn(training)}
               >
                 Open for check-in
               </button>

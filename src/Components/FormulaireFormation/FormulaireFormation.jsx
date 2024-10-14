@@ -70,18 +70,18 @@ function FormulaireFormation() {
     //add to data base code should go here
     e.preventDefault();
 
-    const formDataString = `
-      name: ${formData?.name}
-      training_branch: ${formData?.training_branch}
-      description: ${formData?.description}
-      date: ${formData?.date}
-      address: ${formData?.address}
-      tutor_id: ${formData?.tutor_assistants_ids.join(", ")}
-      tutor_assistants_ids: ${formData?.tutor_assistants_ids.join(", ")}
-      receptionists_ids: ${formData?.receptionists_ids.join(", ")}
-      coffeeBreaks_assistants_ids: ${formData?.coffeeBreaks_assistants_ids.join(", ")}
-      logo_url: ${formData?.logo_url}
-    `;
+    // const formDataString = `
+    //   name: ${formData?.name}
+    //   training_branch: ${formData?.training_branch}
+    //   description: ${formData?.description}
+    //   date: ${formData?.date}
+    //   address: ${formData?.address}
+    //   tutor_id: ${formData?.tutor_assistants_ids.join(", ")}
+    //   tutor_assistants_ids: ${formData?.tutor_assistants_ids.join(", ")}
+    //   receptionists_ids: ${formData?.receptionists_ids.join(", ")}
+    //   coffeeBreaks_assistants_ids: ${formData?.coffeeBreaks_assistants_ids.join(", ")}
+    //   logo_url: ${formData?.logo_url}
+    // `;
     try {
       const { data, error } = await supabase
         .from("trainings")
@@ -101,16 +101,29 @@ function FormulaireFormation() {
         ]);
 
       if (error) {
+        alert("Error adding training!");
         console.error("Error adding training:", error.message);
       } else {
         alert("Training added successfully!");
         console.log("Training added successfully!", data);
+        setFormData({
+          name: "",
+          training_branch: "",
+          description: "",
+          date: "",
+          address: "",
+          tutor_ids: [0],
+          tutor_assistants_ids: [0],
+          receptionists_ids: [0],
+          coffeeBreaks_assistants_ids: [0],
+          logo_url: "./images/CpuBlack.png",
+        }); // Clear the form
       }
     } catch (err) {
+      alert("Error adding training!");
       console.error("Error adding training:", err);
     }
 
-    alert(formDataString);
   };
 
   // Handlers for single value inputs
