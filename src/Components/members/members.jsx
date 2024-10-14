@@ -66,26 +66,30 @@ const Members = () => {
   };
 
   const filter = (members) => {
-    console.log(members)
+    console.log(members);
     try {
       return members.filter(member => {
         return filters.every(({ criteria, mode, arg }) => {
           const value = member[criteria];
           if (value === undefined) return false;
           if (arg === "") return true;
-
+  
+          // Convert both value and arg to lowercase for case-insensitive comparison
+          const valueLower = value.toString().toLowerCase();
+          const argLower = arg.toLowerCase();
+  
           switch (mode) {
             case "Ends with":
-              return value.toString().endsWith(arg);
+              return valueLower.endsWith(argLower);
             case "Starts with":
-              return value.toString().startsWith(arg);
+              return valueLower.startsWith(argLower);
             case "Equals":
               if (typeof value === 'boolean') {
                 return value === (arg === 'true');
               }
-              return value.toString() === arg;
+              return valueLower === argLower;
             case "Contains":
-              return value.toString().includes(arg);
+              return valueLower.includes(argLower);
             default:
               return true;
           }
@@ -95,6 +99,7 @@ const Members = () => {
       return members;
     }
   };
+  
 
   const sortMembers = (members) => {
     let sortedMembers = [...members];
