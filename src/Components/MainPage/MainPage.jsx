@@ -4,33 +4,6 @@ import supabase from '../../../superbaseClient';
 import './MainPage.css';
 import NavBar from '../NavBar/NavBar';
 
-// Sample formations data
-const trainings = [
-  {
-    title: "Formation Dev : introduction HTML, CSS",
-    date: "22/10/2024",
-    location: "Spring Land",
-    logo: "./images/HTML&CSS.png",
-    viewPath: "/formation/html-css", // Path for viewing details
-    checkInPath: "/check-in/html-css", // Path for check-in
-  },
-  {
-    title: "Formation Robotic : introduction stem32",
-    date: "29/10/2024",
-    location: "ISIMM-C11",
-    logo: "./images/STM32.png",
-    viewPath: "/formation/stem32", // Path for viewing details
-    checkInPath: "/check-in/stem32", // Path for check-in
-  },
-  {
-    title: "Formation Dev : C++ for beginners",
-    date: "9/11/2024",
-    location: "Les Jumelles",
-    logo: "./images/C++_logo.png",
-    viewPath: "/formation/cpp", // Path for viewing details
-    checkInPath: "/check-in/cpp", // Path for check-in
-  },
-];
 
 const MainPage = () => {
   const navigate = useNavigate(); // Initialize the navigate function
