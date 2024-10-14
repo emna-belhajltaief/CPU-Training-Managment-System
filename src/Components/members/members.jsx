@@ -28,18 +28,20 @@ const Members = () => {
         let { data: club_members, error } = await supabase
           .from('club_members')
           .select('*');
-
+        
         if (error) {
           console.error('Error fetching club_members:', error);
           return [];
         }
         return club_members;
+        
       } catch (err) {
         console.error('Error fetching data:', err);
         return [{}];
       }
+      
     }
-
+    
     async function getData() {
       const membersData = await fetchMembersData();
       setMembers(membersData);
@@ -64,6 +66,7 @@ const Members = () => {
   };
 
   const filter = (members) => {
+    console.log(members)
     try {
       return members.filter(member => {
         return filters.every(({ criteria, mode, arg }) => {
@@ -168,7 +171,7 @@ const Members = () => {
                   title="Select an option"
                 >
                   <option value="lastname">Nom</option>
-                  <option value="fistname">Prénom</option>
+                  <option value="firstname">Prénom</option>
                   <option value="email">Email</option>
                   <option value="phone_num">Phone</option>
                   <option value="member_type">Adherent</option>
@@ -210,13 +213,23 @@ const Members = () => {
             </tr>
           </thead>
           <tbody>
-            {Filtredmembers.map((member, index) => (
-              <tr key={index} onClick={() => handleDisplayMember(member)} >
-                {Object.keys(member).map((key, index) => (
-                  <td key={index} >{member[key]}</td>
-                ))}
-              </tr>
-            ))}
+          {Filtredmembers.map((member, memberIndex) => (
+  <tr key={memberIndex} onClick={() => handleDisplayMember(member)}>
+    {Object.keys(member).map((key, keyIndex) => (
+      <td key={keyIndex}>
+        {keyIndex === 5
+          ? member[key] === 1
+            ? "Actif"
+            : member[key] === 2
+            ? "Aderant"
+            : "Externe"
+          : member[key]}
+      </td>
+    ))}
+  </tr>
+))}
+
+
            
           </tbody>
         </table>

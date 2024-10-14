@@ -19,6 +19,7 @@ const SignUp = () => {
             email: formData?.email,
             password: formData?.password
         })
+        alert("Check your mail to confirm sign up")
         console.log('SignUp : ', formData);
         console.info('data : ', data);
         console.error('error : ', error);
