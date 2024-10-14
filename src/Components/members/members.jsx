@@ -200,7 +200,7 @@ const Members = () => {
                 <button onClick={() => handleRemoveFilter(index)}>
                   <FaRegTrashAlt />
                 </button>
-                <small color="white">({Filtredmembers.length} results found)</small>
+                <small color="white">({Filtredmembers.length} results found out of {members.length})</small>
                 
               </div>
             ))}
