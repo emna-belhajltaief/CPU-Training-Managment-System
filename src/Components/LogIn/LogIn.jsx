@@ -21,19 +21,20 @@ const LogIn = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { email, password } = formData;
-    
+
     let { data, error } = await supabase.auth.signInWithPassword({
       email,
       password,
     });
 
     console.info('data : ', data);
-    
+
     // Check for user and session
     if (data) {
       const { user, session } = data;
       console.info('user : ', user);
       console.info('session : ', session);
+      sessionStorage.setItem('supabaseSession', JSON.stringify(data));
 
       if (user && session) {
         setRedirect(true); // Set redirect to true
@@ -62,26 +63,26 @@ const LogIn = () => {
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label className='forum_label' htmlFor="email">Email:</label>
-          <input 
-            className='input_forum' 
-            type="email" 
-            id="email" 
-            name="email" 
-            value={formData.email} 
-            onChange={handleChange} 
-            required 
+          <input
+            className='input_forum'
+            type="email"
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
           />
         </div>
         <div className="form-group">
           <label className='forum_label' htmlFor="password">Password:</label>
-          <input 
-            className='input_forum' 
-            type="password" 
-            id="password" 
-            name="password" 
-            value={formData.password} 
-            onChange={handleChange} 
-            required 
+          <input
+            className='input_forum'
+            type="password"
+            id="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            required
           />
         </div>
         <button type="submit">Log In</button>

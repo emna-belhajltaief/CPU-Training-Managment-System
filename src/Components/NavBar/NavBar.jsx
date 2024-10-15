@@ -20,7 +20,9 @@ function NavBar() {
       if (error) {
         console.error('Error signing out:', error.message);
       } else {
+        sessionStorage.removeItem('supabaseSession');
         console.log('User signed out successfully');
+        navigate("/login")
       }
     };
     signOutUser();
