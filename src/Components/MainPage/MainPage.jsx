@@ -47,6 +47,9 @@ const MainPage = () => {
   const handleRegistration = () => {
     navigate("/Registration");
   }
+  const handleCertifications = () => {
+    navigate("/SendCertifications");
+  }
 
   return (
     <>
@@ -88,6 +91,12 @@ const MainPage = () => {
               onClick={()=> handleStatics()}
               >
                 Statics
+              </button>
+              <button
+              className="edit-btn"
+              onClick={()=> handleCertifications()}
+              >
+              Send certifications
               </button>
             </div>
           </div>

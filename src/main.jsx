@@ -19,6 +19,7 @@ import ListerFormations from './Components/ListerFormations/ListerFormations.jsx
 import Stats from './Components/Stats/Stats.jsx';
 import Registration from './Components/Registration/Registration.jsx';
 import RegistrationForm from './Components/Registration/RegistrationForm.jsx';
+import Certifications from './Components/Certifications/Certifications.jsx';
 
 const router = createBrowserRouter([
   {
@@ -79,6 +80,10 @@ const router = createBrowserRouter([
   {
     path: '/RegistrationForm',
     element : <RegistrationForm />
+  },
+  {
+    path:'SendCertifications',
+    element : <Certifications />
   },
   {
     path: '/Home',
