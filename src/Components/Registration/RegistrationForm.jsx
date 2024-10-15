@@ -1,35 +1,31 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate, useParams, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import "./RegistrationForm.css";
 import supabase from "../../../superbaseClient";
 
 const RegistrationForm = () => {
   const navigate = useNavigate();
   const { formationId } = useParams();
-  const location = useLocation();
-
-  const [MembreType, setMembreType] = useState(1);
-  const [MembersData, setMembersData] = useState([]);
-  const [selectedMember, setSelectedMember] = useState(null); // State to hold the selected member
-  const [memberDataTodb, setMemberDataTodb] = useState({
-    training_id: formationId,
-    member_id: 1300, // Ensure this matches your schema
-    training_level: "Advanced",
-    has_paid: "Yes",
-    group_number: 1,
-    training_room: "C1",
-  });
-
-
+  const [clubMembers, setClubMembers] = useState([]);
+  const [memberType, setMemberType] = useState(3); // Default to externe
+  const [membersData, setMembersData] = useState([]);
   const [memberData, setMemberData] = useState({
     lastname: "",
     firstname: "",
     email: "",
     phone_num: "",
-    member_type: 3, // Default to externe
+    member_type: 3,
     study_lvl: "",
     skills: "",
     training_level: "",
+  });
+  const [trainingParticipationData, setTrainingParticipationData] = useState({
+    training_id: formationId,
+    member_id: null,
+    training_level: "",
+    has_paid: "Yes",
+    group_number: null,
+    training_room: null,
   });
 
   const [suggestions, setSuggestions] = useState({
@@ -43,41 +39,46 @@ const RegistrationForm = () => {
   const [loading, setLoading] = useState(false);
   const levels = ["Beginner", "Intermediate", "Advanced"];
 
+
   useEffect(() => {
-    const fetchMembersData = async () => {
-      setLoading(true);
+    const fetchClubMembersData = async () => {
       try {
         const { data: club_members, error } = await supabase
-          .from("club_members")
-          .select("*")
-          .eq("member_type", MembreType);
+          .from('club_members')
+          .select('*');
 
-        if (error) throw error;
-
-        setMembersData(club_members || []); // Handle empty data
+        if (error) {
+          console.error('Error fetching club_members:', error);
+          return [];
+        }
+        return club_members;
       } catch (err) {
-        console.error("Error fetching members:", err);
-      } finally {
-        setLoading(false);
+        console.error('Error fetching data:', err);
+        return [{}];
       }
     };
 
-    fetchMembersData();
-  }, [MembreType]); // Fetch data whenever MembreType changes
+    const getData = async () => {
+      const membersData = await fetchClubMembersData();
+      setClubMembers(membersData);
+    };
+    setLoading(true);
+    getData();
+    setLoading(false);
+  }, []);
+  useEffect(() => {
+    const filteredMembers = clubMembers.filter((member) => member.member_type === memberType);
+    setMembersData(filteredMembers);
 
-  const handleChange = (e, field) => {
-    e.preventDefault();
-    const { value } = e.target;
+  }, [clubMembers, memberType]);
 
-    // Update memberData state for the current field
-    setMemberData((prevData) => ({ ...prevData, [field.name]: value }));
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setMemberData((prevData) => ({ ...prevData, [name]: value }));
 
-    // Handle member type changes and reset related fields
-    if (field.name === "member_type") {
+    if (name === "member_type") {
       const newMemberType = parseInt(value);
-      setMembreType(newMemberType);
-
-      // Reset member data and suggestions
+      setMemberType(newMemberType);
       setMemberData({
         lastname: "",
         firstname: "",
@@ -86,250 +87,102 @@ const RegistrationForm = () => {
         member_type: newMemberType,
         study_lvl: "",
         skills: "",
-        training_level: "", // Reset training_level when member_type changes
+        training_level: "",
       });
-
       setSuggestions({ firstname: [], lastname: [] });
       setShowSuggestions({ firstname: false, lastname: false });
-      return; // Return early to avoid further processing
     }
 
-    // Handle training_level changes specifically
-    if (field.name === "training_level") {
-      // Update the state properly here
-      setMemberData((prevData) => ({
-        ...prevData,
-        training_level: value, // Make sure training_level is being updated correctly
-      }));
-
-      // Log the updated memberData after setting the state
-      setTimeout(() => {
-        console.log("Updated memberData with training_level:", memberData);
-      }, 0);
-
-      return; // Early return after handling training_level
-    }
-
-    // Handle suggestions based on the member type (non-external members)
-    if (memberData.member_type) {
-      let filteredSuggestions = [];
-      const currentMemberType = memberData.member_type;
-
-      if (field.name === "firstname") {
-        filteredSuggestions = MembersData.filter(
-          (member) =>
-            member.member_type === currentMemberType &&
-            member.firstname.toLowerCase().startsWith(value.toLowerCase())
-        ).map((member) => `${member.firstname} ${member.lastname}`);
-
-        setSuggestions((prev) => ({
-          ...prev,
-          firstname: filteredSuggestions,
-        }));
-
-        setShowSuggestions((prev) => ({
-          ...prev,
-          firstname: filteredSuggestions.length > 0,
-        }));
-      } else if (field.name === "lastname") {
-        filteredSuggestions = MembersData.filter(
-          (member) =>
-            member.member_type === currentMemberType &&
-            member.lastname.toLowerCase().startsWith(value.toLowerCase())
-        ).map((member) => `${member.firstname} ${member.lastname}`);
-
-        setSuggestions((prev) => ({
-          ...prev,
-          lastname: filteredSuggestions,
-        }));
-
-        setShowSuggestions((prev) => ({
-          ...prev,
-          lastname: filteredSuggestions.length > 0,
-        }));
-      }
+    if (name === "firstname" || name === "lastname") {
+      handleSuggestions(name, value);
     }
   };
-  const handleTrainingLevelChange = (event) => {
-    setMemberDataTodb((prevState) => ({
-      ...prevState,
-      training_level: event.target.value, // Update training_level based on user selection
-    }));
+
+  const handleSuggestions = (field, value) => {
+    const filteredSuggestions = membersData
+      .filter((member) =>
+        member[field].toLowerCase().startsWith(value.toLowerCase())
+      )
+      .map((member) => `${member.firstname} ${member.lastname}`);
+
+    setSuggestions((prev) => ({ ...prev, [field]: filteredSuggestions }));
+    setShowSuggestions((prev) => ({ ...prev, [field]: filteredSuggestions.length > 0 }));
   };
 
-
-  const handlePaymentChange = (event) => {
-    setMemberDataTodb((prevState) => ({
-      ...prevState,
-      has_paid: event.target.value, // Update has_paid based on user selection
-    }));
-  };
   const handleSelect = (fullName) => {
     const [firstname, lastname] = fullName.split(" ");
-    const selectedMember = MembersData.find(
+    const selectedMember = membersData.find(
       (member) =>
-        member.firstname.toLowerCase() === firstname.toLowerCase() ||
+        member.firstname.toLowerCase() === firstname.toLowerCase() &&
         member.lastname.toLowerCase() === lastname.toLowerCase()
     );
 
     if (selectedMember) {
-      console.log(selectedMember);
       setMemberData({
-        firstname: selectedMember.firstname,
-        lastname: selectedMember.lastname,
-        email: selectedMember.email,
-        phone_num: selectedMember.phone_num,
-        member_type: selectedMember.member_type,
-        study_lvl: selectedMember.study_lvl,
-        skills: selectedMember.skills,
-        training_level: memberData.training_level, // Keep training_level as is
+        ...selectedMember,
+        training_level: memberData.training_level,
       });
-
-      // Update memberDataTodb with the selected member's id
-      setMemberDataTodb((prev) => ({
-        ...prev,
-        member_id: selectedMember.id, // Use member_id
-      }));
-
+      setTrainingParticipationData((prev) => ({ ...prev, member_id: selectedMember.id }));
     }
 
-    // Hide suggestions after selection
     setShowSuggestions({ firstname: false, lastname: false });
   };
 
   const handleSave = async () => {
     try {
-      let memberId;
+      let memberId = trainingParticipationData.member_id;
 
-      // Check if the member is external (assuming member_type === 3)
-      if (memberData.member_type === 3) {
-        // Insert the new external member into the club_members table
-        const { error: memberError, data: newMember } = await supabase
-          .from("club_members") // Your actual table for members
-          .insert([{
-            lastname: memberData.lastname,
-            firstname: memberData.firstname,
-            email: memberData.email,
-            phone_num: memberData.phone_num,
-            member_type: memberData.member_type,
-            study_lvl: memberData.study_lvl,
-            skills: memberData.skills,
-          }])
-          .select(); // Get the inserted member's data
-
-        // Check for insertion errors
-        if (memberError) {
-          throw memberError; // Handle the error
-        }
-
-        alert("External member added successfully to club_members table!");
-
-        // Now retrieve the member's ID using their phone number
-        const { data: retrievedMember, error: selectError } = await supabase
+      if (!memberData?.id) {
+        const { data: newMember, error: memberError } = await supabase
           .from("club_members")
-          .select("id")
-          .eq("phone_num", memberData.phone_num) // Match phone number
-          .single(); // Get single record
+          .insert([memberData])
+          .select();
 
-        // Check for errors in retrieving the member
-        if (selectError || !retrievedMember) {
-          throw selectError || new Error("Member not found after insertion.");
-        }
-
-        memberId = retrievedMember.id; // Get the member's ID
-
-        // Prepare training participation data
-        const trainingParticipationData = {
-          training_id: memberDataTodb.training_id,
-          member_id: memberId, // Use the new member's ID
-          level_in_subject: memberDataTodb.training_level,
-          has_paid: memberDataTodb.has_paid,
-          group_number: memberDataTodb.group_number,
-          training_room: memberDataTodb.training_room,
-        };
-
-        // Insert into training_participation table
-        const { error: trainingError } = await supabase
-          .from("training_participation")
-          .insert([trainingParticipationData]);
-
-        // Check for errors in training participation insertion
-        if (trainingError) {
-          throw trainingError; // Handle the error
-        }
-
-        alert("External member added successfully to training_participation table!");
-
-        // Reset the form
-        resetForm();
-        return; // Exit after adding external member
+        if (memberError) throw memberError;
+        memberId = newMember[0].id;
       }
 
-      // For other member types, ensure member_id is valid
-      if (!memberDataTodb.member_id) {
-        alert("Please select a member before saving.");
-        return; // Exit if member_id is not valid
-      }
-
-      // For other member types, save the training participation
-      const { error } = await supabase
+      const { error: trainingError } = await supabase
         .from("training_participation")
-        .insert([{
-          training_id: memberDataTodb.training_id,
-          member_id: memberDataTodb.member_id,
-          level_in_subject: memberDataTodb.training_level,
-          has_paid: memberDataTodb.has_paid,
-          group_number: memberDataTodb.group_number,
-          training_room: memberDataTodb.training_room,
-        }]);
+        .insert([{ ...trainingParticipationData, member_id: memberId }]);
 
-      // Check for errors in training participation insertion
-      if (error) {
-        throw error; // Handle the error
-      }
+      if (trainingError) throw trainingError;
 
-      alert("Training added successfully to training_participation table!");
-
-      // Reset the form
+      alert("Training participation saved successfully!");
       resetForm();
-
     } catch (error) {
-      alert("Error adding training!");
-      console.error("Error adding training:", error.message);
+      alert("Error saving training participation.");
+      console.error("Error saving training participation:", error.message);
     }
   };
 
-  // Reset form to initial state
   const resetForm = () => {
-    setMemberDataTodb({
-      training_id: formationId,
-      member_id: 0, // Reset to the default integer value
-      training_level: "",
-      has_paid: "Yes",
-      group_number: 1,
-      training_room: "C1",
-    });
     setMemberData({
       lastname: "",
       firstname: "",
       email: "",
       phone_num: "",
-      member_type: 3, // Default to externe
+      member_type: 3,
       study_lvl: "",
       skills: "",
       training_level: "",
     });
+    setTrainingParticipationData({
+      training_id: formationId,
+      member_id: null,
+      training_level: "",
+      has_paid: "Yes",
+      group_number: null,
+      training_room: null,
+    });
   };
-
-
-
 
   const handleCancel = () => {
     navigate(-1);
   };
 
   if (loading) {
-    return <div>Loading...</div>; // Loading indicator
+    return <div>Loading...</div>;
   }
 
   return (
@@ -342,7 +195,7 @@ const RegistrationForm = () => {
             id="member_type"
             name="member_type"
             value={memberData.member_type}
-            onChange={(e) => handleChange(e, { name: "member_type" })}
+            onChange={handleChange}
           >
             <option value={3}>externe</option>
             <option value={1}>actif</option>
@@ -350,139 +203,52 @@ const RegistrationForm = () => {
           </select>
         </div>
 
-        <div className="form-group">
-          <label htmlFor="firstname">Firstname</label>
-          <input
-            autoComplete="off"
-            id="firstname"
-            name="firstname"
-            placeholder="Firstname"
-            onChange={(e) => handleChange(e, { name: "firstname" })}
-            value={memberData.firstname}
-            onBlur={() =>
-              setShowSuggestions((prev) => ({ ...prev, firstname: false }))
-            }
-            onFocus={() => {
-
-              setShowSuggestions((prev) => ({ ...prev, firstname: true }));
-
-            }}
-            required // Add required attribute for validation
-          />
-          {
-            showSuggestions.firstname && ( // Only show suggestions if member type is not externe
-              <div className="suggestions-popup">
-                {suggestions.firstname.length > 0 ? (
-                  suggestions.firstname.map((name, index) => (
+        {Object.keys(memberData).map((key) =>
+          key !== 'id' && key !== "member_type" && key !== "training_level" ? (
+            <div className="form-group" key={key}>
+              <label htmlFor={key}>
+                {key === "phone_num"
+                  ? "Phone Number"
+                  : key === "study_lvl"
+                    ? "Study Level"
+                    : key.charAt(0).toUpperCase() + key.slice(1).replace('_', ' ')}
+              </label>
+              <input
+                id={key}
+                name={key}
+                value={memberData[key]}
+                onChange={handleChange}
+                onBlur={() => setShowSuggestions((prev) => ({ ...prev, [key]: false }))}
+                onFocus={() => key in suggestions && setShowSuggestions((prev) => ({ ...prev, [key]: true }))}
+                required={key === "firstname" || key === "lastname" || key === "email" || key === "phone_num"}
+              />
+              {showSuggestions[key] && suggestions[key].length > 0 && (
+                <div className="suggestions-popup">
+                  {suggestions[key].map((suggestion, index) => (
                     <div
                       key={index}
                       className="suggestion-item"
-                      onMouseDown={() => handleSelect(name)}
+                      onMouseDown={() => handleSelect(suggestion)}
                     >
-                      {name}
+                      {suggestion}
                     </div>
-                  ))
-                ) : (
-                  <div className="no-suggestion">No person found</div>
-                )}
-              </div>
-            )}
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="lastname">Lastname</label>
-          <input
-            autoComplete="off"
-            id="lastname"
-            name="lastname"
-            placeholder="Lastname"
-            onChange={(e) => handleChange(e, { name: "lastname" })}
-            value={memberData.lastname}
-            onBlur={() =>
-              setShowSuggestions((prev) => ({ ...prev, lastname: false }))
-            }
-            onFocus={() => {
-              setShowSuggestions((prev) => ({ ...prev, lastname: true }));
-
-            }}
-            required // Add required attribute for validation
-          />
-          {
-            showSuggestions.lastname && ( // Only show suggestions if member type is not externe
-              <div className="suggestions-popup">
-                {suggestions.lastname.length > 0 ? (
-                  suggestions.lastname.map((name, index) => (
-                    <div
-                      key={index}
-                      className="suggestion-item"
-                      onMouseDown={() => handleSelect(name)}
-                    >
-                      {name}
-                    </div>
-                  ))
-                ) : (
-                  <div className="no-suggestion">No person found</div>
-                )}
-              </div>
-            )}
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="email">Email</label>
-          <input
-            id="email"
-            type="email"
-            name="email"
-            placeholder="Email"
-            onChange={(e) => handleChange(e, { name: "email" })}
-            value={memberData.email}
-            required // Add required attribute for validation
-          />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="phone_num">Phone Number</label>
-          <input
-            id="phone_num"
-            type="tel"
-            name="phone_num"
-            placeholder="Phone Number"
-            onChange={(e) => handleChange(e, { name: "phone_num" })}
-            value={memberData.phone_num}
-            required // Add required attribute for validation
-          />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="study_lvl">Study Level</label>
-          <input
-            id="study_lvl"
-            name="study_lvl"
-            placeholder="Study Level"
-            onChange={(e) => handleChange(e, { name: "study_lvl" })}
-            value={memberData.study_lvl}
-          />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="skills">Skills</label>
-          <input
-            id="skills"
-            name="skills"
-            placeholder="Skills"
-            onChange={(e) => handleChange(e, { name: "skills" })}
-            value={memberData.skills}
-          />
-        </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          ) : null
+        )}
 
         <div className="form-group">
           <label htmlFor="training_level">Training Level</label>
           <select
             id="training_level"
             name="training_level"
-            onChange={handleTrainingLevelChange}
-
-            value={memberDataTodb.training_level}
+            value={trainingParticipationData.training_level}
+            onChange={(e) => {
+              setTrainingParticipationData((prev) => ({ ...prev, training_level: e.target.value }));
+            }
+            }
           >
             <option value="">Select Level</option>
             {levels.map((level, index) => (
@@ -491,28 +257,32 @@ const RegistrationForm = () => {
               </option>
             ))}
           </select>
-          <div>
-            <h3>Payment Status</h3>
-            <label>
-              <input
-                type="radio"
-                value="Yes"
-                checked={memberDataTodb.has_paid === "Yes"}
-                onChange={handlePaymentChange}
-              />
-              Yes
-            </label>
-            <label>
-              <input
-                type="radio"
-                value="No"
-                checked={memberDataTodb.has_paid === "No"}
-                onChange={handlePaymentChange}
-              />
-              No
-            </label>
-            {/* Other form fields go here */}
-          </div>
+        </div>
+
+        <div className="form-group">
+          <label>Payment Status</label>
+          <label>
+            <input
+              type="radio"
+              value="Yes"
+              checked={trainingParticipationData.has_paid === "Yes"}
+              onChange={(e) =>
+                setTrainingParticipationData((prev) => ({ ...prev, has_paid: e.target.value }))
+              }
+            />
+            Yes
+          </label>
+          <label>
+            <input
+              type="radio"
+              value="No"
+              checked={trainingParticipationData.has_paid === "No"}
+              onChange={(e) =>
+                setTrainingParticipationData((prev) => ({ ...prev, has_paid: e.target.value }))
+              }
+            />
+            No
+          </label>
         </div>
 
         <div className="form-actions">
