@@ -1,117 +1,123 @@
 body {
-    font-family: 'Roboto Slab';
-    background-image: radial-gradient(#5c616b, #171F2E); 
-    
-  }
-  .nav-main {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: #595959;
-      padding: 10px 20px;
-    }
-    
-    .nav-logo img {
-      height: 100px;
-      width: auto;
-    }
-    .nav-items {
-      display: flex;
-      gap: 20px;
-    } 
-    .nav-items a {
-      color: #fff;
-      text-decoration: none;
-      padding: 10px;
-      font-size: 18px;
-      transition: color 0.3s ease;
-    }
-    
-    .nav-items a:hover {
-      color: #f0f0f0;
-    }
-   
-    .nav-item{
-      position: relative;
-      color: white;
-  
-    }
-    
-    .dropdown {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background-color: #ece7e73e;
-      border-radius: 8px;
-      padding: 10px 0;
-      display: none;
-      flex-direction: column;
-      min-width: 200px;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-      z-index: 1;
-    }
-    
-    .nav-item:hover .dropdown {
-      display: flex;
-    }
-    
-    .dropdown a {
-      color: white;
-      text-decoration: none;
-      padding: 10px 20px;
-      font-size: 16px;
-      transition: background-color 0.3s ease;
-    }
-    
-    .dropdown a:hover {
-      background-color: #f0e9e968;
-    }
-    .formation-list{
-        
-      position: absolute;
-      top: 55%;
-      left: 50%;
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      flex-wrap: wrap;   
-      background-color: #171f2e64;
-      color: aliceblue;
-      width: 1100px;
-      border-radius: 6px;
-      transform : translate(-50%, -50%);
-    }
-    
-    .formation-item{
-      margin: 10px;
-      margin-left: 10px;
-      display: flex;
-      gap: 20px;
-      padding-right: 40px;
-      width: 80%;
-  
-    }
-    .edit_button{
-      display: flex;
-      flex-direction: row;
-      gap: 8px;
-      position: absolute;
-      padding-left: 640px;
-      margin-top: 12px;
-    }
-  .edit-btn {
+  font-family: 'Roboto Slab';
+  background-image: radial-gradient(#5c616b, #171F2E);
+
+}
+
+.nav-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #595959;
+  padding: 10px 20px;
+}
+
+.nav-logo img {
+  height: 100px;
+  width: auto;
+}
+
+.nav-items {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-items a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px;
+  font-size: 18px;
+  transition: color 0.3s ease;
+}
+
+.nav-items a:hover {
+  color: #f0f0f0;
+}
+
+.nav-item {
+  position: relative;
+  color: white;
+
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #ece7e73e;
+  border-radius: 8px;
+  padding: 10px 0;
+  display: none;
+  flex-direction: column;
+  min-width: 200px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.nav-item:hover .dropdown {
+  display: flex;
+}
+
+.dropdown a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown a:hover {
+  background-color: #f0e9e968;
+}
+
+.formation-list {
+
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  background-color: #171f2e64;
+  color: aliceblue;
+  width: 1100px;
+  border-radius: 6px;
+  transform: translate(-50%, -50%);
+}
+
+.formation-item {
+  margin: 10px;
+  margin-left: 10px;
+  display: flex;
+  gap: 20px;
+  padding-right: 40px;
+  width: 80%;
+
+}
+
+.edit_button {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  position: absolute;
+  padding-left: 640px;
+  margin-top: 12px;
+}
+
+.edit-btn {
   align-items: center;
   appearance: none;
   background-color: #fff;
   border-radius: 14px;
   border-style: none;
-  box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0, 0, 0, .12) 0 1px 18px 0;
+  box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px, rgba(0, 0, 0, .14) 0 6px 10px 0, rgba(0, 0, 0, .12) 0 1px 18px 0;
   box-sizing: border-box;
   color: #3c4043;
   cursor: pointer;
   display: inline-flex;
   fill: currentcolor;
-  font-family: "Google Sans",Roboto,Arial,sans-serif;
+  font-family: "Google Sans", Roboto, Arial, sans-serif;
   font-size: 12px;
   font-weight: 500;
   height: 48px;
@@ -124,14 +130,14 @@ body {
   position: relative;
   text-align: center;
   text-transform: none;
-  transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1),opacity 15ms linear 30ms,transform 270ms cubic-bezier(0, 0, .2, 1) 0ms;
+  transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1), opacity 15ms linear 30ms, transform 270ms cubic-bezier(0, 0, .2, 1) 0ms;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
   width: 100px;
-  will-change: transform,opacity;
+  will-change: transform, opacity;
   z-index: 0;
-  
+
 }
 
 .edit-btn:hover {
@@ -168,32 +174,41 @@ body {
 .edit-btn:disabled {
   box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
 }
- 
-    .formation-logo{
-      width: 100px;
-    }
-   
-    @media (max-width: 768px) {
-       /* .nav-main{
+
+.formation-logo {
+  width: 100px;
+}
+
+@media (max-width: 768px) {
+  /* .nav-main{
         flex-direction: column;
         align-items: flex-start;
       }  */
-    
-      .nav-links {
-        flex-direction: column;
-        gap: 10px;
-      }
-    .formation-list{
-      margin-top: 100px;
-      flex-direction: column;
-      gap: 20px;
-    }
-    .btn{
-      padding-left: 60px;
-      padding-top: 180px;
-    }
-      .nav-logo img {
-        height: 40px;
-      }
-    }
-    
+
+  .nav-links {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .formation-list {
+    margin-top: 100px;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .btn {
+    padding-left: 60px;
+    padding-top: 180px;
+  }
+
+  .nav-logo img {
+    height: 40px;
+  }
+}
+
+.center_on_screen {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

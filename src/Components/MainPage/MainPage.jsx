@@ -3,11 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import supabase from '../../../superbaseClient';
 import './MainPage.css';
 import NavBar from '../NavBar/NavBar';
+import { CircleLoader } from 'react-spinners';
 
 
 const MainPage = () => {
   const navigate = useNavigate(); // Initialize the navigate function
   const [trainings, setTrainings] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchTrainings = async () => {
@@ -30,8 +32,9 @@ const MainPage = () => {
       const trainings = await fetchTrainings();
       setTrainings(trainings);
     }
-
+    setLoading(true);
     getTrainings();
+    setTimeout(() => setLoading(false), 1000);
   }, []);
 
   const handleView = (training) => {
@@ -45,11 +48,14 @@ const MainPage = () => {
     navigate("/stats"); // Navigate to the statics path
   };
   const handleRegistration = (training) => {
-    navigate(`/Registration/${training.id}` );
+    navigate(`/Registration/${training.id}`);
   }
 
   return (
     <>
+      <div className='center_on_screen'>
+        <CircleLoader color="#fff" loading={loading} size={150} />
+      </div>
       <NavBar />
       <main className="formation-list">
         {trainings.map((training, index) => (
@@ -60,7 +66,7 @@ const MainPage = () => {
               <p>Date: {training.date}</p>
               <p>Location: {training.address}</p>
             </div>
-            
+
             <div className="edit_button">
               <button
                 className="edit-btn"
@@ -69,8 +75,8 @@ const MainPage = () => {
                 View
               </button>
 
-              <button 
-                className="edit-btn" 
+              <button
+                className="edit-btn"
                 onClick={() => handleRegistration(training)}
               >
                 Open for Registration
@@ -84,8 +90,8 @@ const MainPage = () => {
                 Open for check-in
               </button>
               <button
-              className="edit-btn"
-              onClick={()=> handleStatics()}
+                className="edit-btn"
+                onClick={() => handleStatics()}
               >
                 Statics
               </button>
