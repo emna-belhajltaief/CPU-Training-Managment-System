@@ -1,4 +1,4 @@
-
+import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { BsQrCode } from "react-icons/bs";
 import { IoMdPersonAdd } from "react-icons/io";
@@ -14,11 +14,14 @@ import { useState } from "react";
 import { IoPersonRemove } from "react-icons/io5";
 import { FaCode } from "react-icons/fa";
 import { RiRobot2Fill } from "react-icons/ri";
-
+import { BeatLoader } from "react-spinners";
 import supabase from "../../../superbaseClient";
 import "./FormulaireFormation.css";
+import PropTypes from 'prop-types';
 
-function FormulaireFormation() {
+function FormulaireFormation({ mode }) {
+  const [loading, setLoading] = useState(false);
+  const { formationId } = useParams();
   const [seniorMembers, setSeniorMembers] = useState([{}]);
   const [formData, setFormData] = useState({
     name: "",
@@ -33,7 +36,6 @@ function FormulaireFormation() {
     logo_url: "./images/CpuBlack.png",
   });
 
-
   useEffect(() => {
     const fetchFormateurs = async () => {
       try {
@@ -45,48 +47,64 @@ function FormulaireFormation() {
           console.log("Error fetching formateurs", error.message);
           return [];
         }
-        return senior_members;
+        setSeniorMembers(senior_members);
       } catch (err) {
-        console.error('Error fetching data:', err);
-        return [{}];
+        console.error("Error fetching data:", err);
       }
     };
-    async function getFormateurs() {
-      const senior_members = await fetchFormateurs();
-      setSeniorMembers(senior_members);
-    }
 
-    getFormateurs();
-  }, []);
+    const fetchFormateurData = async () => {
+      if (mode === "edit" && formationId) {
+        try {
+          const { data, error } = await supabase
+            .from("trainings")
+            .select("*")
+            .eq("id", formationId)
+            .single();
+
+          if (error) {
+            console.error("Error fetching training data:", error.message);
+            return;
+          }
+
+          setFormData({
+            name: data.name,
+            training_branch: data.training_branch,
+            description: data.description,
+            date: data.date,
+            address: data.address,
+            tutor_ids: data.tutor_ids,
+            tutor_assistants_ids: data.tutor_assistants_ids,
+            receptionists_ids: data.receptionists_ids,
+            coffeeBreaks_assistants_ids: data.coffeeBreaks_assistants_ids,
+            logo_url: data.logo_url,
+          });
+        } catch (err) {
+          console.error("Error fetching data:", err);
+        }
+      }
+    };
+
+    fetchFormateurs();
+    fetchFormateurData();
+  }, [mode, formationId]);
 
   // Function to handle input change
-  const handleInputChange = (e, index, label, fields) => {
-    const newFields = [...fields];
-    newFields[index] = parseInt(e.target.value);
-    setFormData({ ...formData, [label]: newFields });
+  const handleInputChange = (e, index, label) => {
+    const newValue = parseInt(e.target.value) || 0;
+    const updatedFields = [...formData[label]];
+    updatedFields[index] = newValue;
+    setFormData({ ...formData, [label]: updatedFields });
   };
 
   const handleSubmit = async (e) => {
-    //add to data base code should go here
     e.preventDefault();
-
-    // const formDataString = `
-    //   name: ${formData?.name}
-    //   training_branch: ${formData?.training_branch}
-    //   description: ${formData?.description}
-    //   date: ${formData?.date}
-    //   address: ${formData?.address}
-    //   tutor_id: ${formData?.tutor_assistants_ids.join(", ")}
-    //   tutor_assistants_ids: ${formData?.tutor_assistants_ids.join(", ")}
-    //   receptionists_ids: ${formData?.receptionists_ids.join(", ")}
-    //   coffeeBreaks_assistants_ids: ${formData?.coffeeBreaks_assistants_ids.join(", ")}
-    //   logo_url: ${formData?.logo_url}
-    // `;
+    setLoading(true);
     try {
-      const { data, error } = await supabase
-        .from("trainings")
-        .insert([
-          {
+      if (mode === "edit") {
+        const { error } = await supabase
+          .from("trainings")
+          .update({
             name: formData.name,
             training_branch: formData.training_branch,
             description: formData.description,
@@ -97,15 +115,39 @@ function FormulaireFormation() {
             receptionists_ids: formData.receptionists_ids,
             coffeeBreaks_assistants_ids: formData.coffeeBreaks_assistants_ids,
             logo_url: formData.logo_url,
-          },
-        ]);
+          })
+          .eq("id", formationId);
 
-      if (error) {
-        alert("Error adding training!");
-        console.error("Error adding training:", error.message);
+        if (error) {
+          alert("Error updating training!");
+          console.error("Error updating training:", error.message);
+        } else {
+          alert("Training updated successfully!");
+        }
       } else {
-        alert("Training added successfully!");
-        console.log("Training added successfully!", data);
+        const newTrainingData = {
+          name: formData.name,
+          training_branch: formData.training_branch,
+          description: formData.description,
+          date: formData.date,
+          address: formData.address,
+          tutor_ids: formData.tutor_ids.length ? formData.tutor_ids : null,
+          tutor_assistants_ids: formData.tutor_assistants_ids.length
+            ? formData.tutor_assistants_ids
+            : null,
+          receptionists_ids: formData.receptionists_ids.length
+            ? formData.receptionists_ids
+            : null,
+          coffeeBreaks_assistants_ids: formData.coffeeBreaks_assistants_ids
+            .length
+            ? formData.coffeeBreaks_assistants_ids
+            : null,
+          logo_url: formData.logo_url,
+        };
+
+        const { error } = await supabase
+          .from("trainings")
+          .insert([newTrainingData]);
         setFormData({
           name: "",
           training_branch: "",
@@ -117,13 +159,20 @@ function FormulaireFormation() {
           receptionists_ids: [0],
           coffeeBreaks_assistants_ids: [0],
           logo_url: "./images/CpuBlack.png",
-        }); // Clear the form
+        });
+        if (error) {
+          alert("Error adding training!");
+          console.error("Error adding training:", error.message);
+        } else {
+          alert("Training added successfully!");
+        }
       }
     } catch (err) {
-      alert("Error adding training!");
-      console.error("Error adding training:", err);
+      alert("Error processing request!");
+      console.error("Error processing request:", err);
+    } finally {
+      setLoading(false);
     }
-
   };
 
   // Handlers for single value inputs
@@ -162,7 +211,7 @@ function FormulaireFormation() {
   const addField = (label, fields) => {
     setFormData({
       ...formData,
-      [label]: [...fields, 0]
+      [label]: [...fields, 0],
     });
   };
 
@@ -174,13 +223,15 @@ function FormulaireFormation() {
     console.log("new fields: ", updatedFields);
     setFormData({
       ...formData,
-      [label]: updatedFields
+      [label]: updatedFields,
     });
   };
 
   const renderFieldSection = (label, icon, fields) => (
     <div className="Field">
-      <label>{label} {icon}:</label>
+      <label>
+        {label} {icon}:
+      </label>
       {fields.map((field, index) => (
         <div key={index} style={{ display: "flex", marginBottom: "1rem" }}>
           {/* <input
@@ -198,7 +249,9 @@ function FormulaireFormation() {
           >
             <option value={0}>Select {label}</option>
             {seniorMembers.map((member) => (
-              <option key={member.id} value={member.id}>{member.firstname} {member.lastname}</option>
+              <option key={member.id} value={member.id}>
+                {member.firstname} {member.lastname}
+              </option>
             ))}
           </select>
           <button
@@ -211,8 +264,9 @@ function FormulaireFormation() {
           </button>
           <button
             type="button"
-            className={`btn btn-danger ${fields.length <= 1 ? "disabled-button" : ""
-              }`}
+            className={`btn btn-danger ${
+              fields.length <= 1 ? "disabled-button" : ""
+            }`}
             disabled={fields.length <= 1}
             style={{ flex: 1 }}
             onClick={() => removeField(index, label, fields)}
@@ -234,16 +288,20 @@ function FormulaireFormation() {
             <label>Titre de formation {<GrWorkshop />} :</label>
             <input
               required
+              value={formData.name}
               placeholder="exemple : introduction C++"
-              onChange={handleTitleChange} className="input_formulaire_formation"
+              onChange={handleTitleChange}
+              className="input_formulaire_formation"
             ></input>
           </div>
           <div className="Field">
             <label>Description {<GrWorkshop />} :</label>
             <input
               required
+              value={formData.description}
               placeholder="Courte description de la formation"
-              onChange={handleDescriptionChange} className="input_formulaire_formation"
+              onChange={handleDescriptionChange}
+              className="input_formulaire_formation"
             ></input>
           </div>
 
@@ -256,6 +314,7 @@ function FormulaireFormation() {
                     type="radio"
                     name="Domaine"
                     value="Developement"
+                    checked={formData.training_branch === "Developement"}
                     onChange={handleTrainingBranchChange}
                   />
                   Developement {<FaCode />}
@@ -267,6 +326,7 @@ function FormulaireFormation() {
                     type="radio"
                     name="Domaine"
                     value="Robotique"
+                    checked={formData.training_branch === "Robotique"}
                     onChange={handleTrainingBranchChange}
                   />
                   Robotique {<RiRobot2Fill />}
@@ -276,32 +336,67 @@ function FormulaireFormation() {
           </div>
 
           <div className="Field">
-            <label>Local {<FaHouse />} :</label>
-            <input required placeholder="exemple : ISIMM" className="input_formulaire_formation" onChange={handleAddressChange}></input>
+            <label>address {<FaHouse />} :</label>
+            <input
+              required
+              placeholder="exemple : ISIMM"
+              className="input_formulaire_formation"
+              value={formData.address}
+              onChange={handleAddressChange}
+            ></input>
           </div>
 
           <div className="Field">
-            <label>Date {<CiCalendarDate />} :</label>
-            <input required type="date" className="input_formulaire_formation" onChange={handleDateChange}></input>
+            <label>Date {<CiCalendarDate />}:</label>
+            <input
+              type="date"
+              required
+              value={formData.date}
+              onChange={handleDateChange}
+              className="input_formulaire_formation"
+            />
           </div>
 
           {/* Render Field Sections */}
 
           {renderFieldSection("tutor_ids", <GiTeacher />, formData.tutor_ids)}
-          {renderFieldSection("tutor_assistants_ids", <MdAssistantPhoto />, formData.tutor_assistants_ids)}
-          {renderFieldSection("receptionists_ids", <FaPersonCircleCheck />, formData.receptionists_ids)}
-          {renderFieldSection("coffeeBreaks_assistants_ids", <FaCoffee />, formData.coffeeBreaks_assistants_ids)}
+          {renderFieldSection(
+            "tutor_assistants_ids",
+            <MdAssistantPhoto />,
+            formData.tutor_assistants_ids
+          )}
+          {renderFieldSection(
+            "receptionists_ids",
+            <FaPersonCircleCheck />,
+            formData.receptionists_ids
+          )}
+          {renderFieldSection(
+            "coffeeBreaks_assistants_ids",
+            <FaCoffee />,
+            formData.coffeeBreaks_assistants_ids
+          )}
 
           <div className="Field">
             <label className="form-label">
               Logo Formation {<GrTechnology />} :
             </label>
             <input
-              required
+              
               accept=".png, .jpg, .jpeg"
               type="file"
               className="form-control"
               onChange={handleImageChange}
+
+            />
+          </div>
+          <div className="Field">
+            {" "}
+            <label>Logo formation ;</label>
+            <img
+              src={formData.logo_url} // Base64 string from the database
+              alt="Training Logo"
+              style={{ width: "100px", height: "100px" }}
+              
             />
           </div>
 
@@ -312,17 +407,31 @@ function FormulaireFormation() {
           </div>
 
           <div className="Field">
-            <button type="submit" className="btn btn-success mb-2">
-              Submit
+            <button
+              type="submit"
+              className="btn btn-success mb-2"
+              disabled={loading}
+            >
+              {loading ? (
+                <BeatLoader></BeatLoader>
+              ) : mode === "edit" ? (
+                "Update Training"
+              ) : (
+                "Add Training"
+              )}
             </button>
             <button type="button" className="btn btn-danger">
               Cancel
             </button>
           </div>
-        </form >
-      </div >
+        </form>
+      </div>
     </>
   );
 }
+
+FormulaireFormation.propTypes = {
+mode:PropTypes.string.isRequired 
+};
 
 export default FormulaireFormation;

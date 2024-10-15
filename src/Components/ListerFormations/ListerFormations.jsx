@@ -40,7 +40,7 @@ const ListerFormations = () => {
               <p>Location: {formation.address}</p>
             </div>
             <div className="edit_button">
-              <Link to="/FormulaireFormation">
+              <Link to={`/FormulaireFormation/edit/${formation.id}`}>
                 <button className="edit-btn">Edit</button>
               </Link>
               <Link to="/Repartition">
