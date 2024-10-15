@@ -1,0 +1,112 @@
+[
+    {
+        "id": 1,
+        "lastname": "Doe",
+        "firstname": "John",
+        "email": "john.doe@example.com",
+        "phone_num": "123456789",
+        "member_type": 1,
+        "study_lvl": "Masters",
+        "skills": "JavaScript"
+    },
+    {
+        "id": 2,
+        "lastname": "Smith",
+        "firstname": "Jane",
+        "email": "jane.smith@example.com",
+        "phone_num": "987654321",
+        "member_type": 0,
+        "study_lvl": "Bachelors",
+        "skills": "Python"
+    },
+    {
+        "id": 3,
+        "lastname": "Johnson",
+        "firstname": "Emily",
+        "email": "emily.johnson@example.com",
+        "phone_num": "456789123",
+        "member_type": 2,
+        "study_lvl": "PhD",
+        "skills": "Machine Learning"
+    },
+    {
+        "id": 4,
+        "lastname": "Williams",
+        "firstname": "Michael",
+        "email": "michael.williams@example.com",
+        "phone_num": "321654987",
+        "member_type": 1,
+        "study_lvl": "Bachelors",
+        "skills": "HTML, CSS"
+    },
+    {
+        "id": 5,
+        "lastname": "Brown",
+        "firstname": "Sarah",
+        "email": "sarah.brown@example.com",
+        "phone_num": "654321789",
+        "member_type": 0,
+        "study_lvl": "Masters",
+        "skills": "Java, C#"
+    },
+    {
+        "id": 6,
+        "lastname": "Davis",
+        "firstname": "David",
+        "email": "david.davis@example.com",
+        "phone_num": "789123456",
+        "member_type": 2,
+        "study_lvl": "Bachelors",
+        "skills": "C++, Python"
+    },
+    {
+        "id": 7,
+        "lastname": "Garcia",
+        "firstname": "Sophia",
+        "email": "sophia.garcia@example.com",
+        "phone_num": "147258369",
+        "member_type": 1,
+        "study_lvl": "PhD",
+        "skills": "Data Analysis"
+    },
+    {
+        "id": 8,
+        "lastname": "Martinez",
+        "firstname": "James",
+        "email": "james.martinez@example.com",
+        "phone_num": "258369147",
+        "member_type": 0,
+        "study_lvl": "High School",
+        "skills": "Graphic Design"
+    },
+    {
+        "id": 9,
+        "lastname": "Hernandez",
+        "firstname": "Olivia",
+        "email": "olivia.hernandez@example.com",
+        "phone_num": "369258147",
+        "member_type": 1,
+        "study_lvl": "Bachelors",
+        "skills": "Web Development"
+    },
+    {
+        "id": 10,
+        "lastname": "Lopez",
+        "firstname": "Liam",
+        "email": "liam.lopez@example.com",
+        "phone_num": "852963741",
+        "member_type": 2,
+        "study_lvl": "Masters",
+        "skills": "Cloud Computing"
+    },
+    {
+        "id": 11,
+        "lastname":"Adams",
+        "firstname": "John",
+        "email": "john.ltaief@example.com",
+        "phone_num": "741852963",
+        "member_type": 0,
+        "study_lvl":"Masters",
+        "skills": "Data Science"
+    }
+]

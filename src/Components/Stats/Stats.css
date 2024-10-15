@@ -18,13 +18,15 @@
   
   .chart-container {
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
     gap: 20px;
   }
   
   .chart-item {
-    flex: 1 1 300px; /* Flex item with a base size of 300px */
+    flex: 1 1 300px; 
+    width: 300px;
     background: white;
     border-radius: 8px;
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
@@ -47,7 +49,7 @@
   }
   
   .section-summary {
-    margin-top: 20px;
+    margin-top: 30px;
   }
   
   .section-summary h3 {
@@ -63,7 +65,7 @@
   
   .section-summary li {
     font-size: 1.1rem;
-    color:#ee6e8c;
+   
     color: #666;
     margin: 5px 0;
   }

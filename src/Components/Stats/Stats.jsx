@@ -15,6 +15,7 @@ const Stats = () => {
   const calculateStats = (members) => {
     const totalMembers = members.length;
     const adherents = members.filter(member => member.adherent).length;
+    const externes = members.filter(member => member.externe).length;
     const paidMembers = members.filter(member => member.paid).length;
     const presentMembers = members.filter(member => member.present).length;
     const successMembers = members.filter(member => member.paid && member.present).length;
@@ -31,6 +32,7 @@ const Stats = () => {
     return {
       totalMembers,
       adherents,
+      externes,
       paidMembers,
       presentMembers,
       successMembers,
@@ -48,6 +50,7 @@ const Stats = () => {
 
   // Calculate percentages for each category
   const adherentPercentage = ((stats.adherents / stats.totalMembers) * 100).toFixed(2);
+  const externePercentage = ((stats.externes / stats.totalMembers) * 100).toFixed(2);
   const paidPercentage = ((stats.paidMembers / stats.totalMembers) * 100).toFixed(2);
   const presentPercentage = ((stats.presentMembers / stats.totalMembers) * 100).toFixed(2);
   const successPercentage = ((stats.successMembers / stats.totalMembers) * 100).toFixed(2);
@@ -59,6 +62,14 @@ const Stats = () => {
       data: [stats.adherents, stats.totalMembers - stats.adherents],
       backgroundColor: ['#F05A7E', '#091057'],
       hoverBackgroundColor: ['#ee6e8c', '#1E3E62'],
+    }]
+  };
+  const externeData = {
+    labels: ['Externes', 'Non-Externes'],
+    datasets: [{
+      data: [stats.externes, stats.totalMembers - stats.externes],
+      backgroundColor: ['#B31312', '#BED1CF'],
+      hoverBackgroundColor: ['#b42626', '#cbdcda'],
     }]
   };
 
@@ -89,6 +100,24 @@ const Stats = () => {
           <h3>Adherent Members ({adherentPercentage}%)</h3>
           <Pie 
             data={adherentData}
+            options={{
+              plugins: {
+                datalabels: {
+                  formatter: (value, ctx) => {
+                    let sum = ctx.dataset.data.reduce((a, b) => a + b, 0);
+                    let percentage = (value * 100 / sum).toFixed(2) + "%";
+                    return percentage;
+                  },
+                  color: '#fff',
+                }
+              }
+            }}
+          />
+        </div>
+        <div className="chart-item">
+          <h3>Externs Members ({externePercentage}%)</h3>
+          <Pie 
+            data={externeData}
             options={{
               plugins: {
                 datalabels: {
@@ -141,7 +170,7 @@ const Stats = () => {
             }}
           />
         </div>
-
+      </div>
         <div className="success-section">
           <h3>Success Rate: {successPercentage}%</h3>
         </div>
@@ -159,7 +188,7 @@ const Stats = () => {
           </ul>
         </div>
       </div>
-    </div>
+    
   );
 };
 

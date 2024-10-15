@@ -17,6 +17,8 @@ import MainPage from './Components/MainPage/MainPage.jsx';
 import NotFound from './Components/NotFound/NotFound.jsx';
 import ListerFormations from './Components/ListerFormations/ListerFormations.jsx';
 import Stats from './Components/Stats/Stats.jsx';
+import Registration from './Components/Registration/Registration.jsx';
+import RegistrationForm from './Components/Registration/RegistrationForm.jsx';
 
 const router = createBrowserRouter([
   {
@@ -69,6 +71,14 @@ const router = createBrowserRouter([
   {
     path: '/CheckIn',
     element: <CheckIn />, // page checkin (admin privilage)
+  },
+  {
+    path: '/Registration',
+    element : <Registration />
+  },
+  {
+    path: '/RegistrationForm',
+    element : <RegistrationForm />
   },
   {
     path: '/Home',

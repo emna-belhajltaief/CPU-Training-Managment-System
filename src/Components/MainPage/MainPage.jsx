@@ -44,6 +44,9 @@ const MainPage = () => {
   const handleStatics = () => {
     navigate("/stats"); // Navigate to the statics path
   };
+  const handleRegistration = () => {
+    navigate("/Registration");
+  }
 
   return (
     <>
@@ -57,6 +60,7 @@ const MainPage = () => {
               <p>Date: {training.date}</p>
               <p>Location: {training.address}</p>
             </div>
+            
             <div className="edit_button">
               <button
                 className="edit-btn"
@@ -64,6 +68,15 @@ const MainPage = () => {
               >
                 View
               </button>
+
+              <button 
+                className="edit-btn" 
+                onClick={() => handleRegistration()}
+              >
+                Open for Registration
+              </button>
+
+
               <button
                 className="edit-btn"
                 onClick={() => handleCheckIn(training)}
