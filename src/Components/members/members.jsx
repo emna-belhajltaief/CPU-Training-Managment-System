@@ -8,7 +8,7 @@ import { FaSortAmountDownAlt } from "react-icons/fa";
 import { FaSortAmountUp } from "react-icons/fa";
 // import membersData from "@data/Inscription-CPU 2024.json";
 // import membersData from "@data/Inscription-CPU 2024-updated.json";
-import {IoMdPersonAdd} from "react-icons/io"
+import { IoMdPersonAdd } from "react-icons/io"
 import "./members.css";
 import NavBar from "../NavBar/NavBar";
 
@@ -28,20 +28,20 @@ const Members = () => {
         let { data: club_members, error } = await supabase
           .from('club_members')
           .select('*');
-        
+
         if (error) {
           console.error('Error fetching club_members:', error);
           return [];
         }
         return club_members;
-        
+
       } catch (err) {
         console.error('Error fetching data:', err);
         return [{}];
       }
-      
+
     }
-    
+
     async function getData() {
       const membersData = await fetchMembersData();
       setMembers(membersData);
@@ -73,11 +73,11 @@ const Members = () => {
           const value = member[criteria];
           if (value === undefined) return false;
           if (arg === "") return true;
-  
+
           // Convert both value and arg to lowercase for case-insensitive comparison
           const valueLower = value.toString().toLowerCase();
           const argLower = arg.toLowerCase();
-  
+
           switch (mode) {
             case "Ends with":
               return valueLower.endsWith(argLower);
@@ -99,7 +99,7 @@ const Members = () => {
       return members;
     }
   };
-  
+
 
   const sortMembers = (members) => {
     let sortedMembers = [...members];
@@ -147,6 +147,10 @@ const Members = () => {
   };
 
   const handleResetFilters = () => {
+    const temps = { ...filters };
+    Object.keys(temps).forEach(key => {
+      temps[key] = "";
+    });
     setFilters([{ criteria: "lastname", mode: "Contains", arg: "" }]);
     setSortConfig({ key: null, direction: 'ascending' });
   };
@@ -154,7 +158,7 @@ const Members = () => {
   return (
 
     <>
-    <NavBar></NavBar>
+      <NavBar></NavBar>
       <div className="members-container">
         <div>
           <button onClick={() => setshowfilter(!showfilter)}>
@@ -162,19 +166,19 @@ const Members = () => {
             Filtrer
           </button>
           <button >
-          <IoMdPersonAdd />
+            <IoMdPersonAdd />
             Add Member
           </button>
-          
+
         </div>
         <div>
-        
+
         </div>
         <div className={`filter-menu ${showfilter ? 'open' : ''}`}>
           <div>
             {filters.map((filter, index) => (
               <div className="filter-row" key={index}>
-                
+
                 <select
                   value={filter.criteria}
                   onChange={(e) => handleFilterChange(index, 'criteria', e.target.value)}
@@ -206,7 +210,7 @@ const Members = () => {
                   <FaRegTrashAlt />
                 </button>
                 <small color="white">({Filtredmembers.length} results found out of {members.length})</small>
-                
+
               </div>
             ))}
             <button onClick={handleAddFilter}>Add Filter</button>
@@ -225,24 +229,24 @@ const Members = () => {
             </tr>
           </thead>
           <tbody>
-          {Filtredmembers.map((member, memberIndex) => (
-  <tr key={memberIndex} onClick={() => handleDisplayMember(member)}>
-    {Object.keys(member).map((key, keyIndex) => (
-      <td key={keyIndex}>
-        {keyIndex === 5
-          ? member[key] === 1
-            ? "Actif"
-            : member[key] === 2
-            ? "Aderant"
-            : "Externe"
-          : member[key]}
-      </td>
-    ))}
-  </tr>
-))}
+            {Filtredmembers.map((member, memberIndex) => (
+              <tr key={memberIndex} onClick={() => handleDisplayMember(member)}>
+                {Object.keys(member).map((key, keyIndex) => (
+                  <td key={keyIndex}>
+                    {keyIndex === 5
+                      ? member[key] === 1
+                        ? "Actif"
+                        : member[key] === 2
+                          ? "Aderant"
+                          : "Externe"
+                      : member[key]}
+                  </td>
+                ))}
+              </tr>
+            ))}
 
 
-           
+
           </tbody>
         </table>
       </div>
