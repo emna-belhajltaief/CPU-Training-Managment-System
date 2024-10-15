@@ -85,10 +85,10 @@ function Formation() {
                   type="radio"
                   name="Domaine"
                   value="Developement"
-                  checked={training?.training_branch === "Developpement"}
+                  checked={training?.training_branch === "Developement"}
                   readOnly
                 />
-                Développement {<FaCode />}
+                Developement {<FaCode />}
               </label>
             </div>
             <div>
