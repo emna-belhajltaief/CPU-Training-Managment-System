@@ -42,9 +42,14 @@ const router = createBrowserRouter([
     element: <Members />,
   },
   {
-    path: '/FormulaireFormation', // Render Members
+    path: '/FormulaireFormation/add', // Render Members
 
-    element: <FormulaireFormation />,
+    element: <FormulaireFormation mode="add" />,
+  },
+  {
+    path: '/FormulaireFormation/edit/:formationId', // Render Members
+
+    element: <FormulaireFormation mode="edit" />,
   },
   {
     path: '/AddMembre', // Formulaire d'ajout d'un membre (admin privilage)
