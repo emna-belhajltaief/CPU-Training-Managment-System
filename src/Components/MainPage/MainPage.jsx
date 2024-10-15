@@ -4,12 +4,14 @@ import supabase from '../../../superbaseClient';
 import './MainPage.css';
 import NavBar from '../NavBar/NavBar';
 import { CircleLoader } from 'react-spinners';
+import { CircleLoader } from 'react-spinners';
 
 
 const MainPage = () => {
   const navigate = useNavigate(); // Initialize the navigate function
   const [trainings, setTrainings] = useState([]);
   const [permissionDenied, setPermissionDenied] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchTrainings = async () => {
@@ -37,8 +39,9 @@ const MainPage = () => {
       const trainings = await fetchTrainings();
       setTrainings(trainings);
     }
-
+    setLoading(true);
     getTrainings();
+    setTimeout(() => setLoading(false), 1000);
   }, []);
 
   const handleView = (training) => {
@@ -48,19 +51,22 @@ const MainPage = () => {
   const handleCheckIn = (training) => {
     navigate("/CheckIn", { state: { training } }); // Navigate to the check-in path
   };
+  const handleStatics = () => {
+    navigate("/stats"); // Navigate to the statics path
+  };
+  const handleRegistration = (training) => {
+    navigate(`/Registration/${training.id}`);
+  }
 
   return (
     <>
+      <div className='center_on_screen'>
+        <CircleLoader color="#fff" loading={loading} size={150} />
+      </div>
       <NavBar />
       <main className="formation-list">
         {!permissionDenied ? trainings.map((training, index) => (
           <>
-            <CircleLoader
-              color="#fff"
-              loading={training.length === 0}
-              size={250}
-              speedMultiplier={3}
-            />
             <div key={index} className="formation-item">
               <img src={training.logo_url} alt="Formation Logo" className="formation-logo" />
               <div className="formation-details">

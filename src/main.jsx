@@ -16,7 +16,9 @@ import CheckIn from './Components/CheckIn/CheckIn.jsx';
 import MainPage from './Components/MainPage/MainPage.jsx';
 import NotFound from './Components/NotFound/NotFound.jsx';
 import ListerFormations from './Components/ListerFormations/ListerFormations.jsx';
-
+import Stats from './Components/Stats/Stats.jsx';
+import Registration from './Components/Registration/Registration.jsx';
+import RegistrationForm from './Components/Registration/RegistrationForm.jsx';
 
 const router = createBrowserRouter([
   {
@@ -40,9 +42,14 @@ const router = createBrowserRouter([
     element: <Members />,
   },
   {
-    path: '/FormulaireFormation', // Render Members
+    path: '/FormulaireFormation/add', // Render Members
 
-    element: <FormulaireFormation />,
+    element: <FormulaireFormation mode="add" />,
+  },
+  {
+    path: '/FormulaireFormation/edit/:formationId', // Render Members
+
+    element: <FormulaireFormation mode="edit" />,
   },
   {
     path: '/AddMembre', // Formulaire d'ajout d'un membre (admin privilage)
@@ -58,8 +65,20 @@ const router = createBrowserRouter([
     element: <Repartition />, // show repartitin page (admin privilage)
   },
   {
+    path: '/stats',
+    element:<Stats />, // show statics page (admin privilage)
+  },
+  {
     path: '/CheckIn',
     element: <CheckIn />, // page checkin (admin privilage)
+  },
+  {
+    path: '/Registration/:formationId',
+    element : <Registration />
+  },
+  {
+    path: '/RegistrationForm/:formationId',
+    element : <RegistrationForm />
   },
   {
     path: '/Home',

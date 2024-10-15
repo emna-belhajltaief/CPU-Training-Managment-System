@@ -1,0 +1,356 @@
+import React, { useState, useEffect } from "react";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
+import "./RegistrationForm.css";
+import supabase from "../../../superbaseClient";
+
+const RegistrationForm = () => {
+  const navigate = useNavigate();
+  const { formationId } = useParams();
+  const location = useLocation();
+  const { state } = location;
+
+  const [MembreType, setMembreType] = useState(1);
+  const [MembersData, setMembersData] = useState([]);
+  const [memberData, setMemberData] = useState(
+    state?.member || {
+      training_id: formationId,
+      member_id: "", // Updated for selected member ID
+      training_level: "",
+      has_paid: 3, // Default to extern
+    }
+  );
+
+  const [suggestions, setSuggestions] = useState({
+    firstname: [],
+    lastname: [],
+  });
+  const [showSuggestions, setShowSuggestions] = useState({
+    firstname: false,
+    lastname: false,
+  });
+  const [loading, setLoading] = useState(false);
+  const levels = ["Beginner", "Intermediate", "Advanced"];
+
+  useEffect(() => {
+    const fetchMembersData = async () => {
+      setLoading(true);
+      try {
+        const { data: club_members, error } = await supabase
+          .from("club_members")
+          .select("*");
+
+        if (error) throw error;
+
+        setMembersData(club_members || []); // Handle empty data
+      } catch (err) {
+        console.error("Error fetching members:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchMembersData();
+  }, []); // Fetch data on component mount
+
+  const handleChange = (e, field) => {
+    e.preventDefault();
+    const { value } = e.target;
+
+    if (field.name === "member_type") {
+      const newMemberType = parseInt(value);
+      setMembreType(newMemberType);
+
+      if (newMemberType !== memberData.member_type) {
+        setMemberData({
+          firstname: "",
+          lastname: "",
+          email: "",
+          phone_num: "",
+          member_type: newMemberType,
+          study_lvl: "",
+          skills: "",
+          training_level: "",
+          // Resetting the member_id if the type changes
+          member_id: "", 
+          has_paid: 3, // Default to extern
+        });
+      }
+      setSuggestions({ firstname: [], lastname: [] });
+      setShowSuggestions({ firstname: false, lastname: false });
+      return;
+    }
+
+    // Filter suggestions based on member type
+    if (field.name === "firstname") {
+      const filteredSuggestions = MembersData.filter((member) =>
+        member.firstname.toLowerCase().startsWith(value.toLowerCase())
+      )
+        .map((member) => `${member.firstname} ${member.lastname}`)
+        .slice(0, 10); // Limit suggestions to 10
+
+      setSuggestions((prev) => ({
+        ...prev,
+        firstname: filteredSuggestions,
+      }));
+      setShowSuggestions((prev) => ({
+        ...prev,
+        firstname: filteredSuggestions.length > 0,
+      }));
+    } else if (field.name === "lastname") {
+      const filteredSuggestions = MembersData.filter((member) =>
+        member.lastname.toLowerCase().startsWith(value.toLowerCase())
+      )
+        .map((member) => `${member.firstname} ${member.lastname}`)
+        .slice(0, 10); // Limit suggestions to 10
+
+      setSuggestions((prev) => ({
+        ...prev,
+        lastname: filteredSuggestions,
+      }));
+      setShowSuggestions((prev) => ({
+        ...prev,
+        lastname: filteredSuggestions.length > 0,
+      }));
+    }
+  };
+
+  const handleSelect = (fullName) => {
+    const [firstname, lastname] = fullName.split(" ");
+    const selectedMember = MembersData.find(
+      (member) =>
+        member.firstname.toLowerCase() === firstname.toLowerCase().trim() &&
+        member.lastname.toLowerCase() === lastname.toLowerCase().trim()
+    );
+
+    if (selectedMember) {
+      setMemberData({
+        firstname: selectedMember.firstname,
+        lastname: selectedMember.lastname,
+        email: selectedMember.email,
+        phone_num: selectedMember.phone_num,
+        member_type: selectedMember.member_type,
+        study_lvl: selectedMember.study_lvl,
+        skills: selectedMember.skills,
+        training_level: memberData.training_level, // Keep training_level as is
+        member_id: selectedMember.id, // Assuming 'id' is the member identifier
+        has_paid: selectedMember.has_paid || 3, // Default to 3 if not available
+      });
+    }
+    // Hide suggestions after selection
+    setShowSuggestions({ firstname: false, lastname: false });
+  };
+
+  const handleSave = async () => {
+    try {
+      const { error } = await supabase
+        .from("training_participation")
+        .insert([memberData]);
+
+      if (error) {
+        throw error; // Throw the error if any
+      }
+
+      alert("Training added successfully!");
+      // Reset the form
+      setMemberData({
+        firstname: "",
+        lastname: "",
+        email: "",
+        phone_num: "",
+        member_type: 3, // Default to externe after save
+        study_lvl: "",
+        skills: "",
+        training_level: "",
+        member_id: "", // Reset member ID
+        has_paid: 3, // Default to extern
+      });
+    } catch (error) {
+      alert("Error adding training!");
+      console.error("Error adding training:", error.message);
+    }
+  };
+
+  const handleCancel = () => {
+    navigate(-1);
+  };
+
+
+  return (
+    <div className="member-detail-container">
+      <h2>Member Information</h2>
+      <form className="member-form">
+        <div className="form-group">
+          <label htmlFor="member_type">Type de Membre</label>
+          <select
+            id="member_type"
+            name="member_type"
+            value={memberData.member_type}
+            onChange={(e) => handleChange(e, { name: "member_type" })}
+          >
+            <option value={3}>Externe</option>
+            <option value={1}>Actif</option>
+            <option value={2}>Adhérent</option>
+          </select>
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="firstname">Firstname</label>
+          <input
+            autoComplete="off"
+            id="firstname"
+            name="firstname"
+            placeholder="Firstname"
+            onChange={(e) => handleChange(e, { name: "firstname" })}
+            value={memberData.firstname}
+            onBlur={() =>
+              setShowSuggestions((prev) => ({ ...prev, firstname: false }))
+            }
+            onFocus={() => {
+              if (memberData.member_type !== 3) {
+                // Only show suggestions if member type is not externe
+                setShowSuggestions((prev) => ({ ...prev, firstname: true }));
+              }
+            }}
+            required // Add required attribute for validation
+          />
+          {showSuggestions.firstname && (
+            <div className="suggestions-popup">
+              {suggestions.firstname.length > 0 ? (
+                suggestions.firstname.map((name, index) => (
+                  <div
+                    key={index}
+                    className="suggestion-item"
+                    onMouseDown={() => handleSelect(name)}
+                  >
+                    {name}
+                  </div>
+                ))
+              ) : (
+                <div className="no-suggestion">No person found</div>
+              )}
+            </div>
+          )}
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="lastname">Lastname</label>
+          <input
+            autoComplete="off"
+            id="lastname"
+            name="lastname"
+            placeholder="Lastname"
+            onChange={(e) => handleChange(e, { name: "lastname" })}
+            value={memberData.lastname}
+            onBlur={() =>
+              setShowSuggestions((prev) => ({ ...prev, lastname: false }))
+            }
+            onFocus={() => {
+              if (memberData.member_type !== 3) {
+                // Only show suggestions if member type is not externe
+                setShowSuggestions((prev) => ({ ...prev, lastname: true }));
+              }
+            }}
+            required // Add required attribute for validation
+          />
+          {showSuggestions.lastname && (
+            <div className="suggestions-popup">
+              {suggestions.lastname.length > 0 ? (
+                suggestions.lastname.map((name, index) => (
+                  <div
+                    key={index}
+                    className="suggestion-item"
+                    onMouseDown={() => handleSelect(name)}
+                  >
+                    {name}
+                  </div>
+                ))
+              ) : (
+                <div className="no-suggestion">No person found</div>
+              )}
+            </div>
+          )}
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="email">Email</label>
+          <input
+            autoComplete="off"
+            id="email"
+            name="email"
+            placeholder="Email"
+            value={memberData.email}
+            onChange={(e) =>
+              setMemberData({ ...memberData, email: e.target.value })
+            }
+            required // Add required attribute for validation
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="phone_num">Phone Number</label>
+          <input
+            autoComplete="off"
+            id="phone_num"
+            name="phone_num"
+            placeholder="Phone Number"
+            value={memberData.phone_num}
+            onChange={(e) =>
+              setMemberData({ ...memberData, phone_num: e.target.value })
+            }
+            required // Add required attribute for validation
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="training_level">Training Level</label>
+          <select
+            id="training_level"
+            name="training_level"
+            value={memberData.training_level}
+            onChange={(e) =>
+              setMemberData({ ...memberData, training_level: e.target.value })
+            }
+            required // Add required attribute for validation
+          >
+            <option value="" disabled>
+              Select Level
+            </option>
+            {levels.map((level, index) => (
+              <option key={index} value={level}>
+                {level}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="has_paid">Has Paid</label>
+          <select
+            id="has_paid"
+            name="has_paid"
+            value={memberData.has_paid}
+            onChange={(e) =>
+              setMemberData({ ...memberData, has_paid: e.target.value })
+            }
+            required // Add required attribute for validation
+          >
+            <option value={3}>Extern</option>
+            <option value={1}>Paid</option>
+            <option value={2}>Not Paid</option>
+          </select>
+        </div>
+
+        <div className="button-group">
+          <button type="button" onClick={handleSave}>
+            Save
+          </button>
+          <button type="button" onClick={handleCancel}>
+            Cancel
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+};
+
+export default RegistrationForm;
