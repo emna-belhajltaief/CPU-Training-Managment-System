@@ -41,6 +41,9 @@ const MainPage = () => {
   const handleCheckIn = (training) => {
     navigate("/CheckIn", { state: { training } }); // Navigate to the check-in path
   };
+  const handleStatics = () => {
+    navigate("/stats"); // Navigate to the statics path
+  };
 
   return (
     <>
@@ -66,6 +69,12 @@ const MainPage = () => {
                 onClick={() => handleCheckIn(training)}
               >
                 Open for check-in
+              </button>
+              <button
+              className="edit-btn"
+              onClick={()=> handleStatics()}
+              >
+                Statics
               </button>
             </div>
           </div>
