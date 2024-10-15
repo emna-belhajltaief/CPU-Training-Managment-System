@@ -1,0 +1,28 @@
+.suggestions-popup {
+    position: absolute;
+    background-color: white;
+    border: 3px solid #ccc;
+    height: auto;
+    overflow-y: auto;
+    width: 560px;
+    z-index: 1000;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+}
+
+.suggestion-item {
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.suggestion-item:hover {
+    background-color: #f0f0f0d5;
+    cursor: pointer;
+}
+
+.no-suggestion {
+    color: #999;
+    font-style: italic;
+    cursor: default; /* Make sure no hover effect or pointer for 'No person found' */
+}
