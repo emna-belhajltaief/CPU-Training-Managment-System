@@ -17,16 +17,38 @@ const Registration = () => {
     useEffect(() => {
         const fetchMembers = async () => {
             try {
+                // Fetching training participation data
                 const { data: formations, error } = await supabase
-                    .from("training_participation") // Adjust the table name if needed
+                    .from("training_participation")
                     .select("*")
                     .eq("training_id", formationId);
 
                 if (error) {
                     console.log("Error fetching formations", error.message);
-                } else {
-                    setFormation(formations);
+                    return;
                 }
+
+                // Fetch additional member data (first_name, last_name) from club_members
+                const updatedFormation = await Promise.all(formations.map(async (member) => {
+                    const { data: memberData, error: memberError } = await supabase
+                        .from("club_members")
+                        .select("*")
+                        .eq("id", member.member_id); // Assuming `member_id` links to club_members
+
+                    if (memberError) {
+                        console.log(`Error fetching member ${member.member_id}`, memberError.message);
+                        return member; // Return original member if error occurs
+                    }
+
+                    // Add first_name and last_name to the member data
+                    return {
+                        ...member,
+                        firstname: memberData[0]?.firstname || 'N/A',
+                        lastname: memberData[0]?.lastname || 'N/A',
+                    };
+                }));
+
+                setFormation(updatedFormation);
             } catch (err) {
                 console.error("Error fetching data:", err);
             }
@@ -37,29 +59,32 @@ const Registration = () => {
 
     return (
         <div>
-            <h1>Registration</h1>
-            <p style={{ color: 'white' }}>Not completed!</p>
+            <h1 style={{ color: 'white' }}>Registration</h1>
             <div>
-                <button onClick={handleADD}>
+                <button className="btn btn-secondary mb-2" onClick={handleADD}>
                     <IoMdPersonAdd />
                     Add Member
                 </button>
             </div>
             <div>
-                <table border={2} style={{ backgroundColor: 'whitesmoke' }}>
+                <table className="table table-striped" border={2} style={{ backgroundColor: 'whitesmoke' }}>
                     <thead>
                         <tr>
-                            <th>Id</th>
-                            <th>Level in Subject</th>
-                            <th>Has Paid</th>
-                            <th>Group Number</th>
-                            <th>Training Room</th>
+                            <th scope="col">Id</th>
+                            <th scope="col">First Name</th>
+                            <th scope="col">Last Name</th>
+                            <th scope="col">Level in Subject</th>
+                            <th scope="col">Has Paid</th>
+                            <th scope="col">Group Number</th>
+                            <th scope="col">Training Room</th>
                         </tr>
                     </thead>
                     <tbody>
                         {Formation.map((member) => (
-                            <tr key={member.id}>
+                            <tr scope="row" key={member.id}>
                                 <td>{member.id}</td>
+                                <td>{member.firstname}</td> {/* Display first name */}
+                                <td>{member.lastname}</td>  {/* Display last name */}
                                 <td>{member.level_in_subject}</td>
                                 <td>{member.has_paid ? 'Yes' : 'No'}</td>
                                 <td>{member.group_number}</td>
