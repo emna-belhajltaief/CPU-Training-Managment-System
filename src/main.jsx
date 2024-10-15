@@ -73,11 +73,11 @@ const router = createBrowserRouter([
     element: <CheckIn />, // page checkin (admin privilage)
   },
   {
-    path: '/Registration',
+    path: '/Registration/:formationId',
     element : <Registration />
   },
   {
-    path: '/RegistrationForm',
+    path: '/RegistrationForm/:formationId',
     element : <RegistrationForm />
   },
   {

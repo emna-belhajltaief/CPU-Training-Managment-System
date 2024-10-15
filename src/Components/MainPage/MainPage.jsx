@@ -44,8 +44,8 @@ const MainPage = () => {
   const handleStatics = () => {
     navigate("/stats"); // Navigate to the statics path
   };
-  const handleRegistration = () => {
-    navigate("/Registration");
+  const handleRegistration = (training) => {
+    navigate(`/Registration/${training.id}` );
   }
 
   return (
@@ -71,7 +71,7 @@ const MainPage = () => {
 
               <button 
                 className="edit-btn" 
-                onClick={() => handleRegistration()}
+                onClick={() => handleRegistration(training)}
               >
                 Open for Registration
               </button>
