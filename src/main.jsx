@@ -16,7 +16,7 @@ import CheckIn from './Components/CheckIn/CheckIn.jsx';
 import MainPage from './Components/MainPage/MainPage.jsx';
 import NotFound from './Components/NotFound/NotFound.jsx';
 import ListerFormations from './Components/ListerFormations/ListerFormations.jsx';
-
+import Stats from './Components/Stats/Stats.jsx';
 
 const router = createBrowserRouter([
   {
@@ -56,6 +56,10 @@ const router = createBrowserRouter([
   {
     path: '/Repartition',
     element: <Repartition />, // show repartitin page (admin privilage)
+  },
+  {
+    path: '/stats',
+    element:<Stats />, // show statics page (admin privilage)
   },
   {
     path: '/CheckIn',
