@@ -15,7 +15,7 @@ const HomePage = () => {
             console.log("session", session)
         }
         getSupaBaseSession();
-        const localSession = localStorage.getItem('supabaseSession');
+        const localSession = sessionStorage.getItem('supabaseSession');
         console.log("localSession", localSession)
 
     }, [])

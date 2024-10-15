@@ -4,7 +4,6 @@ import supabase from '../../../superbaseClient';
 import './MainPage.css';
 import NavBar from '../NavBar/NavBar';
 import { CircleLoader } from 'react-spinners';
-import { CircleLoader } from 'react-spinners';
 
 
 const MainPage = () => {
@@ -81,11 +80,26 @@ const MainPage = () => {
                 >
                   View
                 </button>
+
+                <button
+                  className="edit-btn"
+                  onClick={() => handleRegistration(training)}
+                >
+                  Open for Registration
+                </button>
+
+
                 <button
                   className="edit-btn"
                   onClick={() => handleCheckIn(training)}
                 >
                   Open for check-in
+                </button>
+                <button
+                  className="edit-btn"
+                  onClick={() => handleStatics()}
+                >
+                  Statics
                 </button>
               </div>
             </div>

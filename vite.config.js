@@ -12,6 +12,8 @@ export default defineConfig({
       '@routes': '/src/routes',
       '@data': '/src/data',
       '@hooks': '/src/hooks',
+      '@context': '/src/context',
+      '@api': '/src/api',
     }
   }
 })

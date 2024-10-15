@@ -16,7 +16,7 @@ export const signInUser = async (email, password) => {
         return;
     }
 
-    localStorage.setItem('supabaseSession', JSON.stringify(data.session));
+    sessionStorage.setItem('supabaseSession', JSON.stringify(data.session));
 };
 
 export default supabase;

@@ -1,7 +1,7 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-// import App from './App.jsx';
+import { AuthProvider } from "@context/authProvider";
 import Members from './Components/members/members.jsx';
 import HomePage from './Components/HomePage/HomePage.jsx'; // Assuming this is the correct path
 import SignUp from './Components/SignUp/SignUp.jsx';
@@ -19,90 +19,91 @@ import ListerFormations from './Components/ListerFormations/ListerFormations.jsx
 import Stats from './Components/Stats/Stats.jsx';
 import Registration from './Components/Registration/Registration.jsx';
 import RegistrationForm from './Components/Registration/RegistrationForm.jsx';
+import ProtectedLayout from './api/protectedLayout.jsx';
+
 
 const router = createBrowserRouter([
   {
-    path: '/',            //initial page
-    element: <HomePage />,
-  },
-  {
-    path: '/signup', // Render SignUp
+    path: '/signup',
     element: <SignUp />,
   },
   {
-    path: '/login', // Render LogIn
+    path: '/login',
     element: <LogIn />,
   },
   {
-    path: '/membreProfile', // Render FicheMembre 
-    element: <FicheMembre />,
-  },
-  {
-    path: '/members', // Render Members
-    element: <Members />,
-  },
-  {
-    path: '/FormulaireFormation/add', // Render Members
-
-    element: <FormulaireFormation mode="add" />,
-  },
-  {
-    path: '/FormulaireFormation/edit/:formationId', // Render Members
-
-    element: <FormulaireFormation mode="edit" />,
-  },
-  {
-    path: '/AddMembre', // Formulaire d'ajout d'un membre (admin privilage)
-    element: <MemberDetailForm />,
-  },
-  {
-    path: '/Formation', // View formation details
-    element: <Formation />,
-  },
-  
-  {
-    path: '/Repartition',
-    element: <Repartition />, // show repartitin page (admin privilage)
-  },
-  {
-    path: '/stats',
-    element:<Stats />, // show statics page (admin privilage)
-  },
-  {
-    path: '/CheckIn',
-    element: <CheckIn />, // page checkin (admin privilage)
-  },
-  {
-    path: '/Registration/:formationId',
-    element : <Registration />
-  },
-  {
-    path: '/RegistrationForm/:formationId',
-    element : <RegistrationForm />
-  },
-  {
-    path: '/Home',
-    element: <MainPage />, // homepage
-  },
-  {
-    path: '/Lister_Formations',
-    element: <ListerFormations/>, // formation liste 
+    element: <ProtectedLayout />, // Protect all child routes
+    children: [
+      {
+        path: '/',
+        element: <HomePage />,
+      },
+      {
+        path: '/membreProfile',
+        element: <FicheMembre />,
+      },
+      {
+        path: '/members',
+        element: <Members />,
+      },
+      {
+        path: '/FormulaireFormation/add',
+        element: <FormulaireFormation mode="add" />,
+      },
+      {
+        path: '/FormulaireFormation/edit/:formationId',
+        element: <FormulaireFormation mode="edit" />,
+      },
+      {
+        path: '/AddMembre',
+        element: <MemberDetailForm />,
+      },
+      {
+        path: '/Formation',
+        element: <Formation />,
+      },
+      {
+        path: '/Repartition',
+        element: <Repartition />,
+      },
+      {
+        path: '/stats',
+        element: <Stats />,
+      },
+      {
+        path: '/CheckIn',
+        element: <CheckIn />,
+      },
+      {
+        path: '/Registration/:formationId',
+        element: <Registration />,
+      },
+      {
+        path: '/RegistrationForm/:formationId',
+        element: <RegistrationForm />,
+      },
+      {
+        path: '/Home',
+        element: <MainPage />,
+      },
+      {
+        path: '/Lister_Formations',
+        element: <ListerFormations />,
+      },
+    ],
   },
   {
     path: '/*',
-    element: <NotFound/>, // not found page
+    element: <NotFound />,
   },
-
-
-
-  
 ]);
-
 
 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </StrictMode>
 );

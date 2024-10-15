@@ -1,0 +1,6 @@
+- reset filters
+- Form buttons not working (add member / cancel /...)
+- interface inscription membre à une formation (open for registration)
+- interface attestation generator(form [object mail, body of mail, resume formation, attestation(fichier PDF)])
+- global context senior members and formations
+- auth (protected routes/ privilge access lel DB)
