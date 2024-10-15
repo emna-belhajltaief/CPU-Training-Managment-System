@@ -37,10 +37,10 @@ function NavBar() {
       </div>
       <div className="nav-items">
         <div className='nav-item'>
-          <button type="button" onClick={handleSignout}>SignOut</button>
+          <div onClick={handleSignout}>SignOut</div>
         </div>
         <div className="nav-item">
-          <Link style={{ color: 'white' }} to="/members">Gestion des membres</Link>
+          <Link to="/members">Gestion des membres</Link>
         </div>
         <div className="nav-item" onMouseEnter={toggleDropdown} onMouseLeave={toggleDropdown}>
           <a href="#">Gestion des formations</a>
