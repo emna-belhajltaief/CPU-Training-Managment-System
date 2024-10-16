@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useState , useEffect } from "react";
 import NavBar from "../NavBar/NavBar";
 import "./Repartition.css";
 import { FaPrint } from "react-icons/fa";
-
+import supabase from "../../../superbaseClient";
 function Repartition() {
   const [activeTab, setActiveTab] = useState("salle");
-
+  const [loading, setLoading] = useState(false);
   // State to store participant inputs
   const [participantsInputs, setParticipantsInputs] = useState({
     salle: {},
@@ -20,20 +20,55 @@ function Repartition() {
     { id: 4, prenom: "Larry", nom: "the Bird", role: "Assistant" },
   ];
 
-  const participantsSalle = [
-    { id: 1, prenom: "Yaakoub", nom: "9amar eddin" },
-    { id: 2, prenom: "5aled", nom: "Kachmiri" }
-  ];
+  const [participantsSalle,setparticipantsSalle] = useState([]);
+  useEffect(() => {
+    const fetchClubMembersData = async () => {
+      try {
+        const { data: club_members, error } = await supabase
+          .from('training_participation')
+          .select(`
+            member_id,
+            club_members (
+              firstname,
+              lastname
+            )
+          `);
+      
+        if (error) {
+          console.error('Error fetching club_members:', error);
+          return [];
+        }
+        
+        // Map through the fetched data to extract necessary information
+        const formattedMembers = club_members.map(member => ({
+          id: member.member_id,
+          prenom: member.club_members.firstname,
+          nom: member.club_members.lastname,
+        }));
+    
+        return formattedMembers;
+      } catch (err) {
+        console.error('Error fetching data:', err);
+        return [];
+      }
+    };
+  
+    const getData = async () => {
+      const membersData = await fetchClubMembersData();
+      setparticipantsSalle(membersData);
+  
+      // Print fetched values
+      console.log('Fetched members data:', membersData);
 
-  const participantsGroup = [
-    { id: 1, prenom: "Yaakoub", nom: "9amar eddin", groupe: "" },
-    { id: 2, prenom: "5aled", nom: "Kachmiri", groupe: "" }
-  ];
+    };
+  
+    setLoading(true);
+    getData();
+    setLoading(false);
+  }, []);
+  
+  
 
-  const participantsGroupSalle = [
-    { id: 1, prenom: "Yaakoub", nom: "9amar eddin", groupe: "", salle: "" },
-    { id: 2, prenom: "5aled", nom: "Kachmiri", groupe: "", salle: "" }
-  ];
 
   const handleTabChange = (tab) => {
     setActiveTab(tab);
@@ -74,8 +109,8 @@ function Repartition() {
 
   const renderParticipantsTable = () => {
     const participants = activeTab === "salle" ? participantsSalle :
-      activeTab === "group" ? participantsGroup :
-      participantsGroupSalle;
+      activeTab === "group" ? participantsSalle :
+      participantsSalle;
 
     return (
       <>
@@ -97,7 +132,7 @@ function Repartition() {
           </thead>
           <tbody>
             {participants.map((row) => (
-              <tr key={row.id}>
+              <tr key={row.member_id}>
                 <th>{row.id}</th>
                 <td>{row.prenom}</td>
                 <td>{row.nom}</td>
