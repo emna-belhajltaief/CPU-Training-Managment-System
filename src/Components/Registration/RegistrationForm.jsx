@@ -22,7 +22,7 @@ const RegistrationForm = () => {
   const [trainingParticipationData, setTrainingParticipationData] = useState({
     training_id: formationId,
     member_id: null,
-    training_level: "",
+    level_in_training: "",
     has_paid: "Yes",
     group_number: null,
     training_room: null,
@@ -173,7 +173,7 @@ const RegistrationForm = () => {
     setTrainingParticipationData({
       training_id: formationId,
       member_id: null,
-      training_level: "",
+      level_in_training: "",
       has_paid: "Yes",
       group_number: null,
       training_room: null,
@@ -247,9 +247,9 @@ const RegistrationForm = () => {
           <select
             id="training_level"
             name="training_level"
-            value={trainingParticipationData.training_level}
+            value={trainingParticipationData.level_in_training}
             onChange={(e) => {
-              setTrainingParticipationData((prev) => ({ ...prev, training_level: e.target.value }));
+              setTrainingParticipationData((prev) => ({ ...prev, level_in_training: e.target.value }));
             }
             }
           >
