@@ -22,7 +22,7 @@ const RegistrationForm = () => {
   const [trainingParticipationData, setTrainingParticipationData] = useState({
     training_id: formationId,
     member_id: null,
-    level_in_training: "",
+    level_in_subject: "",
     has_paid: "Yes",
     group_number: null,
     training_room: null,
@@ -173,7 +173,7 @@ const RegistrationForm = () => {
     setTrainingParticipationData({
       training_id: formationId,
       member_id: null,
-      level_in_training: "",
+      level_in_subject: "",
       has_paid: "Yes",
       group_number: null,
       training_room: null,
@@ -207,7 +207,7 @@ const RegistrationForm = () => {
         </div>
 
         {Object.keys(memberData).map((key) =>
-          key !== 'id' && key !== "member_type" && key !== "training_level" ? (
+          key !== 'id' && key !== "member_type" && key !== "level_in_subject" ? (
             <div className="form-group" key={key}>
               <label htmlFor={key}>
                 {key === "phone_num"
@@ -247,9 +247,9 @@ const RegistrationForm = () => {
           <select
             id="training_level"
             name="training_level"
-            value={trainingParticipationData.level_in_training}
+            value={trainingParticipationData.level_in_subject}
             onChange={(e) => {
-              setTrainingParticipationData((prev) => ({ ...prev, level_in_training: e.target.value }));
+              setTrainingParticipationData((prev) => ({ ...prev, level_in_subject: e.target.value }));
             }
             }
           >
