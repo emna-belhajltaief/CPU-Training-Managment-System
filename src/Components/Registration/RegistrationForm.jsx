@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import toast from "react-hot-toast";
 import "./RegistrationForm.css";
 import supabase from "../../../superbaseClient";
+import toast from "react-hot-toast";
 
 const RegistrationForm = () => {
   const navigate = useNavigate();
   const { formationId } = useParams();
   const [clubMembers, setClubMembers] = useState([]);
-  const [memberType, setMemberType] = useState(3); // Default to externe
+  const [memberType, setMemberType] = useState(0); // Default to externe
   const [membersData, setMembersData] = useState([]);
   const [memberData, setMemberData] = useState({
     lastname: "",
@@ -117,6 +117,9 @@ const RegistrationForm = () => {
     );
 
     if (selectedMember) {
+      setMemberData(
+        selectedMember,
+      );
       setTrainingParticipationData((prev) => ({ ...prev, member_id: selectedMember.id }));
     }
 
@@ -128,39 +131,31 @@ const RegistrationForm = () => {
       let memberId = trainingParticipationData.member_id;
 
       if (!memberData?.id) {
-        const { data: newMember, error: memberError } = await toast.promise(
-          supabase
-            .from("club_members")
-            .insert([memberData])
-            .select(),
-          {
-            success: 'New external member added successfully',
-            loading: 'Adding new member...',
-            error: 'Error adding new external member.',
-          }
-        );
+        const promise = supabase
+          .from("club_members")
+          .insert([memberData])
+          .select();
+        toast.promise(promise, {
+          success: "Member added successfully",
+          loading: "Adding member...",
+          error: "Error adding member",
+        });
+        const { data: newMember, error: memberError } = await promise;
 
         if (memberError) throw memberError;
-        else toast.dismiss();
         memberId = newMember[0].id;
       }
 
-      const { error: trainingError } = await toast.promise(
-        supabase
-          .from("training_participation")
-          .insert([{ ...trainingParticipationData, member_id: memberId }]), {
-        loading: 'Saving training participation...',
-        success: 'Training participation saved successfully',
-        error: 'Error saving training participation',
-      }
-      );
+      const { error: trainingError } = await supabase
+        .from("training_participation")
+        .insert([{ ...trainingParticipationData, member_id: memberId }]);
 
       if (trainingError) throw trainingError;
 
+      toast.success("Training participation saved successfully!");
       resetForm();
     } catch (error) {
-      toast.dismiss();
-      toast.error('Error saving training participation');
+      toast.error("Error saving training participation.");
       console.error("Error saving training participation:", error.message);
     }
   };
@@ -171,7 +166,7 @@ const RegistrationForm = () => {
       firstname: "",
       email: "",
       phone_num: "",
-      member_type: 3,
+      member_type: 0,
       study_lvl: "",
       skills: "",
     });
