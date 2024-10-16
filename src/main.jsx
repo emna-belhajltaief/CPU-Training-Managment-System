@@ -2,6 +2,7 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { AuthProvider } from "@context/authProvider";
+import { Toaster } from 'react-hot-toast';
 import Members from './Components/members/members.jsx';
 import HomePage from './Components/HomePage/HomePage.jsx'; // Assuming this is the correct path
 import SignUp from './Components/SignUp/SignUp.jsx';
@@ -103,6 +104,7 @@ const router = createBrowserRouter([
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <AuthProvider>
+      <Toaster />
       <RouterProvider router={router} />
     </AuthProvider>
   </StrictMode>
