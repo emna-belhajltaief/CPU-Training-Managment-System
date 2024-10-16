@@ -109,22 +109,29 @@ const RegistrationForm = () => {
   };
 
   const handleSelect = (fullName) => {
-    const [firstname, lastname] = fullName.split(" ");
+    // Trim the full name and split by spaces, removing extra spaces
+    const nameParts = fullName.trim().split(/\s+/); // Split on one or more spaces
+  
+    let firstname = nameParts[0]; // First part as first name
+    let lastname = nameParts.slice(1).join(" "); // Combine remaining parts as last name
+  
     const selectedMember = membersData.find(
       (member) =>
         member.firstname.toLowerCase() === firstname.toLowerCase() &&
         member.lastname.toLowerCase() === lastname.toLowerCase()
     );
-
+  
     if (selectedMember) {
-      setMemberData(
-        selectedMember,
-      );
-      setTrainingParticipationData((prev) => ({ ...prev, member_id: selectedMember.id }));
+      setMemberData(selectedMember);
+      setTrainingParticipationData((prev) => ({
+        ...prev,
+        member_id: selectedMember.id,
+      }));
     }
-
+  
     setShowSuggestions({ firstname: false, lastname: false });
   };
+  
 
   const handleSave = async () => {
     try {
