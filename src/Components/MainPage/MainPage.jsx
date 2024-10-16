@@ -56,6 +56,9 @@ const MainPage = () => {
   const handleRegistration = (training) => {
     navigate(`/Registration/${training.id}`);
   }
+  const handleCertifications = () =>{
+    navigate("/SendCertifications");
+  }
 
   return (
     <>
@@ -94,6 +97,12 @@ const MainPage = () => {
                   onClick={() => handleCheckIn(training)}
                 >
                   Open for check-in
+                </button>
+                <button
+                className="edit-btn"
+                onClick={() => handleCertifications()}
+                  >
+                  Send Certifications
                 </button>
                 <button
                   className="edit-btn"
