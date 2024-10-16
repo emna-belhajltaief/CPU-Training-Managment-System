@@ -43,7 +43,7 @@ const ListerFormations = () => {
               <Link to={`/FormulaireFormation/edit/${formation.id}`}>
                 <button className="edit-btn">Edit</button>
               </Link>
-              <Link to="/Repartition">
+              <Link to={`/Repartition/${formation.id}`}>
                 <button className="edit-btn">Répartir</button>
               </Link>
             </div>
