@@ -21,7 +21,7 @@ import Stats from './Components/Stats/Stats.jsx';
 import Registration from './Components/Registration/Registration.jsx';
 import RegistrationForm from './Components/Registration/RegistrationForm.jsx';
 import ProtectedLayout from './api/protectedLayout.jsx';
-
+import Certifications from './Components/Certifications/Certifications.jsx';
 
 const router = createBrowserRouter([
   {
@@ -72,9 +72,14 @@ const router = createBrowserRouter([
         element: <Stats />,
       },
       {
+        path: '/SendCertifications',
+        element: <Certifications />,
+      },
+      {
         path: '/CheckIn',
         element: <CheckIn />,
       },
+      
       {
         path: '/Registration/:formationId',
         element: <Registration />,
