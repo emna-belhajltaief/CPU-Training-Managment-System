@@ -18,7 +18,6 @@ const RegistrationForm = () => {
     member_type: 0,
     study_lvl: "",
     skills: "",
-    training_level: "",
   });
   const [trainingParticipationData, setTrainingParticipationData] = useState({
     training_id: formationId,
@@ -88,7 +87,6 @@ const RegistrationForm = () => {
         member_type: newMemberType,
         study_lvl: "",
         skills: "",
-        training_level: "",
       });
       setSuggestions({ firstname: [], lastname: [] });
       setShowSuggestions({ firstname: false, lastname: false });
@@ -119,10 +117,6 @@ const RegistrationForm = () => {
     );
 
     if (selectedMember) {
-      setMemberData({
-        ...selectedMember,
-        training_level: memberData.training_level,
-      });
       setTrainingParticipationData((prev) => ({ ...prev, member_id: selectedMember.id }));
     }
 
@@ -140,11 +134,14 @@ const RegistrationForm = () => {
             .insert([memberData])
             .select(),
           {
+            success: 'New external member added successfully',
+            loading: 'Adding new member...',
             error: 'Error adding new external member.',
           }
         );
 
         if (memberError) throw memberError;
+        else toast.dismiss();
         memberId = newMember[0].id;
       }
 
@@ -177,7 +174,6 @@ const RegistrationForm = () => {
       member_type: 3,
       study_lvl: "",
       skills: "",
-      training_level: "",
     });
     setTrainingParticipationData({
       training_id: formationId,
