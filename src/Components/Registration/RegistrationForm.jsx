@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import toast from "react-hot-toast";
 import "./RegistrationForm.css";
 import supabase from "../../../superbaseClient";
 
@@ -133,25 +134,36 @@ const RegistrationForm = () => {
       let memberId = trainingParticipationData.member_id;
 
       if (!memberData?.id) {
-        const { data: newMember, error: memberError } = await supabase
-          .from("club_members")
-          .insert([memberData])
-          .select();
+        const { data: newMember, error: memberError } = await toast.promise(
+          supabase
+            .from("club_members")
+            .insert([memberData])
+            .select(),
+          {
+            error: 'Error adding new external member.',
+          }
+        );
 
         if (memberError) throw memberError;
         memberId = newMember[0].id;
       }
 
-      const { error: trainingError } = await supabase
-        .from("training_participation")
-        .insert([{ ...trainingParticipationData, member_id: memberId }]);
+      const { error: trainingError } = await toast.promise(
+        supabase
+          .from("training_participation")
+          .insert([{ ...trainingParticipationData, member_id: memberId }]), {
+        loading: 'Saving training participation...',
+        success: 'Training participation saved successfully',
+        error: 'Error saving training participation',
+      }
+      );
 
       if (trainingError) throw trainingError;
 
-      alert("Training participation saved successfully!");
       resetForm();
     } catch (error) {
-      alert("Error saving training participation.");
+      toast.dismiss();
+      toast.error('Error saving training participation');
       console.error("Error saving training participation:", error.message);
     }
   };
