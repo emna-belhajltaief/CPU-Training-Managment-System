@@ -93,7 +93,7 @@ const Registration = () => {
                                 <td>{member.id}</td>
                                 <td>{member.firstname}</td> {/* Display first name */}
                                 <td>{member.lastname}</td>  {/* Display last name */}
-                                <td>{member.training_level}</td>
+                                <td>{member.level_in_subject}</td>
                                 <td>{member.has_paid ? 'Yes' : 'No'}</td>
                                 <td>{member.group_number}</td>
                                 <td>{member.training_room}</td>
