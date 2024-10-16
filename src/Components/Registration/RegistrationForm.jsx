@@ -15,7 +15,7 @@ const RegistrationForm = () => {
     firstname: "",
     email: "",
     phone_num: "",
-    member_type: 3,
+    member_type: 0,
     study_lvl: "",
     skills: "",
     training_level: "",
@@ -209,7 +209,7 @@ const RegistrationForm = () => {
             value={memberData.member_type}
             onChange={handleChange}
           >
-            <option value={3}>externe</option>
+            <option value={0}>externe</option>
             <option value={1}>actif</option>
             <option value={2}>adherent</option>
           </select>
