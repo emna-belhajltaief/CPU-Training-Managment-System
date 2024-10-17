@@ -43,7 +43,7 @@ const Certifications = () => {
         formData.append('emailBody', emailBody); // Add email body to the form data
 
         try {
-            const response = await axios.post('http://localhost:5010/send-certificates', formData, {
+            const response = await axios.post('api/send-certificates', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
