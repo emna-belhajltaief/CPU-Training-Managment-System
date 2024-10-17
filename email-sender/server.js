@@ -23,7 +23,7 @@ const transporter = nodemailer.createTransport({
 });
 
 app.use(cors({
-    origin: 'http://localhost:5173'
+    origin: 'http://localhost:5174'
 }));
 
 // Function to generate the certificate image with the recipient's name
