@@ -58,8 +58,7 @@ const LogIn = () => {
 
   return (
     <div className='login-container'>
-      <h2>Log In</h2>
-      {errorMessage && <p className="error">{errorMessage}</p>} {/* Display error message */}
+      <h2>Welcome Back!<br/>CPU Member</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label className='forum_label' htmlFor="email">Email:</label>
@@ -71,7 +70,7 @@ const LogIn = () => {
             value={formData.email}
             onChange={handleChange}
             required
-          />
+            />
         </div>
         <div className="form-group">
           <label className='forum_label' htmlFor="password">Password:</label>
@@ -83,9 +82,10 @@ const LogIn = () => {
             value={formData.password}
             onChange={handleChange}
             required
-          />
+            />
         </div>
-        <button type="submit">Log In</button>
+        {errorMessage && <p className="error">{errorMessage}</p>} {/* Display error message */}
+        <button type="submit">Login</button>
       </form>
     </div>
   );

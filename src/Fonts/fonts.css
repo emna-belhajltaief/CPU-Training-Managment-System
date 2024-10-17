@@ -1,0 +1,63 @@
+@font-face {
+    font-family: 'Outfit';
+    src: url('./fonts/Outfit/Outfit.ttf') format('truetype');
+    font-weight: normal;
+    line-height: 150%;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Tangerine';
+    src: url('./fonts/Tangerine/Tangerine-Regular.ttf') format('truetype');
+    font-weight: normal;
+    line-height: 150%;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'MerriweatherSans';
+    src: url('./fonts/Merriweather_Sans/MerriweatherSans.ttf') format('truetype');
+    font-weight: normal;
+    line-height: 150%;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Jost';
+    src: url('./fonts/Jost/Jost-Regular.ttf') format('truetype');
+    font-weight: normal;
+    line-height: 150%;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Jost';
+    src: url('./fonts/Jost/Jost-Medium.ttf') format('truetype');
+    font-weight:500;
+    line-height: 150%;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Jost';
+    src: url('./fonts/Jost/Jost-Bold.ttf') format('truetype');
+    font-weight: 700;
+    line-height: 150%;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Spartan';
+    src: url('./fonts/Spartan/Spartan-Regular.ttf') format('truetype');
+    font-weight: normal;
+    line-height: 150%;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Spartan';
+    src: url('./fonts/Spartan/Spartan-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    line-height: 150%;
+}
+@font-face {
+    font-family: 'Spartan';
+    src: url('./fonts/Spartan/Spartan-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    line-height: 150%;
+}
