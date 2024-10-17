@@ -64,7 +64,7 @@ const router = createBrowserRouter([
         element: <Formation />,
       },
       {
-        path: '/Repartition',
+        path: '/Repartition/:formationId',
         element: <Repartition />,
       },
       {
