@@ -8,7 +8,7 @@ import { FaTrashAlt } from 'react-icons/fa';
 const CheckIn = () => {
   const location = useLocation();
   const { training } = location.state;
-  const [orignalFormationAttendees, setOriginalFormationAttendees] = useState([]);
+  const [originalFormationAttendees, setOriginalFormationAttendees] = useState([]);
   const [formationAttendees, setFormationAttendees] = useState([]);
 
   useEffect(() => {
@@ -85,7 +85,7 @@ const CheckIn = () => {
   // Handler to update an attendee's information in the database
   const handleUpdate = async (id) => {
     const attendeeToUpdate = formationAttendees.find((fa) => fa.id === id);
-
+    const newFormationAttendees = originalFormationAttendees .map((ofa) => ofa.id === id ? attendeeToUpdate : ofa);
     try {
       const { error } = await supabase
         .from('training_participation')
@@ -101,7 +101,7 @@ const CheckIn = () => {
         toast.error('Error updating attendee');
       } else {
         toast.success('Attendee updated successfully');
-        setOriginalFormationAttendees(formationAttendees);
+        setOriginalFormationAttendees(newFormationAttendees);
       }
     } catch (err) {
       console.error('Error updating attendee:', err);
@@ -162,10 +162,10 @@ const CheckIn = () => {
               </td>
               <td>
                 <button
-                  className={"btn " + (!_.isEqual(formationAttendee, orignalFormationAttendees.find((fa) => fa.id === formationAttendee.id)) ? "btn-secondary" : "btn-outline-secondary")}
+                  className={"btn " + (!_.isEqual(formationAttendee, originalFormationAttendees.find((fa) => fa.id === formationAttendee.id)) ? "btn-secondary" : "btn-outline-secondary")}
                   onClick={() => handleUpdate(formationAttendee.id)}
                   disabled={
-                    _.isEqual(formationAttendee, orignalFormationAttendees.find((fa) => fa.id === formationAttendee.id))
+                    _.isEqual(formationAttendee, originalFormationAttendees.find((fa) => fa.id === formationAttendee.id))
                   }
                 >
                   Update

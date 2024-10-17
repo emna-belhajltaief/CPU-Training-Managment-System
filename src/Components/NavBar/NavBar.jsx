@@ -33,7 +33,7 @@ function NavBar() {
   return (<>
     <nav className="nav-main">
       <div onClick={gotomain} className="nav-logo">
-        <img src="./images/cpuwhite.png" className="point" alt="Logo" />
+        <img src="/images/cpuwhite.png" className="point" alt="Logo" />
       </div>
       <div className="nav-items">
         <div className='nav-item'>
