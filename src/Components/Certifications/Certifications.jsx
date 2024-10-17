@@ -1,39 +1,32 @@
-import  { useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import './Certifications.css';
-
 const Certifications = () => {
     const [pdfFile, setPdfFile] = useState(null);
     const [csvFile, setCsvFile] = useState(null);
     const [certificateFile, setCertificateFile] = useState(null);
     const [emailBody, setEmailBody] = useState(''); // State to hold the email body
-
     // Handle PDF file change
     const handlePdfChange = (event) => {
         setPdfFile(event.target.files[0]);
     };
-
     // Handle CSV file change
     const handleCsvChange = (event) => {
         setCsvFile(event.target.files[0]);
     };
-
     // Handle Certificate file change
     const handleCertificateChange = (event) => {
         setCertificateFile(event.target.files[0]);
     };
-
     // Handle Email Body Change
     const handleEmailBodyChange = (event) => {
         setEmailBody(event.target.value);
     };
-
     const sendCertificates = async () => {
         if (!csvFile || !certificateFile) {
             alert("Please select a PDF, CSV, and certificate image file.");
             return;
         }
-
         const formData = new FormData();
         if (pdfFile) {
             formData.append('pdfFile', pdfFile);
@@ -41,9 +34,8 @@ const Certifications = () => {
         formData.append('csvFile', csvFile);
         formData.append('certificateFile', certificateFile);
         formData.append('emailBody', emailBody); // Add email body to the form data
-
         try {
-            const response = await axios.post('api/send-certificates', formData, {
+            const response = await axios.post('http://localhost:5010/send-certificates', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
@@ -53,7 +45,6 @@ const Certifications = () => {
             console.error('Error sending certificates:', error);
         }
     };
-
     return (
         <div className='certifications-container'>
             <h1 className='certifications-title'>Send Certificates</h1>
@@ -77,5 +68,4 @@ const Certifications = () => {
         </div>
     );
 };
-
 export default Certifications;
