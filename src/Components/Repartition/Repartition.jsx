@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
-import NavBar from "../NavBar/NavBar";
-import "./Repartition.css";
-import { FaPrint } from "react-icons/fa";
-import supabase from "../../../superbaseClient";
 import { useParams } from "react-router-dom";
+import NavBar from "../NavBar/NavBar";
+import supabase from "../../../superbaseClient";
+import CircleLoader from "react-spinners/CircleLoader";
+import { FaPrint } from "react-icons/fa";
+import "./Repartition.css";
 
 function Repartition() {
   const { formationId } = useParams();
@@ -68,7 +69,7 @@ function Repartition() {
   };
 
 
-  
+
   const handleInputChange = (id, field, value) => {
     setParticipantsInputs((prevInputs) => {
       const newInputs = {
@@ -81,14 +82,14 @@ function Repartition() {
           },
         },
       };
-      
+
       // Log the new state after it's updated
       console.log("Updated participantsInputs:", newInputs);
-  
+
       return newInputs;
     });
   };
-  
+
 
   const printElement = (elementId) => {
     const printContents = document.getElementById(elementId).innerHTML;
@@ -115,11 +116,12 @@ function Repartition() {
       activeTab === "salle"
         ? participantsSalle
         : activeTab === "group"
-        ? participantsSalle
-        : participantsSalle;
+          ? participantsSalle
+          : participantsSalle;
 
     return (
       <>
+        <CircleLoader color="#fff" loading={loading} size={150} />
         <table className="table table-striped" id="participantsTable">
           <thead>
             <tr>
