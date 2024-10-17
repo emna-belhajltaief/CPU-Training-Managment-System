@@ -28,59 +28,71 @@ function Repartition() {
     const fetchClubMembersData = async () => {
       try {
         const { data: club_members, error } = await supabase
-          .from('training_participation')
-          .select(`member_id, club_members (firstname, lastname)`)
+          .from("training_participation")
+          .select(`*, club_members (firstname, lastname)`)
           .eq("training_id", formationId);
 
         if (error) {
-          console.error('Error fetching club_members:', error);
+          console.error("Error fetching club_members:", error);
           return [];
         }
 
-        const formattedMembers = club_members.map(member => ({
-          id: member.member_id,
+        const formattedMembers = club_members.map((member) => ({
+          repartition_id: member.id,
+          training_id: member.training_id,
+          member_id: member.member_id,
           prenom: member.club_members.firstname,
           nom: member.club_members.lastname,
         }));
 
         return formattedMembers;
       } catch (err) {
-        console.error('Error fetching data:', err);
+        console.error("Error fetching data:", err);
         return [];
       }
     };
 
     const getData = async () => {
+      setLoading(true);
       const membersData = await fetchClubMembersData();
       setParticipantsSalle(membersData);
-      console.log('Fetched members data:', membersData);
+      console.log("Fetched members data:", membersData);
+      setLoading(false);
     };
 
-    setLoading(true);
     getData();
-    setLoading(false);
   }, [formationId]);
 
   const handleTabChange = (tab) => {
     setActiveTab(tab);
   };
 
+
+  
   const handleInputChange = (id, field, value) => {
-    setParticipantsInputs((prevInputs) => ({
-      ...prevInputs,
-      [activeTab]: {
-        ...prevInputs[activeTab],
-        [id]: {
-          ...prevInputs[activeTab][id],
-          [field]: value,
+    setParticipantsInputs((prevInputs) => {
+      const newInputs = {
+        ...prevInputs,
+        [activeTab]: {
+          ...prevInputs[activeTab],
+          [id]: {
+            ...prevInputs[activeTab][id],
+            [field]: value,
+          },
         },
-      },
-    }));
+      };
+      
+      // Log the new state after it's updated
+      console.log("Updated participantsInputs:", newInputs);
+  
+      return newInputs;
+    });
   };
+  
 
   const printElement = (elementId) => {
     const printContents = document.getElementById(elementId).innerHTML;
-    const newWindow = window.open('', '', 'width=600,height=400');
+    const newWindow = window.open("", "", "width=600,height=400");
     newWindow.document.write(`
       <html>
         <head>
@@ -99,9 +111,12 @@ function Repartition() {
   };
 
   const renderParticipantsTable = () => {
-    const participants = activeTab === "salle" ? participantsSalle :
-      activeTab === "group" ? participantsSalle :
-      participantsSalle;
+    const participants =
+      activeTab === "salle"
+        ? participantsSalle
+        : activeTab === "group"
+        ? participantsSalle
+        : participantsSalle;
 
     return (
       <>
@@ -122,18 +137,18 @@ function Repartition() {
             </tr>
           </thead>
           <tbody>
-            {participants.map((row) => (
-              <tr key={row.id}>
-                <th>{row.id}</th>
+            {participants.map((row, index) => (
+              <tr key={index}>
+                <th>{index + 1}</th>
                 <td>{row.prenom}</td>
                 <td>{row.nom}</td>
                 {activeTab === "salle" && (
                   <td>
                     <input
                       placeholder="Salle"
-                      value={participantsInputs.salle[row.id]?.salle || ""}
+                      value={participantsInputs.salle[row.repartition_id]?.salle || ""}
                       onChange={(e) =>
-                        handleInputChange(row.id, "salle", e.target.value)
+                        handleInputChange(row.repartition_id, "salle", e.target.value)
                       }
                     />
                   </td>
@@ -142,9 +157,9 @@ function Repartition() {
                   <td>
                     <input
                       placeholder="Groupe"
-                      value={participantsInputs.group[row.id]?.groupe || ""}
+                      value={participantsInputs.group[row.repartition_id]?.groupe || ""}
                       onChange={(e) =>
-                        handleInputChange(row.id, "groupe", e.target.value)
+                        handleInputChange(row.repartition_id, "groupe", e.target.value)
                       }
                     />
                   </td>
@@ -154,18 +169,18 @@ function Repartition() {
                     <td>
                       <input
                         placeholder="Groupe"
-                        value={participantsInputs.groupSalle[row.id]?.groupe || ""}
+                        value={participantsInputs.groupSalle[row.repartition_id]?.groupe || ""}
                         onChange={(e) =>
-                          handleInputChange(row.id, "groupe", e.target.value)
+                          handleInputChange(row.repartition_id, "groupe", e.target.value)
                         }
                       />
                     </td>
                     <td>
                       <input
                         placeholder="Salle"
-                        value={participantsInputs.groupSalle[row.id]?.salle || ""}
+                        value={participantsInputs.groupSalle[row.repartition_id]?.salle || ""}
                         onChange={(e) =>
-                          handleInputChange(row.id, "salle", e.target.value)
+                          handleInputChange(row.repartition_id, "salle", e.target.value)
                         }
                       />
                     </td>
@@ -178,9 +193,7 @@ function Repartition() {
         <button className="btn btn-warning" onClick={() => printElement("participantsTable")}>
           <FaPrint /> Print
         </button>
-        <button className="btn btn-primary" >
-          Save Changes
-        </button>
+        <button className="btn btn-primary">Save Changes</button>
       </>
     );
   };
@@ -228,7 +241,9 @@ function Repartition() {
                 <td>{person.prenom}</td>
                 <td>{person.nom}</td>
                 <td>{person.role}</td>
-                <td><input placeholder="Salle" /></td>
+                <td>
+                  <input placeholder="Salle" />
+                </td>
               </tr>
             ))}
           </tbody>
