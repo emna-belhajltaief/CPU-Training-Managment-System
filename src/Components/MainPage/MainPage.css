@@ -76,8 +76,8 @@ body {
   top: 55%;
   left: 50%;
   display: flex;
+  justify-content: space-around;
   flex-direction: row;
-  justify-content: center;
   flex-wrap: wrap;
   background-color: #171f2e64;
   color: aliceblue;
@@ -88,20 +88,17 @@ body {
 
 .formation-item {
   margin: 10px;
-  margin-left: 10px;
   display: flex;
   gap: 20px;
   padding-right: 40px;
-  width: 80%;
-
+  width: 90%;
+  justify-content: space-between;
 }
 
 .edit_button {
   display: flex;
   flex-direction: row;
   gap: 8px;
-  position: absolute;
-  padding-left: 640px;
   margin-top: 12px;
 }
 

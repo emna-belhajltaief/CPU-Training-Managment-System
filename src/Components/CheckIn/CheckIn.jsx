@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import supabase from '../../../superbaseClient';
 import _ from 'lodash';
 import toast from 'react-hot-toast';
-import { FaEdit, FaTrashAlt } from 'react-icons/fa';
+import { FaTrashAlt } from 'react-icons/fa';
 
 const CheckIn = () => {
   const location = useLocation();
