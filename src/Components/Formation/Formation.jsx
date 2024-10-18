@@ -177,6 +177,22 @@ function Formation() {
             )
           })}
         </div>
+        <div className="Field">
+          <label>Prix formation pour membre Actif {<FaCoffee />} :</label>
+          <input
+            placeholder="Prix de formatino pour membre actif"
+            value={training?.prix_member_actif}
+            readOnly
+          />
+        </div>
+        <div className="Field">
+          <label>Prix formation pour membre Adherant {<FaCoffee />} :</label>
+          <input
+            placeholder="Prix de formatino pour membre adherant"
+            value={training?.prix_member_adherant}
+            readOnly
+          />
+        </div>
         {training?.logo_url && (
           <div className="Field">
             <h3>Prévisualisation du logo :</h3>

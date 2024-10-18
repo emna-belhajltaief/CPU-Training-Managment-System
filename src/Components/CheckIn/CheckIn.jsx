@@ -8,7 +8,7 @@ import { FaTrashAlt } from 'react-icons/fa';
 const CheckIn = () => {
   const location = useLocation();
   const { training } = location.state;
-  const [orignalFormationAttendees, setOriginalFormationAttendees] = useState([]);
+  const [originalFormationAttendees, setOriginalFormationAttendees] = useState([]);
   const [formationAttendees, setFormationAttendees] = useState([]);
 
   useEffect(() => {
@@ -38,10 +38,11 @@ const CheckIn = () => {
           return;
         }
 
-        const updatedFormation = formations.map(({ club_members, ...rest }) => {
+        const updatedFormation = formations.map(({ id: training_participation_id, club_members, ...rest }) => {
           return {
             ...rest,
             ...club_members,
+            id: training_participation_id,
           };
         });
         setFormationAttendees(updatedFormation);
@@ -85,13 +86,12 @@ const CheckIn = () => {
   // Handler to update an attendee's information in the database
   const handleUpdate = async (id) => {
     const attendeeToUpdate = formationAttendees.find((fa) => fa.id === id);
-
+    const newFormationAttendees = originalFormationAttendees.map((ofa) => ofa.id === id ? attendeeToUpdate : ofa);
     try {
       const { error } = await supabase
         .from('training_participation')
         .update({
           is_present: attendeeToUpdate.is_present,
-          member_type: attendeeToUpdate.member_type,
           has_paid: attendeeToUpdate.has_paid,
         })
         .eq('id', id);
@@ -101,7 +101,7 @@ const CheckIn = () => {
         toast.error('Error updating attendee');
       } else {
         toast.success('Attendee updated successfully');
-        setOriginalFormationAttendees(formationAttendees);
+        setOriginalFormationAttendees(newFormationAttendees);
       }
     } catch (err) {
       console.error('Error updating attendee:', err);
@@ -142,7 +142,7 @@ const CheckIn = () => {
               <td>
                 <input
                   type="checkbox"
-                  disabled={formationAttendee.member_type === 0}
+                  disabled={true}
                   checked={formationAttendee.member_type === 2}
                   onChange={() => handleCheckboxChange(formationAttendee.id, 'member_type')}
                 />
@@ -162,10 +162,10 @@ const CheckIn = () => {
               </td>
               <td>
                 <button
-                  className={"btn " + (!_.isEqual(formationAttendee, orignalFormationAttendees.find((fa) => fa.id === formationAttendee.id)) ? "btn-secondary" : "btn-outline-secondary")}
+                  className={"btn " + (!_.isEqual(formationAttendee, originalFormationAttendees.find((fa) => fa.id === formationAttendee.id)) ? "btn-secondary" : "btn-outline-secondary")}
                   onClick={() => handleUpdate(formationAttendee.id)}
                   disabled={
-                    _.isEqual(formationAttendee, orignalFormationAttendees.find((fa) => fa.id === formationAttendee.id))
+                    _.isEqual(formationAttendee, originalFormationAttendees.find((fa) => fa.id === formationAttendee.id))
                   }
                 >
                   Update

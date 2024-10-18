@@ -56,7 +56,10 @@ const MainPage = () => {
   const handleRegistration = (training) => {
     navigate(`/Registration/${training.id}`);
   }
-  const handleCertifications = () =>{
+  const handleRepartition = (training) => {
+    navigate(`/Repartition/${training.id}`);
+  }
+  const handleCertifications = () => {
     navigate("/SendCertifications");
   }
 
@@ -91,6 +94,13 @@ const MainPage = () => {
                   Open for Registration
                 </button>
 
+                <button
+                  className="edit-btn"
+                  onClick={() => handleRepartition(training)}
+                >
+                  Repartition
+                </button>
+
 
                 <button
                   className="edit-btn"
@@ -99,9 +109,9 @@ const MainPage = () => {
                   Open for check-in
                 </button>
                 <button
-                className="edit-btn"
-                onClick={() => handleCertifications()}
-                  >
+                  className="edit-btn"
+                  onClick={() => handleCertifications()}
+                >
                   Send Certifications
                 </button>
                 <button

@@ -93,6 +93,11 @@ body {
   padding-right: 40px;
   width: 90%;
   justify-content: space-between;
+
+  img {
+    min-width: 150px;
+    flex: 1;
+  }
 }
 
 .edit_button {

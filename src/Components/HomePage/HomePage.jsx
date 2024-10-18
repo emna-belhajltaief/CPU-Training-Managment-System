@@ -34,7 +34,7 @@ const HomePage = () => {
                     </Link>
                 </div>
             </nav>
-            <div className='d-flex'>
+            <div className='d-flex center_div'>
                 <h1 className='CPU_Management '>CPU Trainings Managment System </h1>
                 <button className='btn btn-secondary' onClick={() => navigate("/members")}>View members</button>
             </div>
