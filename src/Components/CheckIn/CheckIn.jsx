@@ -38,10 +38,11 @@ const CheckIn = () => {
           return;
         }
 
-        const updatedFormation = formations.map(({ club_members, ...rest }) => {
+        const updatedFormation = formations.map(({ id: training_participation_id, club_members, ...rest }) => {
           return {
             ...rest,
             ...club_members,
+            id: training_participation_id,
           };
         });
         setFormationAttendees(updatedFormation);
@@ -85,13 +86,12 @@ const CheckIn = () => {
   // Handler to update an attendee's information in the database
   const handleUpdate = async (id) => {
     const attendeeToUpdate = formationAttendees.find((fa) => fa.id === id);
-    const newFormationAttendees = originalFormationAttendees .map((ofa) => ofa.id === id ? attendeeToUpdate : ofa);
+    const newFormationAttendees = originalFormationAttendees.map((ofa) => ofa.id === id ? attendeeToUpdate : ofa);
     try {
       const { error } = await supabase
         .from('training_participation')
         .update({
           is_present: attendeeToUpdate.is_present,
-          member_type: attendeeToUpdate.member_type,
           has_paid: attendeeToUpdate.has_paid,
         })
         .eq('id', id);
@@ -142,7 +142,7 @@ const CheckIn = () => {
               <td>
                 <input
                   type="checkbox"
-                  disabled={formationAttendee.member_type === 0}
+                  disabled={true}
                   checked={formationAttendee.member_type === 2}
                   onChange={() => handleCheckboxChange(formationAttendee.id, 'member_type')}
                 />
