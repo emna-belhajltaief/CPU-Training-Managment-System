@@ -94,9 +94,23 @@ function Repartition() {
 
 
 
-  const printElement = (elementId) => {
-    const printContents = document.getElementById(elementId).innerHTML;
+  const printElement = () => {
     const newWindow = window.open("", "", "width=600,height=400");
+
+    // Generate the table rows by mapping over the clubMembers array
+    const tableRows = clubMembers.map(participant => {
+      return `
+          <tr>
+            <td>${participant.firstname}</td>
+            <td>${participant.lastname}</td>
+            <td>${participant.email}</td>
+            <td>${participant.groupe ? participant.groupe : ""}</td>
+            <td>${participant.salle ? participant.salle : ""}</td>
+          </tr>
+        `;
+    }).join("");
+
+    // Write the full HTML content to the new window
     newWindow.document.write(`
       <html>
         <head>
@@ -105,13 +119,25 @@ function Repartition() {
         </head>
         <body>
           <table class="table table-striped">
-            ${printContents}
+            <thead>
+              <tr>
+                <th>Prenom</th>
+                <th>Nom</th>
+                <th>Email</th>
+                <th>Groupe</th>
+                <th>Salle</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${tableRows}
+            </tbody>
           </table>
         </body>
       </html>
     `);
     newWindow.document.close();
     newWindow.print();
+    newWindow.close();
   };
 
 
@@ -120,7 +146,7 @@ function Repartition() {
       <NavBar />
       <CircleLoader color="#000" loading={loading} size={150} />
       <div className="Repartition_content">
-        <div className="d-flex">
+        <div className="d-flex flex-row justify-content-between me-2 ms-2 p-1">
           <h3 style={{ color: "white" }}>Repartition</h3>
           <button className="btn btn-warning" onClick={() => printElement("participantsTable")}>
             <FaPrint /> Print
