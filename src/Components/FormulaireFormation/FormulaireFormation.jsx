@@ -33,7 +33,9 @@ function FormulaireFormation({ mode }) {
     tutor_assistants_ids: [0],
     receptionists_ids: [0],
     coffeeBreaks_assistants_ids: [0],
-    logo_url: "./images/CpuBlack.png",
+    logo_url: "/images/CpuBlack.png",
+    prix_member_actif: 0,
+    prix_member_adherant: 0,
   });
 
   useEffect(() => {
@@ -78,6 +80,8 @@ function FormulaireFormation({ mode }) {
             receptionists_ids: data.receptionists_ids,
             coffeeBreaks_assistants_ids: data.coffeeBreaks_assistants_ids,
             logo_url: data.logo_url,
+            prix_member_actif: data.prix_member_actif,
+            prix_member_adherant: data.prix_member_adherant,
           });
         } catch (err) {
           console.error("Error fetching data:", err);
@@ -95,6 +99,14 @@ function FormulaireFormation({ mode }) {
     const updatedFields = [...formData[label]];
     updatedFields[index] = newValue;
     setFormData({ ...formData, [label]: updatedFields });
+  };
+
+  const handlePrixMemberActifChange = (e) => {
+    setFormData({ ...formData, prix_member_actif: e.target.value });
+  };
+
+  const handlePrixMemberAdherantChange = (e) => {
+    setFormData({ ...formData, prix_member_adherant: e.target.value });
   };
 
   const handleSubmit = async (e) => {
@@ -115,6 +127,8 @@ function FormulaireFormation({ mode }) {
             receptionists_ids: formData.receptionists_ids,
             coffeeBreaks_assistants_ids: formData.coffeeBreaks_assistants_ids,
             logo_url: formData.logo_url,
+            prix_member_actif: formData.prix_member_actif,
+            prix_member_adherant: formData.prix_member_adherant,
           })
           .eq("id", formationId);
 
@@ -143,28 +157,33 @@ function FormulaireFormation({ mode }) {
             ? formData.coffeeBreaks_assistants_ids
             : null,
           logo_url: formData.logo_url,
+          prix_member_actif: formData.prix_member_actif,
+          prix_member_adherant: formData.prix_member_adherant,
         };
 
         const { error } = await supabase
           .from("trainings")
           .insert([newTrainingData]);
-        setFormData({
-          name: "",
-          training_branch: "",
-          description: "",
-          date: "",
-          address: "",
-          tutor_ids: [0],
-          tutor_assistants_ids: [0],
-          receptionists_ids: [0],
-          coffeeBreaks_assistants_ids: [0],
-          logo_url: "./images/CpuBlack.png",
-        });
+
         if (error) {
           alert("Error adding training!");
           console.error("Error adding training:", error.message);
         } else {
           alert("Training added successfully!");
+          setFormData({
+            name: "",
+            training_branch: "",
+            description: "",
+            date: "",
+            address: "",
+            tutor_ids: [0],
+            tutor_assistants_ids: [0],
+            receptionists_ids: [0],
+            coffeeBreaks_assistants_ids: [0],
+            logo_url: "/images/CpuBlack.png",
+            prix_member_actif: 0,
+            prix_member_adherant: 0,
+          });
         }
       }
     } catch (err) {
@@ -264,9 +283,8 @@ function FormulaireFormation({ mode }) {
           </button>
           <button
             type="button"
-            className={`btn btn-danger ${
-              fields.length <= 1 ? "disabled-button" : ""
-            }`}
+            className={`btn btn-danger ${fields.length <= 1 ? "disabled-button" : ""
+              }`}
             disabled={fields.length <= 1}
             style={{ flex: 1 }}
             onClick={() => removeField(index, label, fields)}
@@ -381,7 +399,7 @@ function FormulaireFormation({ mode }) {
               Logo Formation {<GrTechnology />} :
             </label>
             <input
-              
+
               accept=".png, .jpg, .jpeg"
               type="file"
               className="form-control"
@@ -390,13 +408,33 @@ function FormulaireFormation({ mode }) {
             />
           </div>
           <div className="Field">
+            <label className="form-label">
+              Prix membre actif {<GrTechnology />} :
+            </label>
+            <input
+              type="number"
+              className="form-control"
+              onChange={handlePrixMemberActifChange}
+            />
+          </div>
+          <div className="Field">
+            <label className="form-label">
+              Prix membre adherant {<GrTechnology />} :
+            </label>
+            <input
+              type="number"
+              className="form-control"
+              onChange={handlePrixMemberAdherantChange}
+            />
+          </div>
+          <div className="Field">
             {" "}
-            <label>Logo formation ;</label>
+            <label>Logo formation :</label>
             <img
               src={formData.logo_url} // Base64 string from the database
               alt="Training Logo"
               style={{ width: "100px", height: "100px" }}
-              
+
             />
           </div>
 
@@ -431,7 +469,7 @@ function FormulaireFormation({ mode }) {
 }
 
 FormulaireFormation.propTypes = {
-mode:PropTypes.string.isRequired 
+  mode: PropTypes.string.isRequired
 };
 
 export default FormulaireFormation;
