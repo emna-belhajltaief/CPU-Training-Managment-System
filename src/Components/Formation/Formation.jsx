@@ -1,5 +1,5 @@
 
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import "./../FormulaireFormation/FormulaireFormation.css";
 import { GrWorkshop } from "react-icons/gr";
 import { FaHouse } from "react-icons/fa6";
@@ -12,10 +12,11 @@ import { useState, useEffect } from "react";
 import supabase from '../../../superbaseClient';
 import { FaCode } from "react-icons/fa";
 import { RiRobot2Fill } from "react-icons/ri";
+
 function Formation() {
+  const navigate = useNavigate()
   const location = useLocation();
   const { training } = location.state;
-  console.log("trainings", training);
   // const [Titre] = useState("introduction C++");
   // const [Domaine] = useState("Développement"); // Set default value if needed
   // const [Local] = useState("ISIMM C-01");
@@ -33,7 +34,7 @@ function Formation() {
     async function fetchMembersData() {
       try {
         let { data: club_members, error } = await supabase
-          .from('senior_members')
+          .from('Senior_Members')
           .select('*');
 
         if (error) {
@@ -56,6 +57,7 @@ function Formation() {
   const handleSubmit = (e) => {
     e.preventDefault(); // Prevent the default form submission
     // Create a string to hold all the information
+    console.log("here" + training.tutor_assistants_ids)
     const formData = `
       Formation: ${training?.name}
       Domaine: ${training?.training_branch}
@@ -117,8 +119,8 @@ function Formation() {
         <div className="Field">
           <label>Formateur {<GiTeacher />} :</label>
           {training?.tutor_ids.map((tutor_id, index) => {
-            const senior_member = senior_members.filter((m) => m.id === tutor_id)[0];
-            const full_name = senior_member?.firstname + " " + senior_member?.lastname;
+            const senior_member = senior_members.filter((m) => m.ID === tutor_id)[0];
+            const full_name = senior_member?.FirstName + " " + senior_member?.LastName;
             return (
               <input
                 key={index}
@@ -133,8 +135,8 @@ function Formation() {
         <div className="Field">
           <label>Assistant {<MdAssistantPhoto />} :</label>
           {training?.tutor_assistants_ids.map((assitant_id, index) => {
-            const senior_member = senior_members.filter((m) => m.id === assitant_id)[0];
-            const full_name = senior_member?.firstname + " " + senior_member?.lastname;
+            const senior_member = senior_members.filter((m) => m.ID === assitant_id)[0];
+            const full_name = senior_member?.FirstName + " " + senior_member?.LastName;
             return (
               <input
                 key={index}
@@ -149,8 +151,8 @@ function Formation() {
         <div className="Field">
           <label>Reception {<FaPersonCircleCheck />} :</label>
           {training?.receptionists_ids.map((receptionist_id, index) => {
-            const senior_member = senior_members.filter((m) => m.id === receptionist_id)[0];
-            const full_name = senior_member?.firstname + " " + senior_member?.lastname;
+            const senior_member = senior_members.filter((m) => m.ID === receptionist_id)[0];
+            const full_name = senior_member?.FirstName + " " + senior_member?.LastName;
             return (
               <input
                 key={index}
@@ -165,8 +167,8 @@ function Formation() {
         <div className="Field">
           <label>Pause Café {<FaCoffee />} :</label>
           {training?.coffeeBreaks_assistants_ids.map((coffeeBreaks_assistants_id, index) => {
-            const senior_member = senior_members.filter((m) => m.id === coffeeBreaks_assistants_id)[0];
-            const full_name = senior_member?.firstname + " " + senior_member?.lastname;
+            const senior_member = senior_members.filter((m) => m.ID === coffeeBreaks_assistants_id)[0];
+            const full_name = senior_member?.FirstName + " " + senior_member?.LastName;
             return (
               <input
                 key={index}
@@ -207,8 +209,8 @@ function Formation() {
           <button type="submit" className="btn btn-primary">
             Edit
           </button>
-          <button type="submit" className="btn btn-danger">
-            Cancle
+          <button type="submit" className="btn btn-danger" onClick={()=>navigate('/Home')}>
+            Cancel
           </button>
         </div>
       </form>

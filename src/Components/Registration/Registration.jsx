@@ -39,9 +39,9 @@ const Registration = () => {
                 // Fetch additional member data (first_name, last_name) from club_members
                 const updatedFormation = await Promise.all(formations.map(async (member) => {
                     const { data: memberData, error: memberError } = await supabase
-                        .from("club_members")
+                        .from("Active_Members")
                         .select("*")
-                        .eq("id", member.member_id); // Assuming `member_id` links to club_members
+                        .eq("ID", member.member_id); // Assuming `member_id` links to club_members
     
                     if (memberError) {
                         console.log(`Error fetching member ${member.member_id}`, memberError.message);
@@ -51,8 +51,8 @@ const Registration = () => {
                     // Add first_name and last_name to the member data
                     return {
                         ...member,
-                        firstname: memberData[0]?.firstname || 'N/A',
-                        lastname: memberData[0]?.lastname || 'N/A',
+                        FirstName: memberData[0]?.FirstName || 'N/A',
+                        LastName: memberData[0]?.LastName || 'N/A',
                     };
                 }));
     
@@ -91,8 +91,8 @@ const Registration = () => {
                         {formations.map((member) => (
                             <tr scope="row" key={member.id}>
                                 <td>{member.id}</td>
-                                <td>{member.firstname}</td> {/* Display first name */}
-                                <td>{member.lastname}</td>  {/* Display last name */}
+                                <td>{member.FirstName}</td> {/* Display first name */}
+                                <td>{member.LastName}</td>  {/* Display last name */}
                                 <td>{member.level_in_subject}</td>
                                 <td>{member.has_paid ? 'Yes' : 'No'}</td>
                                 <td>{member.group_number}</td>

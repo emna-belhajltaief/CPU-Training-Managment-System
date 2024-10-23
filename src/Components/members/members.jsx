@@ -17,16 +17,16 @@ const Members = () => {
 
   const [fetchingData, setFetchingData] = useState(true);
   const [showfilter, setshowfilter] = useState(false);
-  const [filters, setFilters] = useState([{ criteria: "lastname", mode: "Contains", arg: "" }]);
+  const [filters, setFilters] = useState([{ criteria: "LastName", mode: "Contains", arg: "" }]);
   const [members, setMembers] = useState([]);
   const [Filtredmembers, setFiltredMembers] = useState([]);
-  const [sortConfig, setSortConfig] = useState({ key: "id", direction: 'ascending' });
+  const [sortConfig, setSortConfig] = useState({ key: "ID", direction: 'ascending' });
 
   useEffect(() => {
     async function fetchMembersData() {
       try {
         let { data: club_members, error } = await supabase
-          .from('club_members')
+          .from('Active_Members')
           .select('*');
 
         if (error) {
@@ -61,7 +61,7 @@ const Members = () => {
   const handleDisplayMember = (member) => {
 
     // Navigate to the member detail page, passing the member's information via state
-    navigate(`/members/${member.id}`, { state: { member: member } });
+    navigate(`/members/${member.ID}`, { state: { member: member } });
 
   };
 
@@ -124,7 +124,7 @@ const Members = () => {
   }, [filters, members, sortConfig]);
 
   const handleAddFilter = () => {
-    setFilters([...filters, { criteria: "lastname", mode: "Contains", arg: "" }]);
+    setFilters([...filters, { criteria: "LastName", mode: "Contains", arg: "" }]);
   };
 
   const handleFilterChange = (index, field, value) => {
@@ -151,7 +151,7 @@ const Members = () => {
     Object.keys(temps).forEach(key => {
       temps[key] = "";
     });
-    setFilters([{ criteria: "lastname", mode: "Contains", arg: "" }]);
+    setFilters([{ criteria: "LastName", mode: "Contains", arg: "" }]);
     setSortConfig({ key: null, direction: 'ascending' });
   };
 
@@ -184,13 +184,12 @@ const Members = () => {
                   onChange={(e) => handleFilterChange(index, 'criteria', e.target.value)}
                   title="Select an option"
                 >
-                  <option value="lastname">Nom</option>
-                  <option value="firstname">Prénom</option>
-                  <option value="email">Email</option>
-                  <option value="phone_num">Phone</option>
-                  <option value="member_type">Adherent</option>
-                  <option value="study_lvl">{"Nivau d'étude"}</option>
-                  <option value="skills">Skills</option>
+                  <option value="LastName">Nom</option>
+                  <option value="FirstName">Prénom</option>
+                  <option value="Email">Email</option>
+                  <option value="Phone">Phone</option>
+                  <option value="Adherent">Adherent</option>
+                  <option value="StudyLevel">{"Nivau d'étude"}</option>
                 </select>
                 <select
                   value={filter.mode}
@@ -233,11 +232,11 @@ const Members = () => {
               <tr key={memberIndex} onClick={() => handleDisplayMember(member)}>
                 {Object.keys(member).map((key, keyIndex) => (
                   <td key={keyIndex}>
-                    {keyIndex === 5
-                      ? member[key] === 1
+                    {keyIndex === 6
+                      ? member[key] == 'FAUX'
                         ? "Actif"
-                        : member[key] === 2
-                          ? "Aderant"
+                        : member[key] === 'VRAI'
+                          ? "Adherant"
                           : "Externe"
                       : member[key]}
                   </td>

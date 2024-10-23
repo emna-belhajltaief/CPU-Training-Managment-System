@@ -44,7 +44,7 @@ const MainPage = () => {
   }, []);
 
   const handleView = (training) => {
-    navigate('/Formation', { state: { training } }); // Navigate to the specified path
+    navigate('/Formation', { state: { training } }); 
   };
 
   const handleCheckIn = (training) => {

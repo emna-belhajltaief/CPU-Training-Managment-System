@@ -8,16 +8,15 @@ const RegistrationForm = () => {
   const navigate = useNavigate();
   const { formationId } = useParams();
   const [clubMembers, setClubMembers] = useState([]);
-  const [memberType, setMemberType] = useState(0); // Default to externe
+  const [memberType, setMemberType] = useState("VRAI"); // Default to Adherent
   const [membersData, setMembersData] = useState([]);
   const [memberData, setMemberData] = useState({
-    lastname: "",
-    firstname: "",
-    email: "",
-    phone_num: "",
-    member_type: 0,
-    study_lvl: "",
-    skills: "",
+    LastName: "",
+    FirstName: "",
+    Email: "",
+    Phone: "",
+    Adherent: 0,
+    StudyLevel: ""
   });
   const [trainingParticipationData, setTrainingParticipationData] = useState({
     training_id: formationId,
@@ -29,12 +28,12 @@ const RegistrationForm = () => {
   });
 
   const [suggestions, setSuggestions] = useState({
-    firstname: [],
-    lastname: [],
+    FirstName: [],
+    LastName: [],
   });
   const [showSuggestions, setShowSuggestions] = useState({
-    firstname: false,
-    lastname: false,
+    FirstName: false,
+    LastName: false,
   });
   const [loading, setLoading] = useState(false);
   const levels = ["Beginner", "Intermediate", "Advanced"];
@@ -44,9 +43,8 @@ const RegistrationForm = () => {
     const fetchClubMembersData = async () => {
       try {
         const { data: club_members, error } = await supabase
-          .from('club_members')
+          .from('Active_Members')
           .select('*');
-
         if (error) {
           console.error('Error fetching club_members:', error);
           return [];
@@ -67,8 +65,9 @@ const RegistrationForm = () => {
     setLoading(false);
   }, []);
   useEffect(() => {
-    const filteredMembers = clubMembers.filter((member) => member.member_type === memberType);
+    const filteredMembers = clubMembers.filter((member) => member.Adherent === memberType);
     setMembersData(filteredMembers);
+    console.log(filteredMembers)
 
   }, [clubMembers, memberType]);
 
@@ -76,23 +75,22 @@ const RegistrationForm = () => {
     const { name, value } = e.target;
     setMemberData((prevData) => ({ ...prevData, [name]: value }));
 
-    if (name === "member_type") {
-      const newMemberType = parseInt(value);
+    if (name === "Adherent") {
+      const newMemberType = value;
       setMemberType(newMemberType);
       setMemberData({
-        lastname: "",
-        firstname: "",
-        email: "",
-        phone_num: "",
-        member_type: newMemberType,
-        study_lvl: "",
-        skills: "",
+        LastName: "",
+        FirstName: "",
+        Email: "",
+        Phone: "",
+        Adherent: newMemberType,
+        StudyLevel: ""
       });
-      setSuggestions({ firstname: [], lastname: [] });
-      setShowSuggestions({ firstname: false, lastname: false });
+      setSuggestions({ firstame: [], LastName: [] });
+      setShowSuggestions({ FirstName: false, LastName: false });
     }
 
-    if (name === "firstname" || name === "lastname") {
+    if (name === "FirstName" || name === "LastName") {
       handleSuggestions(name, value);
     }
   };
@@ -102,7 +100,7 @@ const RegistrationForm = () => {
       .filter((member) =>
         member[field].toLowerCase().startsWith(value.toLowerCase())
       )
-      .map((member) => `${member.firstname} ${member.lastname}`);
+      .map((member) => `${member.FirstName} ${member.LastName}`);
 
     setSuggestions((prev) => ({ ...prev, [field]: filteredSuggestions }));
     setShowSuggestions((prev) => ({ ...prev, [field]: filteredSuggestions.length > 0 }));
@@ -112,24 +110,24 @@ const RegistrationForm = () => {
     // Trim the full name and split by spaces, removing extra spaces
     const nameParts = fullName.trim().split(/\s+/); // Split on one or more spaces
   
-    let firstname = nameParts[0]; // First part as first name
-    let lastname = nameParts.slice(1).join(" "); // Combine remaining parts as last name
+    let FirstName = nameParts[0]; // First part as first name
+    let LastName = nameParts.slice(1).join(" "); // Combine remaining parts as last name
   
     const selectedMember = membersData.find(
       (member) =>
-        member.firstname.toLowerCase() === firstname.toLowerCase() &&
-        member.lastname.toLowerCase() === lastname.toLowerCase()
+        member.FirstName.toLowerCase() === FirstName.toLowerCase() &&
+        member.LastName.toLowerCase() === LastName.toLowerCase()
     );
   
     if (selectedMember) {
       setMemberData(selectedMember);
       setTrainingParticipationData((prev) => ({
         ...prev,
-        member_id: selectedMember.id,
+        member_id: selectedMember.ID,
       }));
     }
   
-    setShowSuggestions({ firstname: false, lastname: false });
+    setShowSuggestions({ FirstName: false, LastName: false });
   };
   
 
@@ -137,9 +135,9 @@ const RegistrationForm = () => {
     try {
       let memberId = trainingParticipationData.member_id;
 
-      if (!memberData?.id) {
+      if (!memberData?.ID) {
         const promise = supabase
-          .from("club_members")
+          .from("Active_Members")
           .insert([memberData])
           .select();
         toast.promise(promise, {
@@ -150,7 +148,7 @@ const RegistrationForm = () => {
         const { data: newMember, error: memberError } = await promise;
 
         if (memberError) throw memberError;
-        memberId = newMember[0].id;
+        memberId = newMember[0].ID;
       }
 
       const { error: trainingError } = await supabase
@@ -169,13 +167,12 @@ const RegistrationForm = () => {
 
   const resetForm = () => {
     setMemberData({
-      lastname: "",
-      firstname: "",
-      email: "",
-      phone_num: "",
-      member_type: 0,
-      study_lvl: "",
-      skills: "",
+      LastName: "",
+      FirstName: "",
+      Email: "",
+      Phone: "",
+      Adherent: 0,
+      StudyLevel: ""
     });
     setTrainingParticipationData({
       training_id: formationId,
@@ -200,26 +197,25 @@ const RegistrationForm = () => {
       <h2>Member Information</h2>
       <form className="member-form">
         <div className="form-group">
-          <label htmlFor="member_type">Type de Membre</label>
+          <label htmlFor="Adherent">Type de Membre</label>
           <select
-            id="member_type"
-            name="member_type"
-            value={memberData.member_type}
+            id="Adherent"
+            name="Adherent"
+            value={memberData.Adherent}
             onChange={handleChange}
           >
-            <option value={0}>externe</option>
-            <option value={1}>actif</option>
-            <option value={2}>adherent</option>
+            <option value={"FAUX"}>actif</option>
+            <option value={"VRAI"}>adherent</option>
           </select>
         </div>
 
         {Object.keys(memberData).map((key) =>
-          key !== 'id' && key !== "member_type" && key !== "level_in_subject" ? (
+          key !== 'id' && key !== "Adherent" && key !== "level_in_subject" ? (
             <div className="form-group" key={key}>
               <label htmlFor={key}>
-                {key === "phone_num"
+                {key === "Phone"
                   ? "Phone Number"
-                  : key === "study_lvl"
+                  : key === "StudyLevel"
                     ? "Study Level"
                     : key.charAt(0).toUpperCase() + key.slice(1).replace('_', ' ')}
               </label>
@@ -230,7 +226,7 @@ const RegistrationForm = () => {
                 onChange={handleChange}
                 onBlur={() => setShowSuggestions((prev) => ({ ...prev, [key]: false }))}
                 onFocus={() => key in suggestions && setShowSuggestions((prev) => ({ ...prev, [key]: true }))}
-                required={key === "firstname" || key === "lastname" || key === "email" || key === "phone_num"}
+                required={key === "FirstName" || key === "LastName" || key === "Email" || key === "Phone"}
               />
               {showSuggestions[key] && suggestions[key].length > 0 && (
                 <div className="suggestions-popup">

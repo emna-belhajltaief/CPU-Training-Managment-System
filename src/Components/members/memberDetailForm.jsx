@@ -12,64 +12,54 @@ const MemberDetailForm = () => {
 
     
     const [memberData, setMemberData] = useState(state?.member || {
-        lastname: '',
-        fistname: '',
-        email: '',
-        phone_num: '',
-        member_type: false,
-        study_lvl: '',
-        skills: ''
+        LastName: '',
+        FistName: '',
+        Email: '',
+        Phone: '',
+        Adherent: '',
+        StudyLevel: ''
     });
     const formFields = [
         {
-            "name": "firstname",
+            "name": "FirstName",
             "placeholder": "Nom",
-            "value": "memberData.firstname"
+            "value": "memberData.FirstName"
         },
         {
-            "name": "lastname",
+            "name": "LastName",
             "placeholder": "Prénom",
-            "value": "memberData.lastname"
+            "value": "memberData.LastName"
         },
         {
-            "name": "email",
+            "name": "Email",
             "placeholder": "Email",
-            "value": "memberData.email"
+            "value": "memberData.Email"
         },
         {
-            "name": "phone_num",
+            "name": "Phone",
             "placeholder": "Phone",
-            "value": "memberData.phone_num"
+            "value": "memberData.Phone"
         },
         {
-            "name": "member_type",
+            "name": "Adherent",
             "placeholder": "Type de Membre",
-            "value": "memberData.member_type",
+            "value": "memberData.Adherent",
             "type": "select",
             "options": [
                 {
-                    name: "externe",
-                    value: 0
+                    name: "Actif",
+                    value: 'FAUX'
                 },
                 {
-                    name: "actif",
-                    value: 1
-                },
-                {
-                    name: "adherent",
-                    value: 2
+                    name: "Adherent",
+                    value: 'VRAI'
                 },
             ]
         },
         {
-            "name": "study_lvl",
+            "name": "StudyLevel",
             "placeholder": "Niveau d'études",
-            "value": "memberData.study_lvl"
-        },
-        {
-            "name": "skills",
-            "placeholder": "Skills",
-            "value": "memberData.skills"
+            "value": "memberData.StudyLevel"
         }
     ]
 
@@ -79,9 +69,9 @@ const MemberDetailForm = () => {
     const handleSave = async () => {
 
         const { data, error } = await supabase
-            .from('club_members')
+            .from('Active_Members')
             .update(memberData)
-            .eq('id', id)
+            .eq('ID', id)
             .select()
 
         console.log(data);

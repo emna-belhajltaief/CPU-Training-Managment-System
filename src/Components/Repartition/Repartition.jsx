@@ -19,7 +19,7 @@ function Repartition() {
       try {
         const { data: clubMembers, error } = await supabase
           .from("training_participation")
-          .select(`*, club_members (*)`)
+          .select(`*, Active_Members (*)`)
           .eq("training_id", formationId);
 
         if (error) {
@@ -52,10 +52,10 @@ function Repartition() {
 
 
 
-  const handleUpdate = async (id) => {
-    const clubMemberToUpdate = clubMembers.find((cm) => cm.id === id);
-    const newClubMembers = originalClubMembers.map((ocm) => ocm.id === id ? clubMemberToUpdate : ocm);
-
+  const handleUpdate = async (participantId) => {
+    const clubMemberToUpdate = clubMembers.find((cm) => cm.id === participantId);
+    const newClubMembers = originalClubMembers.map((ocm) => ocm.id === participantId ? clubMemberToUpdate : ocm);
+    console.log(clubMemberToUpdate.groupe)
     try {
       const { error } = await supabase
         .from('training_participation')
@@ -63,7 +63,7 @@ function Repartition() {
           groupe: clubMemberToUpdate.groupe,
           salle: clubMemberToUpdate.salle,
         })
-        .eq('id', id);
+        .eq('id', participantId);
 
       if (error) {
         console.error('Error updating attendee:', error.message);
@@ -82,7 +82,7 @@ function Repartition() {
     setClubMembers(
       clubMembers.map((member) => {
         if (member.id === id) {
-          return {
+          member = {
             ...member,
             [field]: value
           };
@@ -96,48 +96,46 @@ function Repartition() {
 
   const printElement = () => {
     const newWindow = window.open("", "", "width=600,height=400");
-
     // Generate the table rows by mapping over the clubMembers array
     const tableRows = clubMembers.map(participant => {
       return `
-          <tr>
-            <td>${participant.firstname}</td>
-            <td>${participant.lastname}</td>
-            <td>${participant.email}</td>
-            <td>${participant.groupe ? participant.groupe : ""}</td>
-            <td>${participant.salle ? participant.salle : ""}</td>
-          </tr>
-        `;
+      <tr>
+      <td>${participant.Active_Members.FirstName}</td>
+      <td>${participant.Active_Members.LastName}</td>
+      <td>${participant.groupe ? participant.groupe : ""}</td>
+      <td>${participant.salle ? participant.salle : ""}</td>
+      </tr>
+      `;
     }).join("");
-
+    
     // Write the full HTML content to the new window
     newWindow.document.write(`
       <html>
-        <head>
-          <title>Print</title>
-          <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-        </head>
-        <body>
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th>Prenom</th>
-                <th>Nom</th>
-                <th>Email</th>
-                <th>Groupe</th>
-                <th>Salle</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${tableRows}
-            </tbody>
-          </table>
-        </body>
+      <head>
+      <title>Print</title>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+      </head>
+      <body>
+      <b>Liste de présence</b>
+      <table class="table table-striped">
+      <thead>
+      <tr>
+      <th>Prenom</th>
+      <th>Nom</th>
+      <th>Groupe</th>
+      <th>Salle</th>
+      </tr>
+      </thead>
+      <tbody>
+      ${tableRows}
+      </tbody>
+      </table>
+      </body>
       </html>
-    `);
-    newWindow.document.close();
-    newWindow.print();
-    newWindow.close();
+      `);
+      newWindow.document.close();
+      newWindow.print();
+      newWindow.close();
   };
 
 
@@ -167,15 +165,17 @@ function Repartition() {
           </thead>
           <tbody>
             {
-              clubMembers.map((participant) => (
+              clubMembers.map((participant, index) => (
                 <tr key={participant.id}>
-                  <td>{participant.id}</td>
-                  <td>{participant.firstname}</td>
-                  <td>{participant.lastname}</td>
-                  <td>{participant.email}</td>
+                  <td>{index+1}</td>
+                  <td>{participant.Active_Members.FirstName}</td>
+                  <td>{participant.Active_Members.LastName}</td>
+                  <td>{participant.Active_Members.Email}</td>
                   <td>
                     <input type="text" name="groupe" value={participant.groupe} onChange={
-                      (e) => handleInputChange(participant.id, "groupe", e.target.value)
+                      (e) => {
+                        handleInputChange(participant.id, "groupe", e.target.value)
+                      console.log(participant.id.groupe)}
                     } />
                   </td>
                   <td>
@@ -187,7 +187,7 @@ function Repartition() {
                   <td>
                     <button
                       className={"btn " + (!_.isEqual(participant, originalClubMembers.find((cm) => cm.id === participant.id)) ? "btn-secondary" : "btn-outline-secondary")}
-                      disabled={_.isEqual(participant, originalClubMembers.find((cm) => cm.id === participant.id))}
+                      disabled={_.isEqual(participant, originalClubMembers.find((cm) => cm.ID === participant.id))}
                       onClick={() => handleUpdate(participant.id)}
                     >
                       Update

@@ -21,7 +21,7 @@ const CheckIn = () => {
             .select(
               `
               *,
-              club_members (
+              Active_Members (
                 *
               )`
             )
@@ -56,12 +56,13 @@ const CheckIn = () => {
 
   // Handler to toggle the checkbox state for "Adherent" or "Paid"
   const handleCheckboxChange = (id, field) => {
-    if (field === 'member_type') {
+    console.log(field)
+    if (field === 'Adherent') {
       const updatedFormationAttendees = formationAttendees.map((fa) =>
-        fa.id === id
-          ? fa.member_type === 2
-            ? { ...fa, member_type: 1 }
-            : { ...fa, member_type: 2 }
+        fa.Active_Members.ID === id
+          ? fa.Active_Members.Adherent === 'VRAI'
+            ? { ...fa, member_type: 'FAUX' }
+            : { ...fa, member_type: 'VRAI' }
           : fa
       );
       setFormationAttendees(updatedFormationAttendees);
@@ -74,19 +75,30 @@ const CheckIn = () => {
   };
 
   // Handler to delete a user with confirmation
-  const handleDelete = (id) => {
+  async function handleDelete(id) {
     const formationAttendee = formationAttendees.find((fa) => fa.id === id);
-    const confirmDelete = window.confirm(`Are you sure you want to delete ${formationAttendee.lastname} ${formationAttendee.firstname}?`);
+    const confirmDelete = window.confirm(`Are you sure you want to delete ${formationAttendee.Active_Members.LastName} ${formationAttendee.Active_Members.FirstName}?`);
     if (confirmDelete) {
+      const { data, error } = await supabase
+        .from('training_participation')
+        .delete()
+        .eq('id', formationAttendee.id); // Match the row where columnName equals value
+    
+      if (error) {
+        console.error('Error deleting attendee:', error);
+        return;
+      }
+      console.log('Attendee deleted successfully:', data);
+      toast.success('Attendee deleted successfully');
       const updatedFormationAttendees = formationAttendees.filter((fa) => fa.id !== id);
       setFormationAttendees(updatedFormationAttendees);
     }
-  };
+  }
 
   // Handler to update an attendee's information in the database
   const handleUpdate = async (id) => {
     const attendeeToUpdate = formationAttendees.find((fa) => fa.id === id);
-    const newFormationAttendees = originalFormationAttendees.map((ofa) => ofa.id === id ? attendeeToUpdate : ofa);
+    const newFormationAttendees = originalFormationAttendees.map((ofa) => ofa.Active_Members.ID === id ? attendeeToUpdate : ofa);
     try {
       const { error } = await supabase
         .from('training_participation')
@@ -135,16 +147,16 @@ const CheckIn = () => {
                   onChange={() => handleCheckboxChange(formationAttendee.id, 'is_present')}
                 />
               </td>
-              <td>{formationAttendee.lastname}</td>
-              <td>{formationAttendee.firstname}</td>
-              <td>{formationAttendee.phone_num}</td>
-              <td>{formationAttendee.email}</td>
+              <td>{formationAttendee.Active_Members.LastName}</td>
+              <td>{formationAttendee.Active_Members.FirstName}</td>
+              <td>{formationAttendee.Active_Members.Phone}</td>
+              <td>{formationAttendee.Active_Members.Email}</td>
               <td>
                 <input
                   type="checkbox"
                   disabled={true}
-                  checked={formationAttendee.member_type === 2}
-                  onChange={() => handleCheckboxChange(formationAttendee.id, 'member_type')}
+                  checked={formationAttendee.Active_Members.Adherent === 'VRAI'}
+                  onChange={() => handleCheckboxChange(formationAttendee.Active_Members.ID, 'Adherent')}
                 />
               </td>
               <td>

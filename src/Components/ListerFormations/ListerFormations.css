@@ -1,0 +1,24 @@
+.formation-list{
+    margin-top: 9rem;
+    display: flex;
+    flex-direction: column;
+}
+.formation-item{
+    max-height: 8rem;
+    width: 100%;
+    border: 2px solid white;
+    border-radius: 8px;
+    padding: 1rem 0.5rem;
+}
+.formation-logo-details{
+    display: flex;
+    width: 70%;
+    gap: 1.5rem
+}
+.formation-logo{
+    height: 6rem;
+    max-width: 6rem;
+}
+.formation-details{
+    font-family: 'Jost';
+}

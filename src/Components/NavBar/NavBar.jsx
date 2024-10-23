@@ -2,6 +2,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import supabase from '../../../superbaseClient';
 import { useState } from 'react';
 import "./NavBar.css"
+
 function NavBar() {
   const navigate = useNavigate();
   const [showDropdown, setShowDropdown] = useState(false);

@@ -14,27 +14,39 @@ app.use(express.urlencoded({ extended: true }));
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: 'emnabelhajltaief@gmail.com',
-        pass: 'tlpj jwsn ftri lmkd',
+        user: 'cpuisimmbranch@gmail.com',
+        pass: 'non' //'dgha hhon ojyz ecja'
     },
 });
 app.use(cors({
     origin: 'http://localhost:5173'
 }));
+
+//Convert names to title case
+function convertToTitleCase(str) {
+    if (!str) {
+        return ""
+    }
+    return str.toLowerCase().split(' ').map(function (word) {
+        return word.charAt(0).toUpperCase().concat(word.substr(1));
+     }).join(' ');
+  }
+
 // Function to generate the certificate image with the recipient's name
 const generateCertificate = async (firstName, lastName, certificateTemplatePath) => {
-    const fontPath = path.join(__dirname, 'MonteCarlo-Regular.ttf');
+    const fontPath = path.join(__dirname, 'edwardianscriptitc.ttf');
     const outputPath = path.join(__dirname, 'certificates', `${firstName}_${lastName}_certificate.jpg`);
     
     const fullName = `${firstName} ${lastName}`;
     
-    let nameToDisplay = fullName;
-    const maxLineLength = 35; 
+    let nameToDisplay = `<tspan x="1000" dy="100">${fullName}</tspan>`;
+    const maxLineLength = 40;
     // Break the name into two lines if it's too long
     if (fullName.length > maxLineLength) {
-        const firstLine = fullName.substring(0, maxLineLength);
-        const secondLine = fullName.substring(maxLineLength);
-        nameToDisplay = `${firstLine}\n${secondLine.trim()}`;
+        const firstLine = firstName; //fullName.substring(0, maxLineLength);
+        const secondLine = lastName; //fullName.substring(maxLineLength);
+        nameToDisplay = `<tspan x="1000" dy="-20">${firstLine}</tspan><tspan x="1000" dy="100">${secondLine.trim()}</tspan>` //Consider changing x if you changed it below (ki tbadl certificate)
+        console.log(nameToDisplay);
     }
     // Ensure the certificates folder exists
     if (!fs.existsSync(path.join(__dirname, 'certificates'))) {
@@ -46,24 +58,24 @@ const generateCertificate = async (firstName, lastName, certificateTemplatePath)
             .composite([
                 {
                     input: Buffer.from(`
-                    <svg width="1800" height="1200">
+                    <svg width="2000" height="1414">
                        <style>
                             @font-face {
-                                font-family: 'MonteCarlo';
+                                font-family: 'edwardianscriptitc';
                                 src: url('file://${fontPath}') format('truetype');
                             }
                             .title {
-                                fill: black;
-                                font-size: 109px;
-                                font-family: 'MonteCarlo', monospace;
+                                fill: #174777;
+                                font-size: 140px;
+                                font-family: 'edwardianscriptitc';
                                 font-weight: bold;
                             }
                         </style>
-                        <text x="700" y="600" class="title">${nameToDisplay}</text>
+                        <text text-anchor="middle" x="1000" y="700" class="title">${nameToDisplay}</text>
                     </svg>
                     `),
-                    top: 600, // Adjust these values for vertical positioning
-                    left: 700  // Adjust these values for horizontal positioning
+                    top: 0, // Adjust these values for vertical positioning
+                    left: 0  // Adjust these values for horizontal positioning
                 }
             ])
             .toFile(outputPath);
@@ -75,7 +87,7 @@ const generateCertificate = async (firstName, lastName, certificateTemplatePath)
 };
 const sendEmail = (email, firstName, lastName, pdfPath, certificatePath, emailBody) => {
     const mailOptions = {
-        from: 'emnabelhajltaief@gmail.com',
+        from: 'cpuisimmbranch@gmail.com',
         to: email,
         subject: 'Your Training Certificate',
         html: `
@@ -122,11 +134,13 @@ app.post('/send-certificates', upload.fields([{ name: 'pdfFile', maxCount: 1 }, 
         .pipe(csv())
         .on('data', (row) => {
             const email = row.email;
-            const firstName = row.first_name;
-            const lastName = row.last_name;
+            firstName = row._3
+            lastName = row._2
+            firstName = convertToTitleCase(firstName);
+            lastName = convertToTitleCase(lastName);
+            console.log(firstName+" " + email + " " +lastName)
             generateCertificate(firstName, lastName, certificateImagePath).then(certificatePath => {
-                // Use emailBody in the sendEmail function
-                sendEmail(email, firstName, lastName, pdfPath, certificatePath, emailBody);
+                //sendEmail(email, firstName, lastName, pdfPath, certificatePath, emailBody);
             });
         })
         .on('end', () => {

@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { BsQrCode } from "react-icons/bs";
 import { IoMdPersonAdd } from "react-icons/io";
@@ -15,11 +15,14 @@ import { IoPersonRemove } from "react-icons/io5";
 import { FaCode } from "react-icons/fa";
 import { RiRobot2Fill } from "react-icons/ri";
 import { BeatLoader } from "react-spinners";
+import { useNavigate } from 'react-router-dom';
 import supabase from "../../../superbaseClient";
 import "./FormulaireFormation.css";
 import PropTypes from 'prop-types';
 
+
 function FormulaireFormation({ mode }) {
+  const navigate = useNavigate(); 
   const [loading, setLoading] = useState(false);
   const { formationId } = useParams();
   const [seniorMembers, setSeniorMembers] = useState([{}]);
@@ -42,7 +45,7 @@ function FormulaireFormation({ mode }) {
     const fetchFormateurs = async () => {
       try {
         const { data: senior_members, error } = await supabase
-          .from("senior_members")
+          .from("Senior_Members")
           .select("*");
 
         if (error) {
@@ -184,6 +187,7 @@ function FormulaireFormation({ mode }) {
             prix_member_actif: 0,
             prix_member_adherant: 0,
           });
+          navigate('/Lister_Formations')
         }
       }
     } catch (err) {
@@ -253,13 +257,6 @@ function FormulaireFormation({ mode }) {
       </label>
       {fields.map((field, index) => (
         <div key={index} style={{ display: "flex", marginBottom: "1rem" }}>
-          {/* <input
-            placeholder="Nom et prénom"
-            value={field.value}
-            onChange={(e) => handleInputChange(e, index, setFieldFunc, fields)}
-            className="input_formulaire_formation"
-            style={{ flex: 4, marginRight: "1%" }}
-          /> */}
           <select
             className="form-select"
             aria-label="Default select example"
@@ -268,8 +265,8 @@ function FormulaireFormation({ mode }) {
           >
             <option value={0}>Select {label}</option>
             {seniorMembers.map((member) => (
-              <option key={member.id} value={member.id}>
-                {member.firstname} {member.lastname}
+              <option key={member.ID} value={member.ID}>
+                {member.FirstName} {member.LastName}
               </option>
             ))}
           </select>
@@ -295,6 +292,23 @@ function FormulaireFormation({ mode }) {
       ))}
     </div>
   );
+
+  //Delete a training
+  async function deleteTraining() {
+    if (confirm("Are you sure you want to delete this training?"))
+    {  const { data, error } = await supabase
+        .from('trainings')
+        .delete()
+        .eq('id', formationId); // Match the row where columnName equals value
+    
+      if (error) {
+        console.error('Error deleting row:', error);
+        return;
+      }
+      console.log('Row deleted successfully:', data);
+      navigate('/Lister_Formations');
+    }
+  }
 
   return (
     <>
@@ -458,8 +472,8 @@ function FormulaireFormation({ mode }) {
                 "Add Training"
               )}
             </button>
-            <button type="button" className="btn btn-danger">
-              Cancel
+            <button type="button" className="btn btn-danger" onClick={() => deleteTraining()}>
+              Delete
             </button>
           </div>
         </form>
