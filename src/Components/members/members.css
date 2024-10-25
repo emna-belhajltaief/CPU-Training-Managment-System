@@ -68,7 +68,7 @@
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
-
+    color: white;
     tbody tr {
         cursor: pointer;
         transition: 0.2s ease;
@@ -76,15 +76,16 @@
 }
 
 .custom-table tr:nth-child(odd) {
-    background-color: #f9f9f9;
+    background-color: transparent;
 }
 
 .custom-table tr:nth-child(even) {
-    background-color: #ffffff;
+    background-color: transparent;
 }
 
 .custom-table tbody tr:hover {
     background-color: #d3d3d3;
+    color: black;
 }
 
 .custom-table th,
@@ -94,7 +95,6 @@
     text-align: left;
     background-color: none !important;
 }
-
 
 .custom-table-responsive {
     overflow-x: auto;

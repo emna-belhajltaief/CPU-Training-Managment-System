@@ -71,13 +71,11 @@ body {
 }
 
 .formation-list {
-
   position: absolute;
-  top: 55%;
+  top: 20%;
   left: 50%;
   display: flex;
   justify-content: space-around;
-  flex-direction: row;
   flex-wrap: wrap;
   background-color: #171f2e64;
   color: aliceblue;
@@ -93,11 +91,19 @@ body {
   padding-right: 40px;
   width: 90%;
   justify-content: space-between;
+}
 
-  img {
-    min-width: 150px;
-    flex: 1;
-  }
+.formation-item-header{
+  display: flex;
+  gap: 10px;
+  height: fit-content;
+  margin: 0;
+}
+.formation-item-header img {
+  min-width: 100px;
+  height: 100px;
+  margin: 0;
+  flex: 1;
 }
 
 .edit_button {
@@ -119,7 +125,7 @@ body {
   cursor: pointer;
   display: inline-flex;
   fill: currentcolor;
-  font-family: "Google Sans", Roboto, Arial, sans-serif;
+  font-family: "Google Sans", 'Roboto', Arial, sans-serif;
   font-size: 12px;
   font-weight: 500;
   height: 48px;

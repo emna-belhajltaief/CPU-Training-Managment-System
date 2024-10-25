@@ -1,3 +1,4 @@
+
 .point {
     cursor: pointer;
 }
@@ -6,7 +7,7 @@
     margin-right: 10px;
     cursor: pointer;
     transition: 0.4s ease;
-
+    font-family: 'Outfit';
     a {
         color: white;
     }

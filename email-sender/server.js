@@ -11,11 +11,13 @@ const app = express();
 const PORT = process.env.PORT || 5010;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+let member = 1
+let emailSent = 1
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
         user: 'cpuisimmbranch@gmail.com',
-        pass: 'non' //'dgha hhon ojyz ecja'
+        pass: 'dgha hhon ojyz ecja'
     },
 });
 app.use(cors({
@@ -29,8 +31,8 @@ function convertToTitleCase(str) {
     }
     return str.toLowerCase().split(' ').map(function (word) {
         return word.charAt(0).toUpperCase().concat(word.substr(1));
-     }).join(' ');
-  }
+    }).join(' ');
+}
 
 // Function to generate the certificate image with the recipient's name
 const generateCertificate = async (firstName, lastName, certificateTemplatePath) => {
@@ -55,68 +57,72 @@ const generateCertificate = async (firstName, lastName, certificateTemplatePath)
     try {
         // Use sharp to overlay the text on the image
         await sharp(certificateTemplatePath)
-            .composite([
-                {
-                    input: Buffer.from(`
-                    <svg width="2000" height="1414">
-                       <style>
-                            @font-face {
-                                font-family: 'edwardianscriptitc';
-                                src: url('file://${fontPath}') format('truetype');
-                            }
-                            .title {
-                                fill: #174777;
-                                font-size: 140px;
-                                font-family: 'edwardianscriptitc';
-                                font-weight: bold;
-                            }
-                        </style>
-                        <text text-anchor="middle" x="1000" y="700" class="title">${nameToDisplay}</text>
-                    </svg>
-                    `),
-                    top: 0, // Adjust these values for vertical positioning
-                    left: 0  // Adjust these values for horizontal positioning
-                }
-            ])
-            .toFile(outputPath);
-        return outputPath; // Return the path to the generated certificate
-    } catch (error) {
-        console.error('Error generating the certificate:', error);
-        throw new Error('Could not generate the certificate');
-    }
-};
-const sendEmail = (email, firstName, lastName, pdfPath, certificatePath, emailBody) => {
-    const mailOptions = {
-        from: 'cpuisimmbranch@gmail.com',
-        to: email,
-        subject: 'Your Training Certificate',
-        html: `
-            <p>Hello ${firstName} ${lastName},</p>
-            <p>${emailBody}</p>  <!-- Use the email body here -->
-            <img src="cid:unique@certificate" alt="Certificate" />
-        `,
-        attachments: [
+        .composite([
             {
-                filename: 'certificate.jpg',
-                path: certificatePath,
-                cid: 'unique@certificate',
-            },
-        ],
-    };
-    if (pdfPath) {
-        mailOptions.attachments.push({
-            filename: 'training_summary.pdf',
-            path: pdfPath,
-        });
-    }
-    transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-            return console.log(`Error sending to ${email}: `, error);
-        }
-        console.log(`Email sent to ${email}: ` + info.response);
-    });
-};
-// Route for sending certificates
+                input: Buffer.from(`
+                    <svg width="2000" height="1414">
+                    <style>
+                    @font-face {
+                        font-family: 'edwardianscriptitc';
+                        src: url('file://${fontPath}') format('truetype');
+                        }
+                        .title {
+                            fill: #174777;
+                            font-size: 140px;
+                            font-family: 'edwardianscriptitc';
+                            font-weight: bold;
+                            }
+                            </style>
+                            <text text-anchor="middle" x="1000" y="700" class="title">${nameToDisplay}</text>
+                            </svg>
+                            `),
+                            top: 0, // Adjust these values for vertical positioning
+                            left: 0  // Adjust these values for horizontal positioning
+                        }
+                    ])
+                    .toFile(outputPath);
+                    return outputPath; // Return the path to the generated certificate
+                } catch (error) {
+                    console.error('Error generating the certificate:', error);
+                    throw new Error('Could not generate the certificate');
+                }
+            };
+            const sendEmail = (email, firstName, lastName, pdfPath, certificatePath, emailBody) => {
+                console.log(firstName + " " + lastName + " " + email)
+                const mailOptions = {
+                    from: 'cpuisimmbranch@gmail.com',
+                    to: email,
+                    subject: 'Your Training Certificate',
+                    html: `
+                    <p>Hello dear member,</p>
+                    <p>${emailBody}</p>  <!-- Use the email body here -->
+                    <img src="cid:unique@certificate" alt="Certificate" />
+                    `,
+                    attachments: [
+                        {
+                            filename: 'certificate.jpg',
+                            path: certificatePath,
+                            cid: 'unique@certificate',
+                        },
+                    ],
+                };
+                if (pdfPath) {
+                    mailOptions.attachments.push({
+                        filename: 'training_summary.pdf',
+                        path: pdfPath,
+                    });
+                }
+                transporter.sendMail(mailOptions, (error, info) => {
+                    if (error) {
+                        return console.log(`Error sending to ${email}: `, error);
+                    }
+                    sleep(1000) 
+                    console.log(`Email sent to ${email}: ` + info.response);
+                    console.log(emailSent)
+                    emailSent += 1
+                });
+            };
+            // Route for sending certificates
 app.post('/send-certificates', upload.fields([{ name: 'pdfFile', maxCount: 1 }, { name: 'csvFile', maxCount: 1 }, { name: 'certificateFile', maxCount: 1 }]), (req, res) => {
     const pdfFile = req.files['pdfFile'] ? req.files['pdfFile'][0] : null; // Make PDF optional
     const csvFile = req.files['csvFile'] ? req.files['csvFile'][0] : null; // Ensure CSV file is present
@@ -129,16 +135,28 @@ app.post('/send-certificates', upload.fields([{ name: 'pdfFile', maxCount: 1 }, 
     const pdfPath = pdfFile ? pdfFile.path : null; // Handle optional PDF
     const csvFilePath = csvFile.path;
     const certificateImagePath = certificateFile.path; // Get path of certificate image
+    let isFirstLine = true;
     // Process CSV and send emails
     fs.createReadStream(csvFilePath)
-        .pipe(csv())
+        .pipe(csv(csv({
+        separator: ';',  // specify the separator if it's not a comma
+        headers: true,  // make sure headers are read correctly
+        skipEmptyLines: true
+    }) ))
         .on('data', (row) => {
-            const email = row.email;
-            firstName = row._3
-            lastName = row._2
+            // Skip the first line (header)
+            if (isFirstLine) {
+                isFirstLine = false;
+                return;
+            }
+            rowData = row['_0'].split(';');
+            const email = rowData[0];
+            firstName = rowData[3]
+            lastName = rowData[2]
             firstName = convertToTitleCase(firstName);
             lastName = convertToTitleCase(lastName);
-            console.log(firstName+" " + email + " " +lastName)
+            console.log(member)
+            member += 1
             generateCertificate(firstName, lastName, certificateImagePath).then(certificatePath => {
                 //sendEmail(email, firstName, lastName, pdfPath, certificatePath, emailBody);
             });

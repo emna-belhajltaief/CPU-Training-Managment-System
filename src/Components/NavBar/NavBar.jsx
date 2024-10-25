@@ -29,17 +29,12 @@ function NavBar() {
     signOutUser();
   }
 
-
-
   return (<>
     <nav className="nav-main">
       <div onClick={gotomain} className="nav-logo">
         <img src="/images/cpuwhite.png" className="point" alt="Logo" />
       </div>
       <div className="nav-items">
-        <div className='nav-item'>
-          <div onClick={handleSignout}>SignOut</div>
-        </div>
         <div className="nav-item">
           <Link to="/members">Gestion des membres</Link>
         </div>
@@ -51,6 +46,12 @@ function NavBar() {
               <Link to="/Lister_Formations" >Liste des Formations</Link>
             </div>
           )}
+        </div>
+        <div className='nav-item'>
+          <Link to="/SendCertifications">Send Certifications</Link>
+        </div>
+        <div className='nav-item'>
+          <Link onClick={handleSignout}>SignOut</Link>
         </div>
       </div>
     </nav></>)

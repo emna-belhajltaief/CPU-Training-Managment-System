@@ -59,9 +59,6 @@ const MainPage = () => {
   const handleRepartition = (training) => {
     navigate(`/Repartition/${training.id}`);
   }
-  const handleCertifications = () => {
-    navigate("/SendCertifications");
-  }
 
   return (
     <>
@@ -73,25 +70,27 @@ const MainPage = () => {
         {!permissionDenied ? trainings.map((training, index) => (
           <>
             <div key={index} className="formation-item">
-              <img src={training.logo_url} alt="Formation Logo" className="formation-logo" />
-              <div className="formation-details">
-                <h3>{training.name}</h3>
-                <p>Date: {training.date}</p>
-                <p>Location: {training.address}</p>
+              <div className='formation-item-header'>
+                <img src={training.logo_url} alt="Formation Logo" className="formation-logo" />
+                <div className="formation-details">
+                  <h3>{training.name}</h3>
+                  <p>Date: {training.date}</p>
+                  <p>Location: {training.address}</p>
+                </div>
               </div>
               <div className="edit_button">
                 <button
                   className="edit-btn"
                   onClick={() => handleView(training)}
                 >
-                  View
+                  Details
                 </button>
 
                 <button
                   className="edit-btn"
                   onClick={() => handleRegistration(training)}
                 >
-                  Open for Registration
+                  Registeration
                 </button>
 
                 <button
@@ -106,14 +105,9 @@ const MainPage = () => {
                   className="edit-btn"
                   onClick={() => handleCheckIn(training)}
                 >
-                  Open for check-in
+                  Check-in
                 </button>
-                <button
-                  className="edit-btn"
-                  onClick={() => handleCertifications()}
-                >
-                  Send Certifications
-                </button>
+                
                 <button
                   className="edit-btn"
                   onClick={() => handleStatics()}
