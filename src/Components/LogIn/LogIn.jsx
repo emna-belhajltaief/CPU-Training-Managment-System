@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import supabase from '../../../superbaseClient';
 import './LogIn.css';
 
 const LogIn = () => {
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -86,6 +87,7 @@ const LogIn = () => {
         </div>
         {errorMessage && <p className="error">{errorMessage}</p>} {/* Display error message */}
         <button type="submit">Login</button>
+        <button onClick={()=>navigate('/signup')}>Signup</button>
       </form>
     </div>
   );
