@@ -17,7 +17,7 @@ const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
         user: 'cpuisimmbranch@gmail.com',
-        pass: 'dgha hhon ojyz ecja'
+        pass: ''//'dgha hhon ojyz ecja'
     },
 });
 app.use(cors({
@@ -73,7 +73,7 @@ const generateCertificate = async (firstName, lastName, certificateTemplatePath)
                             font-weight: bold;
                             }
                             </style>
-                            <text text-anchor="middle" x="1000" y="700" class="title">${nameToDisplay}</text>
+                            <text text-anchor="middle" x="1000" y="670" class="title">${nameToDisplay}</text>
                             </svg>
                             `),
                             top: 0, // Adjust these values for vertical positioning
@@ -119,7 +119,7 @@ const generateCertificate = async (firstName, lastName, certificateTemplatePath)
                     sleep(1000) 
                     console.log(`Email sent to ${email}: ` + info.response);
                     console.log(emailSent)
-                    emailSent += 1
+                    //emailSent += 1
                 });
             };
             // Route for sending certificates
@@ -145,18 +145,19 @@ app.post('/send-certificates', upload.fields([{ name: 'pdfFile', maxCount: 1 }, 
     }) ))
         .on('data', (row) => {
             // Skip the first line (header)
+            console.log(row)
             if (isFirstLine) {
                 isFirstLine = false;
                 return;
             }
-            rowData = row['_0'].split(';');
-            const email = rowData[0];
-            firstName = rowData[3]
-            lastName = rowData[2]
+            //rowData = row['_0'].split(';');
+            const email = row._3;
+            firstName = row._2
+            lastName = row._1
             firstName = convertToTitleCase(firstName);
             lastName = convertToTitleCase(lastName);
             console.log(member)
-            member += 1
+            //member += 1
             generateCertificate(firstName, lastName, certificateImagePath).then(certificatePath => {
                 //sendEmail(email, firstName, lastName, pdfPath, certificatePath, emailBody);
             });

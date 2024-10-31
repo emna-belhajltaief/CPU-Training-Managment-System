@@ -36,14 +36,17 @@ function NavBar() {
       </div>
       <div className="nav-items">
         <div className="nav-item">
-          <Link to="/members">Gestion des membres</Link>
+          <Link to="/Home">Home</Link>
+        </div>
+        <div className="nav-item">
+          <Link to="/members">Members</Link>
         </div>
         <div className="nav-item" onMouseEnter={toggleDropdown} onMouseLeave={toggleDropdown}>
-          <a href="#">Gestion des formations</a>
+          <a href="#">Trainings</a>
           {showDropdown && (
             <div className="dropdown">
-              <Link to="/FormulaireFormation/add">Créer Formation</Link>
-              <Link to="/Lister_Formations" >Liste des Formations</Link>
+              <Link to="/FormulaireFormation/add">Add Training</Link>
+              <Link to="/Lister_Formations" >View Trainings</Link>
             </div>
           )}
         </div>

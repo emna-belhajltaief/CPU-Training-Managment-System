@@ -1,7 +1,6 @@
 body {
   font-family: 'Roboto Slab';
   background-image: radial-gradient(#5c616b, #171F2E);
-
 }
 
 .nav-main {
@@ -72,7 +71,7 @@ body {
 
 .formation-list {
   position: absolute;
-  top: 20%;
+  top: 30%;
   left: 50%;
   display: flex;
   justify-content: space-around;

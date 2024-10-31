@@ -86,7 +86,7 @@ const LogIn = () => {
             />
         </div>
         {errorMessage && <p className="error">{errorMessage}</p>} {/* Display error message */}
-        <button type="submit">Login</button>
+        <button type="submit" style={{marginRight: "10px"}}>Login</button>
         <button onClick={()=>navigate('/signup')}>Signup</button>
       </form>
     </div>
