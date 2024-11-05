@@ -33,6 +33,10 @@ const router = createBrowserRouter([
     element: <LogIn />,
   },
   {
+    path: '/RegistrationForm/:formationId',
+    element: <RegistrationForm />,
+  },
+  {
     element: <ProtectedLayout />, // Protect all child routes
     children: [
       {
@@ -83,10 +87,6 @@ const router = createBrowserRouter([
       {
         path: '/Registration/:formationId',
         element: <Registration />,
-      },
-      {
-        path: '/RegistrationForm/:formationId',
-        element: <RegistrationForm />,
       },
       {
         path: '/Home',

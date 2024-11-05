@@ -204,8 +204,8 @@ const RegistrationForm = () => {
             value={memberData.Adherent}
             onChange={handleChange}
           >
-            <option value={"FAUX"}>actif</option>
-            <option value={"VRAI"}>adherent</option>
+            <option value={"FAUX"}>Membre Actif</option>
+            <option value={"VRAI"}>Membre Adherent</option>
           </select>
         </div>
 
@@ -223,6 +223,7 @@ const RegistrationForm = () => {
                 id={key}
                 name={key}
                 value={memberData[key]}
+                type="password"
                 onChange={handleChange}
                 onBlur={() => setShowSuggestions((prev) => ({ ...prev, [key]: false }))}
                 onFocus={() => key in suggestions && setShowSuggestions((prev) => ({ ...prev, [key]: true }))}
