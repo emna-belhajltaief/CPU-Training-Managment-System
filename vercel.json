@@ -1,9 +1,6 @@
 {
-    "rewrites": [
-      {
-        "source": "/RegistrationForm/:formationId",
-        "destination": "/RegistrationForm/:formationId"
-      }
-    ]
-  }
-  
+  "rewrites": [
+    { "source": "/RegistrationForm/:formationId", "destination": "/" },
+    { "source": "/(.*)", "destination": "/" }
+  ]
+}
