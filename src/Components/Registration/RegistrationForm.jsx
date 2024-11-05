@@ -134,29 +134,34 @@ const RegistrationForm = () => {
   const handleSave = async () => {
     try {
       let memberId = trainingParticipationData.member_id;
-
+  
+      // Check if memberData has an ID; if not, proceed without manually setting it
       if (!memberData?.ID) {
+        // Insert the new member and let the database generate the ID
         const promise = supabase
           .from("Active_Members")
           .insert([memberData])
           .select();
+  
         toast.promise(promise, {
           success: "Member added successfully",
           loading: "Adding member...",
           error: "Error adding member",
         });
+  
         const { data: newMember, error: memberError } = await promise;
-
+  
         if (memberError) throw memberError;
-        memberId = newMember[0].ID;
+        memberId = newMember[0].ID; // Get the generated ID from the response
       }
-
+  
+      // Insert training participation data with the member ID
       const { error: trainingError } = await supabase
         .from("training_participation")
         .insert([{ ...trainingParticipationData, member_id: memberId }]);
-
+  
       if (trainingError) throw trainingError;
-
+  
       toast.success("Training participation saved successfully!");
       resetForm();
     } catch (error) {
@@ -164,6 +169,7 @@ const RegistrationForm = () => {
       console.error("Error saving training participation:", error.message);
     }
   };
+  
 
   const resetForm = () => {
     setMemberData({
