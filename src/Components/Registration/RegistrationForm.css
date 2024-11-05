@@ -15,11 +15,7 @@
     justify-content: space-between;
     width: 15rem;
     margin-top: 1.5rem;
-}
-.paidlabel input{
-    background-color: red;
-    border: 2px solid green;
-    display: inline;
+    margin-bottom: 1.5rem;
 }
 .suggestion-item {
     padding: 10px;
