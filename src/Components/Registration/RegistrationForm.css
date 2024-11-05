@@ -9,7 +9,18 @@
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 4px;
 }
-
+.paidlabel{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 15rem;
+    margin-top: 1.5rem;
+}
+.paidlabel input{
+    background-color: red;
+    border: 2px solid green;
+    display: inline;
+}
 .suggestion-item {
     padding: 10px;
     cursor: pointer;

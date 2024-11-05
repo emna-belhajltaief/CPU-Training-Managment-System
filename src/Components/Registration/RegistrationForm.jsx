@@ -266,9 +266,12 @@ const RegistrationForm = () => {
           </select>
         </div>
 
-        <div className="form-group">
-          <label>Payment Status</label>
-          <label>
+        <div>
+          <b>Payment Status</b>
+          <div className="paidlabel">
+          <b>
+          Yes
+          </b>
             <input
               type="radio"
               value="Yes"
@@ -277,9 +280,11 @@ const RegistrationForm = () => {
                 setTrainingParticipationData((prev) => ({ ...prev, has_paid: e.target.value }))
               }
             />
-            Yes
-          </label>
-          <label>
+          </div>
+          <div className="paidlabel">
+            <b>
+              No  
+            </b>
             <input
               type="radio"
               value="No"
@@ -288,8 +293,7 @@ const RegistrationForm = () => {
                 setTrainingParticipationData((prev) => ({ ...prev, has_paid: e.target.value }))
               }
             />
-            No
-          </label>
+          </div>
         </div>
 
         <div className="form-actions">
