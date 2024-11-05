@@ -223,7 +223,7 @@ const RegistrationForm = () => {
                 id={key}
                 name={key}
                 value={memberData[key]}
-                type="password"
+      
                 onChange={handleChange}
                 onBlur={() => setShowSuggestions((prev) => ({ ...prev, [key]: false }))}
                 onFocus={() => key in suggestions && setShowSuggestions((prev) => ({ ...prev, [key]: true }))}
