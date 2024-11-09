@@ -15,7 +15,7 @@ const RegistrationForm = () => {
     FirstName: "",
     Email: "",
     Phone: "",
-    Adherent: "FAUX",
+    Adherent: 0,
     StudyLevel: ""
   });
   const [trainingParticipationData, setTrainingParticipationData] = useState({
@@ -177,7 +177,7 @@ const RegistrationForm = () => {
       FirstName: "",
       Email: "",
       Phone: "",
-      Adherent: "FAUX",
+      Adherent: 0,
       StudyLevel: ""
     });
     setTrainingParticipationData({
