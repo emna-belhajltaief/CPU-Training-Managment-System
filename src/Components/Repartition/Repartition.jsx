@@ -157,7 +157,7 @@ function Repartition() {
               <th>#</th>
               <th>Prenom</th>
               <th>Nom</th>
-              <th>Email</th>
+              <th>Section</th>
               <th>Groupe</th>
               <th>Salle</th>
               <th></th>
@@ -170,7 +170,7 @@ function Repartition() {
                   <td>{index+1}</td>
                   <td>{participant.Active_Members.FirstName}</td>
                   <td>{participant.Active_Members.LastName}</td>
-                  <td>{participant.Active_Members.Email}</td>
+                  <td>{participant.Active_Members.StudyLevel}</td>
                   <td>
                     <input type="text" name="groupe" value={participant.groupe} onChange={
                       (e) => {
